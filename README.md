@@ -27,7 +27,11 @@ It is recommended to use these datasets in order to try out methods. We do not r
 
 ## Functions
 
-**All TODO**
+## `lobanov_2`
+
+Apply Lobanov 2.0 normalisation as developed in Brand et al.  (2021).
+
+** Remaining TODO **
 
 ### Fit Per-Vowel Models
 

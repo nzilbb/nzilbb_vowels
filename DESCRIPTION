@@ -1,14 +1,15 @@
 Package: nzilbb.vowels
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Functions and Data For Vowel Covariation Studies
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Joshua Wilson Black
+Maintainer: Joshua Wilson Black <joshua.black@canterbury.ac.nz>
+Description: Data and functions to illustrate methods developed in recent studies
+  Vowel covariation at the New Zealand Institute of Language, Brain, and Behaviour.
+License: MIT Licence
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 2.10)
-RoxygenNote: 7.1.1
+    R (>= 2.10),
+    tidyverse
+RoxygenNote: 7.2.0

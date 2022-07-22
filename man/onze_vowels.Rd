@@ -9,12 +9,12 @@ A data frame with 101572 rows and 8 variables:
 \describe{
   \item{speaker}{Anonymised speaker code.}
   \item{vowel}{Factor variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP.}
-  \item{word}{Anonymised word code.}
   \item{F1_50}{First formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
   \item{F2_50}{Second formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
   \item{speech_rate}{Average speaker speech rate for whole recording.}
   \item{gender}{Gender of speaker, two levels: "M", "F".}
   \item{yob}{Year of birth of speaker.}
+  \item{word}{Anonymised word code.}
 }
 }
 \source{
