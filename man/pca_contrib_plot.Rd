@@ -11,9 +11,11 @@ pca_contrib_plot(pca_object, pc_no = 1, cutoff = 50)
 
 \item{pc_no}{the PC to be visualised. Default value is 1.}
 
-\item{cutoff}{the cutoff value for interpretation of the PC. The default
-value, 50, means we ignore contributions until they cumulatively account
-for more than 50% of the PC.}
+\item{cutoff}{the cutoff value for interpretation of the PC. Determines what
+total percentage contribution we want from the variables we select for
+interpretation. The default of 50 means that we pick the variables with the
+highest contribution to the PC until we have accounted for 50% of the total
+contributions to the PC.}
 }
 \value{
 `ggplot` object.
