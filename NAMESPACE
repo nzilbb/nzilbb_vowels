@@ -2,3 +2,5 @@
 
 export(lobanov_2)
 export(pca_contrib_plot)
+export(permutation_test)
+export(plot_permutation_test)
