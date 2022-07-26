@@ -20,6 +20,7 @@
 #' PCs with original data.
 #' * `$actual_correlations` the number of significant pairwise correlations (<=
 #' 0.05) in the original data.
+#' @importFrom tidyr expand
 #' @export
 #' @examples
 #' permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')
@@ -46,7 +47,7 @@ permutation_test <- function(
   # Actual corrs. (TODO: REFACTOR THIS)
   pairwise_correlations <- as_tibble(names(pca_data)) %>%
     filter(value != "speaker") %>%
-    tidyr::expand(value, value1 = value) %>%
+    expand(value, value1 = value) %>%
     filter(value < value1)
 
   pairwise_correlations <- pairwise_correlations %>%
