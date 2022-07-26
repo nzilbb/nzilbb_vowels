@@ -56,9 +56,9 @@ permutation_test <- function(
         value,
         value1,
         ~ cor.test(
-          onze_intercepts %>%
+          pca_data %>%
             pull(.x),
-          onze_intercepts %>%
+          pca_data %>%
             pull(.y),
           method=cor.method,
           exact=FALSE # Only active is spearman chosen.
