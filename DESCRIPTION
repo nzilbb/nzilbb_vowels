@@ -1,4 +1,4 @@
-Package: nzilbb_vowels
+Package: nzilbb.vowels
 Type: Package
 Title: Functions and Data For Vowel Covariation Studies
 Version: 0.1.0
