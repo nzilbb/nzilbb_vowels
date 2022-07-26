@@ -46,7 +46,7 @@ permutation_test <- function(
   # Actual corrs. (TODO: REFACTOR THIS)
   pairwise_correlations <- as_tibble(names(pca_data)) %>%
     filter(value != "speaker") %>%
-    expand(value, value1 = value) %>%
+    tidyr::expand(value, value1 = value) %>%
     filter(value < value1)
 
   pairwise_correlations <- pairwise_correlations %>%
