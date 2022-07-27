@@ -4,7 +4,7 @@
 #' significant pairwise correlations in the permuted data and the variances
 #' explained for a given number of PCs.
 #'
-#' @param pca_data data fed to the `prcomp` function.
+#' @param pca_data data fed to the `prcomp` function. Remove non-continuous variables.
 #' @param pc_n the number of PCs to collect variance explained from.
 #' @param n the number of times to permute that data. **Warning:** high values
 #'   will take a long time to compute.
@@ -29,13 +29,6 @@ permutation_test <- function(
   pca_data, pc_n = 5, n=100, scale = TRUE, cor.method = 'pearson'
 ) {
 
-  # Assume data of form | speaker | variable_1 | variable_2 | ...
-
-  # Do this as a for loop to avoid memory issues with massively duplicating
-  # the dataset.
-
-  # Make it so the speaker column doesn't have to be _called_ speaker.
-
   # Collect real info
   actual_pca <- prcomp(pca_data %>% select(-speaker), scale = scale)
   actual_explained <- tibble(
@@ -46,7 +39,6 @@ permutation_test <- function(
 
   # Actual corrs. (TODO: REFACTOR THIS)
   pairwise_correlations <- as_tibble(names(pca_data)) %>%
-    filter(value != "speaker") %>%
     expand(value, value1 = value) %>%
     filter(value < value1)
 
@@ -93,7 +85,6 @@ permutation_test <- function(
 
     # Correlations (REFACTOR - SEE ABOVE!)
     pairwise_correlations <- as_tibble(names(permuted)) %>%
-      filter(value != "speaker") %>%
       expand(value, value1 = value) %>%
       filter(value < value1)
 

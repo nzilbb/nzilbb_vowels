@@ -13,7 +13,7 @@ permutation_test(
 )
 }
 \arguments{
-\item{pca_data}{data fed to the `prcomp` function.}
+\item{pca_data}{data fed to the `prcomp` function. Remove non-continuous variables.}
 
 \item{pc_n}{the number of PCs to collect variance explained from.}
 
