@@ -19,7 +19,7 @@
 #' pca_contrib_plot(pca_object, pc_no=2, cutoff=70)
 pca_contrib_plot <- function(pca_object, pc_no=1, cutoff=50) {
 
-  loadings <- as_tibble(onze_pca$rotation[,pc_no], rownames="variable") %>%
+  loadings <- as_tibble(pca_object$rotation[,pc_no], rownames="variable") %>%
     rename(
       loading = value
     ) %>%
