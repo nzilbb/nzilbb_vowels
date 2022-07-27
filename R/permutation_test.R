@@ -78,8 +78,8 @@ permutation_test <- function(
     permuted <- pca_data %>%
       mutate(
         across(
-          !speaker,
-          ~ sample(.x, length(.x))
+          .cols = everything(),
+          .fns = ~ sample(.x, length(.x))
         )
       )
 
@@ -110,7 +110,7 @@ permutation_test <- function(
       ) %>%
       nrow()
 
-    permuted_pca <- prcomp(permuted %>% select(-speaker), scale = scale)
+    permuted_pca <- prcomp(permuted, scale = scale)
 
     variances_explained[i, ] <- (
       permuted_pca$sdev^2 / sum(permuted_pca$sdev^2)
