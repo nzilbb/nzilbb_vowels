@@ -30,7 +30,7 @@ permutation_test <- function(
 ) {
 
   # Collect real info
-  actual_pca <- prcomp(pca_data %>% select(-speaker), scale = scale)
+  actual_pca <- prcomp(pca_data, scale = scale)
   actual_explained <- tibble(
     PC = c(glue("PC{seq(1:pc_n)}")),
     variance_explained = (actual_pca$sdev^2/sum(actual_pca$sdev^2))[1:pc_n]
