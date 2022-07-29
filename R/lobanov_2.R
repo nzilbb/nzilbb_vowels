@@ -31,7 +31,7 @@ lobanov_2 <- function(vowel_data) {
       vowel_sd_F1 = sd(.data[[F1_col_name]]),
       vowel_sd_F2 = sd(.data[[F2_col_name]]),
     ) %>%
-    group_by(speaker) %>%
+    group_by(.data[[speaker_col_name]]) %>%
     mutate(
       mean_of_means_F1 = mean(vowel_mean_F1),
       mean_of_means_F2 = mean(vowel_mean_F2),
