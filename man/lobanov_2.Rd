@@ -24,5 +24,5 @@ package. The first four columns should be:
 4. second formant values in Hertz.
 }
 \examples{
-lobanov_2(vowel_data)
+lobanov_2(onze_vowels)
 }

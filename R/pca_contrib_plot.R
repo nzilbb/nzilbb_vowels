@@ -13,50 +13,57 @@
 #'   highest contribution to the PC until we have accounted for 50% of the total
 #'   contributions to the PC.
 #' @return `ggplot` object.
-#' @export
+#' @importFrom dplyr if_else lead rename mutate arrange filter
+#' @importFrom forcats fct_reorder
+#' @importFrom ggplot2 ggplot geom_text geom_vline scale_alpha_manual
+#'     scale_color_manual aes labs theme element_text
+#' @importFrom rlang .data
+#' @importFrom tibble as_tibble
+#' @importFrom magrittr %>%
 #' @examples
-#' pca_contrib_plot(pca_object, pc_no=1, cutoff=50)
-#' pca_contrib_plot(pca_object, pc_no=2, cutoff=70)
+#' \dontrun{pca_contrib_plot(pca_object, pc_no=1, cutoff=50)}
+#' \dontrun{pca_contrib_plot(pca_object, pc_no=2, cutoff=70)}
+#' @export
 pca_contrib_plot <- function(pca_object, pc_no=1, cutoff=50) {
 
   loadings <- as_tibble(pca_object$rotation[,pc_no], rownames="variable") %>%
     rename(
-      loading = value
+      loading = .data$value
     ) %>%
     mutate(
-      contribution = (loading^2) * 100,
-      loading_sign = if_else(loading < 0, "-", "+")
+      contribution = (.data$loading^2) * 100,
+      loading_sign = if_else(.data$loading < 0, "-", "+")
     ) %>%
     arrange(
-      contribution
+      .data$contribution
     ) %>%
     mutate(
-      variable = fct_reorder(variable, contribution, min),
-      cumulative_contribution = cumsum(contribution),
-      highlight = cumulative_contribution > (100 - cutoff)
+      variable = fct_reorder(.data$variable, .data$contribution, base::min),
+      cumulative_contribution = cumsum(.data$contribution),
+      highlight = .data$cumulative_contribution > (100 - cutoff)
     )
 
   vertical_line_coord <- loadings %>%
     mutate(
-      change_point = highlight != lead(highlight),
+      change_point = .data$highlight != lead(.data$highlight),
       row_no = 1,
-      row_no = cumsum(row_no),
+      row_no = cumsum(.data$row_no),
     ) %>%
     filter(
-      change_point == TRUE
+      .data$change_point == TRUE
     ) %>%
     mutate(
-      x_intercept = row_no + 0.5
+      x_intercept = .data$row_no + 0.5
     )
 
   loadings %>%
     ggplot(
       aes(
-        x = variable,
-        y = contribution,
-        label = loading_sign,
-        alpha = highlight,
-        color = loading_sign
+        x = .data$variable,
+        y = .data$contribution,
+        label = .data$loading_sign,
+        alpha = .data$highlight,
+        color = .data$loading_sign
       )
     ) +
     geom_text(
@@ -66,7 +73,7 @@ pca_contrib_plot <- function(pca_object, pc_no=1, cutoff=50) {
     ) +
     geom_vline(
       aes(
-        xintercept = x_intercept
+        xintercept = .data$x_intercept
       ),
       color = "red",
       linetype = "dashed",

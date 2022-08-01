@@ -27,6 +27,6 @@ contribution is the squared loading for the variable expressed as a
 percentage.
 }
 \examples{
-pca_contrib_plot(pca_object, pc_no=1, cutoff=50)
-pca_contrib_plot(pca_object, pc_no=2, cutoff=70)
+\dontrun{pca_contrib_plot(pca_object, pc_no=1, cutoff=50)}
+\dontrun{pca_contrib_plot(pca_object, pc_no=2, cutoff=70)}
 }

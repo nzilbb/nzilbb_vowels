@@ -20,33 +20,41 @@
 #' PCs with original data.
 #' * `$actual_correlations` the number of significant pairwise correlations (<=
 #' 0.05) in the original data.
+#' @importFrom dplyr mutate filter across
+#' @importFrom magrittr %>%
+#' @importFrom purrr map2
+#' @importFrom stats cor.test
+#' @importFrom tibble tibble as_tibble
 #' @importFrom tidyr expand
-#' @export
+#' @importFrom tidyselect everything
 #' @examples
-#' permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')
-#' permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = 'spearman')
+#' \dontrun{permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')}
+#' \dontrun{permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = 'spearman')}
+#' @export
 permutation_test <- function(
   pca_data, pc_n = 5, n=100, scale = TRUE, cor.method = 'pearson'
 ) {
 
   # Collect real info
-  actual_pca <- prcomp(pca_data, scale = scale)
+  actual_pca <- stats::prcomp(pca_data, scale = scale)
   actual_explained <- tibble(
-    PC = c(glue("PC{seq(1:pc_n)}")),
-    variance_explained = (actual_pca$sdev^2/sum(actual_pca$sdev^2))[1:pc_n]
+    PC = c(glue::glue("PC{seq(1:pc_n)}")),
+    variance_explained = (
+      actual_pca$sdev^2/base::sum(actual_pca$sdev^2)
+    )[1:pc_n]
   )
 
 
   # Actual corrs. (TODO: REFACTOR THIS)
-  pairwise_correlations <- as_tibble(names(pca_data)) %>%
-    expand(value, value1 = value) %>%
-    filter(value < value1)
+  pairwise_correlations <- as_tibble(base::names(pca_data)) %>%
+    expand(.data$value, value1 = .data$value) %>%
+    filter(.data$value < .data$value1)
 
   pairwise_correlations <- pairwise_correlations %>%
     mutate(
       cor_p = map2(
-        value,
-        value1,
+        .data$value,
+        .data$value1,
         ~ cor.test(
           pca_data %>%
             pull(.x),
@@ -60,17 +68,17 @@ permutation_test <- function(
 
   actual_sig_cors <- pairwise_correlations %>%
     filter(
-      cor_p <= 0.05
+      .data$cor_p <= 0.05
     ) %>%
-    nrow()
+    base::nrow()
 
   # Loop goes here (Accumulator)
-  variances_explained <- matrix(
+  variances_explained <- base::matrix(
     ncol=pc_n,
     nrow=n,
     dimnames = list(
       seq(1:n),
-      c(glue("PC{seq(1:pc_n)}"))
+      c(glue::glue("PC{seq(1:pc_n)}"))
     )
   )
   sig_correlations <- rep(0, n)
@@ -84,15 +92,15 @@ permutation_test <- function(
       )
 
     # Correlations (REFACTOR - SEE ABOVE!)
-    pairwise_correlations <- as_tibble(names(permuted)) %>%
-      expand(value, value1 = value) %>%
-      filter(value < value1)
+    pairwise_correlations <- as_tibble(base::names(permuted)) %>%
+      expand(.data$value, value1 = .data$value) %>%
+      filter(.data$value < .data$value1)
 
     pairwise_correlations <- pairwise_correlations %>%
       mutate(
         cor_p = map2(
-          value,
-          value1,
+          .data$value,
+          .data$value1,
           ~ cor.test(
             permuted %>%
               pull(.x),
@@ -106,14 +114,14 @@ permutation_test <- function(
 
     sig_correlations[i] <- pairwise_correlations %>%
       filter(
-        cor_p <= 0.05
+        .data$cor_p <= 0.05
       ) %>%
       nrow()
 
-    permuted_pca <- prcomp(permuted, scale = scale)
+    permuted_pca <- stats::prcomp(permuted, scale = scale)
 
     variances_explained[i, ] <- (
-      permuted_pca$sdev^2 / sum(permuted_pca$sdev^2)
+      permuted_pca$sdev^2 / base::sum(permuted_pca$sdev^2)
     )[1:pc_n]
 
   }

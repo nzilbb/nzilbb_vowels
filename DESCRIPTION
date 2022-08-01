@@ -2,16 +2,30 @@ Package: nzilbb.vowels
 Type: Package
 Title: Functions and Data For Vowel Covariation Studies
 Version: 0.1.0
-Author: Joshua Wilson Black
-Maintainer: Joshua Wilson Black <joshua.black@canterbury.ac.nz>
+Authors@R: person("Joshua", "Wilson Black", 
+  email = "joshua@wilsonblack.nz", role = c("aut", "cre"),
+  comment = c(ORCID = "https://orcid.org/my-orcid?orcid=0000-0002-8272-5763"))
 Description: Data and functions to illustrate methods developed in recent studies
   Vowel covariation at the New Zealand Institute of Language, Brain, and Behaviour.
-License: MIT Licence
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 2.10),
-    tidyverse,
-    glue,
-    patchwork
+    R (>= 2.10)
 RoxygenNote: 7.2.1
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
+Imports: 
+    dplyr,
+    ggplot2,
+    magrittr,
+    rlang,
+    rstudioapi,
+    tibble,
+    tidyr,
+    patchwork,
+    forcats,
+    glue,
+    purrr,
+    tidyselect

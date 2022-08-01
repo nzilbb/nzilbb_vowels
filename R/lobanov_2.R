@@ -11,9 +11,12 @@
 #' @param vowel_data a data frame with speaker, vowel, F1, and F2 columns.
 #' @return input dataframe with additional columns `F1_lob2` and `F2_lob2`,
 #'   containing the lobanov normalised F1 and F2 values respectively.
-#' @export
+#' @importFrom dplyr group_by ungroup mutate select
+#' @importFrom rlang .data
+#' @importFrom magrittr %>%
 #' @examples
-#' lobanov_2(vowel_data)
+#' lobanov_2(onze_vowels)
+#' @export
 lobanov_2 <- function(vowel_data) {
 
   # Assume speaker is first column, vowel is second, F1 is third, and F2 is
@@ -26,26 +29,28 @@ lobanov_2 <- function(vowel_data) {
   vowel_data %>%
     group_by(.data[[speaker_col_name]], .data[[vowel_col_name]]) %>%
     mutate(
-      vowel_mean_F1 = mean(.data[[F1_col_name]]),
-      vowel_mean_F2 = mean(.data[[F2_col_name]]),
-      vowel_sd_F1 = sd(.data[[F1_col_name]]),
-      vowel_sd_F2 = sd(.data[[F2_col_name]]),
+      vowel_mean_F1 = base::mean(.data[[F1_col_name]]),
+      vowel_mean_F2 = base::mean(.data[[F2_col_name]]),
+      vowel_sd_F1 = stats::sd(.data[[F1_col_name]]),
+      vowel_sd_F2 = stats::sd(.data[[F2_col_name]]),
     ) %>%
     group_by(.data[[speaker_col_name]]) %>%
     mutate(
-      mean_of_means_F1 = mean(vowel_mean_F1),
-      mean_of_means_F2 = mean(vowel_mean_F2),
-      sd_of_means_F1 = sd(vowel_mean_F1),
-      sd_of_means_F2 = sd(vowel_mean_F2)
+      mean_of_means_F1 = base::mean(.data$vowel_mean_F1),
+      mean_of_means_F2 = base::mean(.data$vowel_mean_F2),
+      sd_of_means_F1 = stats::sd(.data$vowel_mean_F1),
+      sd_of_means_F2 = stats::sd(.data$vowel_mean_F2)
     ) %>%
     ungroup() %>%
     mutate(
-      F1_lob2 = (.data[[F1_col_name]] - mean_of_means_F1)/sd_of_means_F1,
-      F2_lob2 = (.data[[F2_col_name]] - mean_of_means_F2)/sd_of_means_F2
+      F1_lob2 = (.data[[F1_col_name]] - .data$mean_of_means_F1)/
+        .data$sd_of_means_F1,
+      F2_lob2 = (.data[[F2_col_name]] - .data$mean_of_means_F2)/
+        .data$sd_of_means_F2
     ) %>%
     # Remove working variables.
     select(
-      -(vowel_mean_F1:sd_of_means_F2)
+      -(.data$vowel_mean_F1:.data$sd_of_means_F2)
     )
 
 }

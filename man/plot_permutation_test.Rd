@@ -17,5 +17,5 @@ Plots results of a permutation test carried out with the `permutation_test`
 function.
 }
 \examples{
-plot_permutation_test(permutation_results)
+\dontrun{plot_permutation_test(permutation_results)}
 }

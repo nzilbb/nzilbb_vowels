@@ -42,6 +42,6 @@ significant pairwise correlations in the permuted data and the variances
 explained for a given number of PCs.
 }
 \examples{
-permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')
-permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = 'spearman')
+\dontrun{permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')}
+\dontrun{permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = 'spearman')}
 }

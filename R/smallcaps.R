@@ -7,7 +7,7 @@ smallcaps <- function() {
     # Add text
     rstudioapi::modifyRange(
       location=doc_selections$selection[[i]]$range,
-      text=paste0(
+      text=base::paste0(
         '<span style="font-variant: small-caps;">',
         doc_selections$selection[[i]]$text,
         '</span>'
@@ -24,7 +24,7 @@ smallcaps <- function() {
 
   doc_ranges <- list()
 
-  for (i in seq_along(doc_selections$selection)) {
+  for (i in base::seq_along(doc_selections$selection)) {
 
     shifted_start <- doc_selections$selection[[i]]$range$start + c(0, 40)
     shifted_end <- doc_selections$selection[[i]]$range$end + c(0, 40)

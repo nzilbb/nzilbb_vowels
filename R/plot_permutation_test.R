@@ -5,9 +5,16 @@
 #'
 #' @param permutation_results object of class `permutation_results`.
 #' @return `ggplot` object.
-#' @export
+#' @importFrom dplyr mutate
+#' @importFrom ggplot2 ggplot geom_point geom_violin scale_alpha_manual
+#'     aes labs
+#' @importFrom tibble as_tibble
+#' @importFrom tidyr pivot_longer
+#' @importFrom tidyselect contains
+#' @importFrom magrittr %>%
 #' @examples
-#' plot_permutation_test(permutation_results)
+#' \dontrun{plot_permutation_test(permutation_results)}
+#' @export
 plot_permutation_test <- function(permutation_results) {
 
   variance_explained <- permutation_results$permuted_variances %>%
@@ -18,13 +25,13 @@ plot_permutation_test <- function(permutation_results) {
       values_to = "variance_explained"
     ) %>%
     mutate(
-      PC = factor(PC, levels = unique(PC))
+      PC = factor(.data$PC, levels = unique(.data$PC))
     )
 
   variance_plot <- variance_explained %>%
     ggplot(
       aes(
-        x = PC,
+        x = .data$PC,
         y = variance_explained * 100 # Convert to percentage
       )
     ) +
@@ -37,7 +44,7 @@ plot_permutation_test <- function(permutation_results) {
     labs(
       title = paste0(
         "Variance Explained by First ",
-        nrow(permutation_results$actual_variances),
+        base::nrow(permutation_results$actual_variances),
         " PCs"
       ),
       y = "Variance Explained"
@@ -48,14 +55,14 @@ plot_permutation_test <- function(permutation_results) {
     ggplot(
       aes(
         x = "",
-        y = value
+        y = .data$value
       )
     ) +
     geom_violin(draw_quantiles = c(0.25, 0.5, 0.75)) +
     geom_point(
       aes(
         x= "",
-        y = value
+        y = .data$value
       ),
       data = as_tibble(permutation_results$actual_correlations),
       color = "red"
@@ -66,7 +73,7 @@ plot_permutation_test <- function(permutation_results) {
       y = "Count of Significant Pairwise Correlations"
     )
 
-  correlation_plot + variance_plot + plot_annotation(
+  correlation_plot + variance_plot + patchwork::plot_annotation(
     title = "Permutation Test Results",
     subtitle = "Comparison of Permuted and Original Data",
     caption = paste0(
