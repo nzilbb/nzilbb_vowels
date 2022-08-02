@@ -15,7 +15,8 @@ pca_contrib_plot(pca_object, pc_no = 1, cutoff = 50)
 total percentage contribution we want from the variables we select for
 interpretation. The default of 50 means that we pick the variables with the
 highest contribution to the PC until we have accounted for 50% of the total
-contributions to the PC.}
+contributions to the PC. Can be set to `NULL` in which case, no cutoff value
+is plotted.}
 }
 \value{
 `ggplot` object.

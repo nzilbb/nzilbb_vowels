@@ -2,11 +2,18 @@
 #'
 #' We assume the same structure as the normalisation functions in  the `vowels`
 #' package. The first four columns should be:
-#'
 #' 1. speaker identifiers,
 #' 2. vowel identifiers,
 #' 3. first formant values in Hertz,
 #' 4. second formant values in Hertz.
+#'
+#' Apply Lobanov 2.0 normalisation as developed in Brand et al. (2021). This
+#' variant of Lobanov normalisation is designed to work for datasets whether the
+#' vowel types have different token counts from one another. The Lobanov 2.0 value
+#' for a vowel is given by \eqn{F_{lobanov2.0_i} = \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}}.
+#' Where, for ease of notation, we assume all values are from a single speaker.
+#' We signify the n vowel types as vowel_1, \ldots, vowel_2, while i
+#' indicates the formant number. We implement the function for F1 and F2.
 #'
 #' @param vowel_data a data frame with speaker, vowel, F1, and F2 columns.
 #' @return input dataframe with additional columns `F1_lob2` and `F2_lob2`,

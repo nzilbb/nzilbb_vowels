@@ -11,7 +11,8 @@
 #'   total percentage contribution we want from the variables we select for
 #'   interpretation. The default of 50 means that we pick the variables with the
 #'   highest contribution to the PC until we have accounted for 50% of the total
-#'   contributions to the PC.
+#'   contributions to the PC. Can be set to `NULL` in which case, no cutoff value
+#'   is plotted.
 #' @return `ggplot` object.
 #' @importFrom dplyr if_else lead rename mutate arrange filter
 #' @importFrom forcats fct_reorder
@@ -38,47 +39,71 @@ pca_contrib_plot <- function(pca_object, pc_no=1, cutoff=50) {
       .data$contribution
     ) %>%
     mutate(
-      variable = fct_reorder(.data$variable, .data$contribution, base::min),
-      cumulative_contribution = cumsum(.data$contribution),
-      highlight = .data$cumulative_contribution > (100 - cutoff)
+      variable = fct_reorder(.data$variable, .data$contribution, base::min)
     )
 
-  vertical_line_coord <- loadings %>%
-    mutate(
-      change_point = .data$highlight != lead(.data$highlight),
-      row_no = 1,
-      row_no = cumsum(.data$row_no),
-    ) %>%
-    filter(
-      .data$change_point == TRUE
-    ) %>%
-    mutate(
-      x_intercept = .data$row_no + 0.5
-    )
+  plot_aesthetic <- aes(
+    x = .data$variable,
+    y = .data$contribution,
+    label = .data$loading_sign,
+    alpha = .data$highlight,
+    color = .data$loading_sign
+  )
 
-  loadings %>%
-    ggplot(
-      aes(
-        x = .data$variable,
-        y = .data$contribution,
-        label = .data$loading_sign,
-        alpha = .data$highlight,
-        color = .data$loading_sign
+  # Handle cut off line.
+  if (is.numeric(cutoff)) {
+
+    loadings <- loadings %>%
+      mutate(
+        cumulative_contribution = cumsum(.data$contribution),
+        highlight = .data$cumulative_contribution > (100 - cutoff)
       )
-    ) +
-    geom_text(
-      size = 6,
-      fontface = "bold",
-      show.legend = FALSE
-    ) +
-    geom_vline(
+
+    vertical_line_coord <- loadings %>%
+      mutate(
+        change_point = .data$highlight != lead(.data$highlight),
+        row_no = 1,
+        row_no = cumsum(.data$row_no),
+      ) %>%
+      filter(
+        .data$change_point == TRUE
+      ) %>%
+      mutate(
+        x_intercept = .data$row_no + 0.5
+      )
+
+    cutoff_element <- geom_vline(
       aes(
         xintercept = .data$x_intercept
       ),
       color = "red",
       linetype = "dashed",
       data = vertical_line_coord
+    )
+
+  } else if (is.null(cutoff)) {
+    # If there is no cutoff required on the plot, then we remove the
+    # cutoff element of the plot entirely, and remove the alpha aesthetic
+    # which reduces the opacity of values below the cutoff.
+    cutoff_element <- NULL
+    plot_aesthetic$alpha <- NULL
+
+  } else {
+
+    stop('Cutoff value must be numeric or NULL.')
+
+  }
+
+  loadings %>%
+    ggplot(
+      mapping = plot_aesthetic
     ) +
+    geom_text(
+      size = 6,
+      fontface = "bold",
+      show.legend = FALSE
+    ) +
+    cutoff_element +
     scale_alpha_manual(
       values=c(0.4, 1)
     ) +
