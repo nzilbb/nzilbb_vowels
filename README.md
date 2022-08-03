@@ -1,4 +1,4 @@
-# Functions for Vowel Covariation Studies
+# `nzilbb.vowels`: Functions for Vowel Covariation Studies
 
 **This package is an early stage of development. Function definitions are subject to change.**
 

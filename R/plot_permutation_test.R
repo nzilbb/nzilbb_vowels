@@ -44,7 +44,7 @@ plot_permutation_test <- function(permutation_results, violin = FALSE) {
     plot_caption <- paste0(
       "Violin plots indicate distribution of results from ",
       nrow(permutation_results$permuted_variances),
-      " permutations. Red dots indicate values obtained from original data."
+      " permutations. \nRed dots indicate values obtained from original data."
     )
   } else {
     permuted_element <- geom_line(colour = "blue", alpha = 0.2)
@@ -59,7 +59,7 @@ plot_permutation_test <- function(permutation_results, violin = FALSE) {
     plot_caption <- paste0(
       "Violin plots and blue lines indicate distribution of results from ",
       nrow(permutation_results$permuted_variances),
-      " permutations. Red dots and lines indicate values obtained from original data."
+      " permutations. \nRed dots and lines indicate values obtained from original data."
     )
   }
 

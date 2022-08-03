@@ -18,13 +18,24 @@
 #' @param vowel_data a data frame with speaker, vowel, F1, and F2 columns.
 #' @return input dataframe with additional columns `F1_lob2` and `F2_lob2`,
 #'   containing the lobanov normalised F1 and F2 values respectively.
-#' @importFrom dplyr group_by ungroup mutate select
+#' @importFrom dplyr group_by ungroup mutate summarise select left_join
 #' @importFrom rlang .data
 #' @importFrom magrittr %>%
 #' @examples
 #' lobanov_2(onze_vowels)
 #' @export
 lobanov_2 <- function(vowel_data) {
+
+  stopifnot(
+    "Column one must be a factor or character vector of speaker ids." =
+      is.character(vowel_data[[1]]) | is.factor(vowel_data[[1]]),
+    "Column two must be a factor or character vector of vowel ids." =
+      is.character(vowel_data[[2]]) | is.factor(vowel_data[[2]]),
+    "Column three must be a numeric vector of F1 values." =
+      is.numeric(vowel_data[[3]]),
+    "Column four must be a numeric vector of F2 values." =
+      is.numeric(vowel_data[[4]])
+  )
 
   # Assume speaker is first column, vowel is second, F1 is third, and F2 is
   # fourth.
@@ -33,9 +44,9 @@ lobanov_2 <- function(vowel_data) {
   F1_col_name <- names(vowel_data)[[3]]
   F2_col_name <- names(vowel_data)[[4]]
 
-  vowel_data %>%
+  vowel_means <- vowel_data %>%
     group_by(.data[[speaker_col_name]], .data[[vowel_col_name]]) %>%
-    mutate(
+    summarise(
       vowel_mean_F1 = base::mean(.data[[F1_col_name]]),
       vowel_mean_F2 = base::mean(.data[[F2_col_name]]),
       vowel_sd_F1 = stats::sd(.data[[F1_col_name]]),
@@ -47,7 +58,10 @@ lobanov_2 <- function(vowel_data) {
       mean_of_means_F2 = base::mean(.data$vowel_mean_F2),
       sd_of_means_F1 = stats::sd(.data$vowel_mean_F1),
       sd_of_means_F2 = stats::sd(.data$vowel_mean_F2)
-    ) %>%
+    )
+
+  vowel_data %>%
+    left_join(vowel_means) %>%
     ungroup() %>%
     mutate(
       F1_lob2 = (.data[[F1_col_name]] - .data$mean_of_means_F1)/

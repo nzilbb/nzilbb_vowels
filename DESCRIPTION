@@ -2,9 +2,16 @@ Package: nzilbb.vowels
 Type: Package
 Title: Functions and Data For Vowel Covariation Studies
 Version: 0.1.0
-Authors@R: person("Joshua", "Wilson Black", 
-  email = "joshua@wilsonblack.nz", role = c("aut", "cre"),
-  comment = c(ORCID = "https://orcid.org/my-orcid?orcid=0000-0002-8272-5763"))
+Authors@R: c(
+  person(
+    "Joshua", "Wilson Black", 
+    email = "joshua@wilsonblack.nz", role = c("aut", "cre"),
+    comment = c(ORCID = "https://orcid.org/my-orcid?orcid=0000-0002-8272-5763")
+  ),
+  person("James", "Brand",
+    email = "james.brand@ff.cuni.cz", role = "aut",
+    comment = c(ORCID = "https://orcid.org/0000-0002-2853-9169")
+  ))
 Description: Data and functions to illustrate methods developed in recent studies
   Vowel covariation at the New Zealand Institute of Language, Brain, and Behaviour.
 License: MIT + file LICENSE
@@ -14,6 +21,8 @@ Depends:
     R (>= 2.10)
 RoxygenNote: 7.2.1
 Suggests: 
+    knitr,
+    rmarkdown,
     testthat (>= 3.0.0)
 Config/testthat/edition: 3
 Imports: 
@@ -29,3 +38,4 @@ Imports:
     glue,
     purrr,
     tidyselect
+VignetteBuilder: knitr
