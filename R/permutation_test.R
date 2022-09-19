@@ -20,7 +20,7 @@
 #' PCs with original data.
 #' * `$actual_correlations` the number of significant pairwise correlations (<=
 #' 0.05) in the original data.
-#' @importFrom dplyr mutate filter across
+#' @importFrom dplyr mutate filter across pull
 #' @importFrom magrittr %>%
 #' @importFrom purrr map2
 #' @importFrom stats cor.test

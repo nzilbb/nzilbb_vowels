@@ -18,7 +18,8 @@ License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Depends: 
-    R (>= 2.10)
+    R (>= 2.10),
+    patchwork
 RoxygenNote: 7.2.1
 Suggests: 
     knitr,
@@ -33,7 +34,6 @@ Imports:
     rstudioapi,
     tibble,
     tidyr,
-    patchwork,
     forcats,
     glue,
     purrr,

@@ -18,6 +18,7 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyselect contains
 #' @importFrom magrittr %>%
+#' @importFrom patchwork plot_annotation
 #' @examples
 #' \dontrun{plot_permutation_test(permutation_results)}
 #' @export
@@ -105,7 +106,7 @@ plot_permutation_test <- function(permutation_results, violin = FALSE) {
       y = "Count of Significant Pairwise Correlations"
     )
 
-  correlation_plot + variance_plot + patchwork::plot_annotation(
+  correlation_plot + variance_plot + plot_annotation(
     title = "Permutation Test Results",
     subtitle = "Comparison of Permuted and Original Data",
     caption = plot_caption,
