@@ -51,7 +51,7 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
 
   ## Original data
 
-  original_pca <- stats::prcomp(pca_data, scale = TRUE)
+  original_pca <- stats::prcomp(pca_data, scale = scale)
 
 
   ## Bootrapped data
@@ -62,7 +62,7 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
     data_boots$splits,
     ~ stats::prcomp(
       as_tibble(.x),
-      scale = TRUE
+      scale = scale
     )
   )
 
@@ -71,15 +71,14 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   permed_pca <- map(
     1:n,
     ~ stats::prcomp(
-      onze_intercepts %>%
-        select(-speaker) %>%
+      pca_data %>%
         mutate(
           across(
             .cols = everything(),
             .fns = ~ base::sample(.x, length(.x), replace = FALSE)
           )
         ),
-      scale = TRUE
+      scale = scale
     )
   )
 
