@@ -128,7 +128,7 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   # Pivot longer to generate index loadings
   pca_values <- pca_values %>%
     pivot_longer(
-      cols = starts_with("F"),
+      cols = names(pca_data),
       names_to = "variable",
       values_to = "loading"
     ) %>%
