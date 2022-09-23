@@ -26,7 +26,7 @@
 #' @export
 lobanov_2 <- function(vowel_data) {
 
-  stopifnot(
+  base::stopifnot(
     "Column one must be a factor or character vector of speaker ids." =
       is.character(vowel_data[[1]]) | is.factor(vowel_data[[1]]),
     "Column two must be a factor or character vector of vowel ids." =

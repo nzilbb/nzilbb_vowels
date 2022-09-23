@@ -37,5 +37,6 @@ Imports:
     forcats,
     glue,
     purrr,
-    tidyselect
+    tidyselect,
+    rsample
 VignetteBuilder: knitr

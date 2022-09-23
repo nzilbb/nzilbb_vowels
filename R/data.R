@@ -1,7 +1,9 @@
 #' Monophthong data for random sample of speakers from the ONZE corpus.
 #'
 #' A dataset containing the the first and second formants, speech rate,
-#' gender, and year of birth for 100 random speakers from the ONZE corpus. Data
+#' gender, and year of birth for 100 random speakers from the ONZE corpus.
+#' 50 speakers are sampled with birth years before 1900 and 50 sampled with
+#' birth years on or after 1900 to ensure a full span of the time period. Data
 #' is present for the following NZE monophthongs, represented by Wells lexical
 #' sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
 #' for FOOT is excluded (as in Brand et al. 2021).
@@ -22,6 +24,31 @@
 #' }
 #' @source \url{https://osf.io/q4j29/}
 "onze_vowels"
+
+#' Monophthong data for speakers from the ONZE corpus.
+#'
+#' A dataset containing the the first and second formants, speech rate,
+#' gender, and year of birth for 481 speakers from the ONZE corpus. Data
+#' is present for the following NZE monophthongs, represented by Wells lexical
+#' sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
+#' for FOOT is excluded (as in Brand et al. (2021)).
+#'
+#' This data was initially made available in the supplementary materials
+#' for Brand et al. (2021).
+#'
+#' @format A data frame with 414679 rows and 8 variables:
+#' \describe{
+#'   \item{speaker}{Anonymised speaker code.}
+#'   \item{vowel}{Factor variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP.}
+#'   \item{F1_50}{First formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
+#'   \item{F2_50}{Second formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
+#'   \item{speech_rate}{Average speaker speech rate for whole recording.}
+#'   \item{gender}{Gender of speaker, two levels: "M", "F".}
+#'   \item{yob}{Year of birth of speaker.}
+#'   \item{word}{Anonymised word code.}
+#' }
+#' @source \url{https://osf.io/q4j29/}
+"onze_vowels_full"
 
 #' Speaker random intercepts for a sample of 100 speakers, as given in
 #' supplementary materials for Brand et al. 2021.
@@ -55,6 +82,39 @@
 #' }
 #' @source \url{https://osf.io/q4j29/}
 "onze_intercepts"
+
+#' Speaker random intercepts for 418 speakers, as given in
+#' supplementary materials for Brand et al. 2021.
+#'
+#' A dataset containing the speaker intercepts extracted from GAMM models fit in
+#' Brand et al. (2021). Full details are available in analysis file following the
+#' url given below.
+#'
+#' @format A data frame with 481 rows and 21 variables: \describe{
+#'   \item{speaker}{Anonymised speaker code.}
+#'   \item{F1_DRESS}{Speaker intercept from GAMM model of DRESS F1.}
+#'   \item{F2_DRESS}{Speaker intercept from GAMM model of DRESS F2.}
+#'   \item{F1_FLEECE}{Speaker intercept from GAMM model of FLEECE F1.}
+#'   \item{F2_FLEECE}{Speaker intercept from GAMM model of FLEECE F2.}
+#'   \item{F1_GOOSE}{Speaker intercept from GAMM model of GOOSE F1.}
+#'   \item{F2_GOOSE}{Speaker intercept from GAMM model of GOOSE F2.}
+#'   \item{F1_KIT}{Speaker intercept from GAMM model of KIT F1.}
+#'   \item{F2_KIT}{Speaker intercept from GAMM model of KIT F2.}
+#'   \item{F1_LOT}{Speaker intercept from GAMM model of LOT F1.}
+#'   \item{F2_LOT}{Speaker intercept from GAMM model of LOT F2.}
+#'   \item{F1_NURSE}{Speaker intercept from GAMM model of NURSE F1.}
+#'   \item{F2_NURSE}{Speaker intercept from GAMM model of NURSE F2.}
+#'   \item{F1_START}{Speaker intercept from GAMM model of START F1.}
+#'   \item{F2_START}{Speaker intercept from GAMM model of START F2.}
+#'   \item{F1_STRUT}{Speaker intercept from GAMM model of STRUT F1.}
+#'   \item{F2_STRUT}{Speaker intercept from GAMM model of STRUT F2.}
+#'   \item{F1_THOUGHT}{Speaker intercept from GAMM model of THOUGHT F1.}
+#'   \item{F2_THOUGHT}{Speaker intercept from GAMM model of THOUGHT F2.}
+#'   \item{F1_TRAP}{Speaker intercept from GAMM model of TRAP F1.}
+#'   \item{F2_TRAP}{Speaker intercept from GAMM model of TRAP F2.}
+#' }
+#' @source \url{https://osf.io/q4j29/}
+"onze_intercepts_full"
 
 #' Vowel data for 77 speakers from the QuakeBox corpus, with 11 in each age category.
 #'
