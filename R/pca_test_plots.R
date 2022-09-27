@@ -370,7 +370,7 @@ plot_loadings <- function(
     scale_x_discrete(guide = guide_axis(angle = 90)) +
     labs(
       title = glue("Index Loadings for PC{pc_no}"),
-      subtitle = .data$subtitle,
+      subtitle = subtitle,
       colour = "Distribution",
       y = "Index Loading",
       x = "Variable"
