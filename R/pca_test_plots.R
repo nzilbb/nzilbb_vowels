@@ -48,14 +48,14 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
     )
 
     base_mapping <- aes(
-      x = PC,
-      y = variance_explained * 100,
-      colour = distribution
+      x = .data$PC,
+      y = .data$variance_explained * 100,
+      colour = .data$distribution
     )
 
     error_mapping <- aes(
-      ymin = low_limit * 100,
-      ymax = high_limit * 100
+      ymin = .data$low_limit * 100,
+      ymax = .data$high_limit * 100
     )
 
     var_formant <- '%'
@@ -73,14 +73,14 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
     )
 
     base_mapping <- aes(
-      x = PC,
-      y = eigenvalue,
-      colour = distribution
+      x = .data$PC,
+      y = .data$eigenvalue,
+      colour = .data$distribution
     )
 
     error_mapping <- aes(
-      ymin = low_limit,
-      ymax = high_limit
+      ymin = .data$low_limit,
+      ymax = .data$high_limit
     )
 
     var_formant <- 'Eigenvalue'
@@ -91,7 +91,7 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
   if (is.numeric(pc_max)) {
     plot_data <- pca_test$variance %>%
       filter(
-        as.numeric(str_sub(PC, start = 3L)) < pc_max
+        as.numeric(str_sub(.data$PC, start = 3L)) < pc_max
       )
   } else {
     plot_data <- pca_test$variance
@@ -113,12 +113,12 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
       names_pattern = "_(.*)"
     ) %>%
     filter(
-      distribution == distribution_2
+      .data$distribution == .data$distribution_2
     ) %>%
-    select(-distribution_2) %>%
+    select(-.data$distribution_2) %>%
     mutate(
       distribution = if_else(
-        str_detect(distribution, 'null'),
+        str_detect(.data$distribution, 'null'),
         "Null",
         "Confidence"
       )
@@ -191,48 +191,53 @@ plot_loadings <- function(
 
     plot_data <- pca_test$raw_data %>%
       filter(
-        as.numeric(str_sub(PC, start = 3L)) == pc_no,
+        as.numeric(str_sub(.data$PC, start = 3L)) == pc_no,
         source != "original"
       ) %>%
-      group_by(source, variable) %>%
+      group_by(.data$source, .data$variable) %>%
       mutate(
-        median_index = median(index_loading),
-        first_quartile = quantile(index_loading, 0.25)
+        median_index = stats::median(.data$index_loading),
+        first_quartile = stats::quantile(.data$index_loading, 0.25)
       ) %>%
       ungroup() %>%
       mutate(
-        largest_loading = median_index == max(median_index),
+        largest_loading = .data$median_index == base::max(.data$median_index),
       ) %>%
-      group_by(source, iteration) %>%
+      group_by(.data$source, .data$iteration) %>%
       filter(
         source != "bootstrapped" |
-        any(largest_loading & index_loading >= first_quartile)
+        any(.data$largest_loading & .data$index_loading >= .data$first_quartile)
       ) %>%
-      group_by(source, variable) %>%
+      group_by(.data$source, .data$variable) %>%
       mutate(
-        low_limit = quantile(index_loading, (1 - pca_test$loadings_confint)/2),
-        high_limit = quantile(index_loading, 1 - (1 - pca_test$loadings_confint)/2)
+        low_limit = stats::quantile(.data$index_loading, (1 - pca_test$loadings_confint)/2),
+        high_limit = stats::quantile(.data$index_loading, 1 - (1 - pca_test$loadings_confint)/2)
       ) %>%
       ungroup() %>%
       mutate(
         distribution = if_else(
-          source == "bootstrapped",
+          .data$source == "bootstrapped",
           "Confidence",
           "Null"
         )
       ) %>%
-      select(-index_loading, -loading) %>%
+      select(-.data$index_loading, -.data$loading) %>%
       left_join(
-        pca_test$loadings %>% select(PC, variable, index_loading, loading),
+        pca_test$loadings %>% select(
+          .data$PC,
+          .data$variable,
+          .data$index_loading,
+          .data$loading
+        ),
         by = c("PC", "variable")
       )
 
     # Needs to be added as a caption.
     kept_iterations <- plot_data %>%
       filter(
-        distribution == "Confidence"
+        .data$distribution == "Confidence"
       ) %>%
-      pull(iteration) %>%
+      pull(.data$iteration) %>%
       base::unique() %>%
       base::length()
 
@@ -246,7 +251,7 @@ plot_loadings <- function(
     plot_data <- pca_test$loadings %>%
       # Filter so we only have data from desired PC.
       filter(
-        as.numeric(str_sub(PC, start = 3L)) == pc_no
+        as.numeric(str_sub(.data$PC, start = 3L)) == pc_no
       ) %>%
       # Reshape so that both permutation and bootstrapped limits are on same
       # variables.
@@ -263,12 +268,12 @@ plot_loadings <- function(
         names_pattern = "_(.*)"
       ) %>%
       filter(
-        distribution == distribution_2
+        .data$distribution == .data$distribution_2
       ) %>%
-      select(-distribution_2) %>%
+      select(-.data$distribution_2) %>%
       mutate(
         distribution = if_else(
-          str_detect(distribution, 'null'),
+          str_detect(.data$distribution, 'null'),
           "Null",
           "Confidence"
         )
@@ -284,7 +289,7 @@ plot_loadings <- function(
     mutate(
       # Reorder 'variable'  column so variables plotted in ascending order by
       # loading.
-      variable = fct_reorder(variable, index_loading),
+      variable = fct_reorder(.data$variable, .data$index_loading),
       loading_sign = if_else(.data$loading < 0, "-", "+")
     )
 
@@ -293,38 +298,42 @@ plot_loadings <- function(
     violin_data <- pca_test$raw_data %>%
       filter(
         source == "bootstrapped",
-        as.numeric(str_sub(PC, start = 3L)) == pc_no
+        as.numeric(str_sub(.data$PC, start = 3L)) == pc_no
       ) %>%
       mutate(
         distribution = "Confidence"
       ) %>%
       select(
-        distribution, variable, index_loading, loading, iteration
+        .data$distribution,
+        .data$variable,
+        .data$index_loading,
+        .data$loading,
+        .data$iteration
       ) %>%
       # Reorder 'variable'  column so variables plotted in ascending order by
       # median bootstrapped loading.
-      group_by(variable) %>%
+      group_by(.data$variable) %>%
       mutate(
-        median_index = median(index_loading)
+        median_index = stats::median(.data$index_loading)
       ) %>%
       ungroup() %>%
       mutate(
-        variable = fct_reorder(variable, median_index)
+        variable = fct_reorder(.data$variable, .data$median_index)
       )
 
     if (filter_boots) {
       violin_data <- violin_data %>%
-        group_by(variable) %>%
+        group_by(.data$variable) %>%
         mutate(
-          first_quartile = quantile(index_loading, 0.25)
+          first_quartile = stats::quantile(.data$index_loading, 0.25)
         ) %>%
         ungroup() %>%
         mutate(
-          largest_loading = median_index == max(median_index),
+          largest_loading = .data$median_index == max(.data$median_index),
         ) %>%
-        group_by(iteration) %>%
+        group_by(.data$iteration) %>%
         filter(
-          any(largest_loading & index_loading >= first_quartile)
+          any(.data$largest_loading & .data$index_loading >= .data$first_quartile)
         )
 
       kept_iterations <- base::length(base::unique(violin_data$iteration))
@@ -344,24 +353,24 @@ plot_loadings <- function(
   out_plot <- plot_data %>%
     ggplot(
       aes(
-        x = variable,
-        y = index_loading,
-        colour = distribution
+        x = .data$variable,
+        y = .data$index_loading,
+        colour = .data$distribution
       )
     ) +
     violin_element +
     geom_errorbar(
       aes(
-        ymin = low_limit,
-        ymax = high_limit
+        ymin = .data$low_limit,
+        ymax = .data$high_limit
       )
     ) +
     # geom_point(colour = "red") +
-    geom_text(aes(label = loading_sign), size = 8, colour = "black") +
+    geom_text(aes(label = .data$loading_sign), size = 8, colour = "black") +
     scale_x_discrete(guide = guide_axis(angle = 90)) +
     labs(
       title = glue("Index Loadings for PC{pc_no}"),
-      subtitle = subtitle,
+      subtitle = .data$subtitle,
       colour = "Distribution",
       y = "Index Loading",
       x = "Variable"

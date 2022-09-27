@@ -20,6 +20,10 @@ pca_test(
 will take a long time to compute.}
 
 \item{scale}{whether the PCA variables should be scaled (default = TRUE).}
+
+\item{variance_confint}{size of confidence intervals for variance explained.}
+
+\item{loadings_confint}{size of confidence intervals for index loadings.}
 }
 \value{
 object of class `pca_test`
@@ -38,10 +42,11 @@ approach differs from Carmago's PCAtest package by splitting up the data and
 plotting functions and adopting more of the 'tidyverse' dialect.
 }
 \examples{
-\dontrun{
-permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = "pearson")
-}
-\dontrun{
-permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = "spearman")
+\dontrun{pca_test(
+    pca_data,
+    n = 100,
+    scale = TRUE,
+    variance_confint = 0.95,
+    loadings_confint = 0.9)
 }
 }

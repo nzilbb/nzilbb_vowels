@@ -14,6 +14,8 @@
 #' @param n the number of times to permute and bootstrap that data. **Warning:** high values
 #'   will take a long time to compute.
 #' @param scale whether the PCA variables should be scaled (default = TRUE).
+#' @param variance_confint size of confidence intervals for variance explained.
+#' @param loadings_confint size of confidence intervals for index loadings.
 #' @returns object of class `pca_test`
 #' * `$variance_explained` a tibble
 #' * `$index_loadings` list of length n of significant pairwise
@@ -30,11 +32,12 @@
 #' @importFrom stats na.omit
 #' @importFrom glue glue
 #' @examples
-#' \dontrun{
-#' permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = "pearson")
-#' }
-#' \dontrun{
-#' permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = "spearman")
+#' \dontrun{pca_test(
+#'     pca_data,
+#'     n = 100,
+#'     scale = TRUE,
+#'     variance_confint = 0.95,
+#'     loadings_confint = 0.9)
 #' }
 #' @export
 pca_test <- function(pca_data, n = 100, scale = TRUE,
@@ -92,7 +95,7 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   ) %>%
     mutate(
       eigenvalue = original_pca$sdev^2,
-      variance_explained = eigenvalue / sum(original_pca$sdev^2)
+      variance_explained = .data$eigenvalue / sum(original_pca$sdev^2)
     )
 
   ## From bootstrapped data
@@ -120,8 +123,8 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   ) %>%
     mutate(
       PC = fct_reorder(
-        PC,
-        base::as.numeric(str_sub(PC, start = 3))
+        .data$PC,
+        base::as.numeric(str_sub(.data$PC, start = 3))
       )
     )
 
@@ -133,7 +136,7 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
       values_to = "loading"
     ) %>%
     mutate(
-      index_loading = loading^2 * eigenvalue^2
+      index_loading = .data$loading^2 * .data$eigenvalue^2
     )
 
   # Calculate confints for eigenvalues
@@ -141,54 +144,57 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   variance_half_tail <- (1 - variance_confint) / 2
 
   pca_values <- pca_values %>%
-    group_by(source, PC) %>%
+    group_by(.data$source, .data$PC) %>%
     mutate(
-      low_eigenvalue = quantile(eigenvalue, variance_half_tail),
-      low_variance_explained = quantile(variance_explained, variance_half_tail),
-      high_eigenvalue = quantile(eigenvalue, 1 - variance_half_tail),
-      high_variance_explained = quantile(
-        variance_explained,
+      low_eigenvalue = stats::quantile(.data$eigenvalue, variance_half_tail),
+      low_variance_explained = stats::quantile(
+        .data$variance_explained,
+        variance_half_tail
+      ),
+      high_eigenvalue = stats::quantile(.data$eigenvalue, 1 - variance_half_tail),
+      high_variance_explained = stats::quantile(
+        .data$variance_explained,
         1 - variance_half_tail
       ),
     ) %>%
     ungroup()
 
   variance_summary <- pca_values %>%
-    group_by(PC) %>%
+    group_by(.data$PC) %>%
     summarise(
       low_null = first(
-        na.omit(if_else(source == "permuted", low_eigenvalue, NULL))
+        na.omit(if_else(source == "permuted", .data$low_eigenvalue, NULL))
       ),
       low_null_var = first(
-        na.omit(if_else(source == "permuted", low_variance_explained, NULL))
+        na.omit(if_else(source == "permuted", .data$low_variance_explained, NULL))
       ),
       high_null = first(
-        na.omit(if_else(source == "permuted", high_eigenvalue, NULL))
+        na.omit(if_else(source == "permuted", .data$high_eigenvalue, NULL))
       ),
       high_null_var = first(
-        na.omit(if_else(source == "permuted", high_variance_explained, NULL))
+        na.omit(if_else(source == "permuted", .data$high_variance_explained, NULL))
       ),
       low_confint = first(
-        na.omit(if_else(source == "bootstrapped", low_eigenvalue, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$low_eigenvalue, NULL))
       ),
       low_confint_var = first(
-        na.omit(if_else(source == "bootstrapped", low_variance_explained, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$low_variance_explained, NULL))
       ),
       high_confint = first(
-        na.omit(if_else(source == "bootstrapped", high_eigenvalue, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$high_eigenvalue, NULL))
       ),
       high_confint_var = first(
-        na.omit(if_else(source == "bootstrapped", high_variance_explained, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$high_variance_explained, NULL))
       ),
       eigenvalue = first(
-        na.omit(if_else(source == "original", eigenvalue, NULL))
+        na.omit(if_else(source == "original", .data$eigenvalue, NULL))
       ),
       variance_explained = first(
-        na.omit(if_else(source == "original", variance_explained, NULL))
+        na.omit(if_else(source == "original", .data$variance_explained, NULL))
       ),
     ) %>%
     mutate(
-      sig_PC = eigenvalue > high_null
+      sig_PC = .data$eigenvalue > .data$high_null
     )
 
   # Calculate confints for loadings
@@ -196,37 +202,37 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   loadings_half_tail <- (1 - loadings_confint) / 2
 
   pca_values <- pca_values %>%
-    group_by(source, PC, variable) %>%
+    group_by(.data$source, .data$PC, .data$variable) %>%
     mutate(
-      low_index = stats::quantile(index_loading, variance_half_tail),
-      high_index = stats::quantile(index_loading, 1 - variance_half_tail)
+      low_index = stats::quantile(.data$index_loading, variance_half_tail),
+      high_index = stats::quantile(.data$index_loading, 1 - variance_half_tail)
     ) %>%
     ungroup()
 
   loadings_summary <- pca_values %>%
-    group_by(PC, variable) %>%
+    group_by(.data$PC, .data$variable) %>%
     summarise(
       low_null = first(
-        na.omit(if_else(source == "permuted", low_index, NULL))
+        na.omit(if_else(source == "permuted", .data$low_index, NULL))
       ),
       high_null = first(
-        na.omit(if_else(source == "permuted", high_index, NULL))
+        na.omit(if_else(source == "permuted", .data$high_index, NULL))
       ),
       low_confint = first(
-        na.omit(if_else(source == "bootstrapped", low_index, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$low_index, NULL))
       ),
       high_confint = first(
-        na.omit(if_else(source == "bootstrapped", high_index, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$high_index, NULL))
       ),
       index_loading = first(
-        na.omit(if_else(source == "original", index_loading, NULL))
+        na.omit(if_else(source == "original", .data$index_loading, NULL))
       ),
       loading = first(
-        na.omit(if_else(source == "original", loading, NULL))
+        na.omit(if_else(source == "original", .data$loading, NULL))
       )
     ) %>%
     mutate(
-      sig_loading = index_loading > high_null
+      sig_loading = .data$index_loading > .data$high_null
     )
 
   pca_test_results <- list(
@@ -247,11 +253,11 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
 #' @export
 summary.pca_test_results <- function(object, ...) {
   significant_pcs <- object$variance %>%
-    filter(sig_PC) %>%
-    pull(PC)
+    filter(.data$sig_PC) %>%
+    pull(.data$PC)
 
   significant_loadings <- object$loadings %>%
-    filter(sig_loading)
+    filter(.data$sig_loading)
 
   glue(
     "PCA Permutation and Bootstrapping Test\n\n",
@@ -270,6 +276,6 @@ extract_pca_values <- function(pca_object) {
   as_tibble(t(pca_object$rotation), rownames = "PC") %>%
     mutate(
       eigenvalue = pca_object$sdev^2,
-      variance_explained = eigenvalue / sum(pca_object$sdev^2)
+      variance_explained = .data$eigenvalue / sum(pca_object$sdev^2)
     )
 }

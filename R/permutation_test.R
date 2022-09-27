@@ -4,6 +4,9 @@
 #' significant pairwise correlations in the permuted data and the variances
 #' explained for a given number of PCs.
 #'
+#' **Superseded by the `correlation_test` function for pairwise correlations and
+#' the `pca_test` function for variance explained and loadings.
+#'
 #' @param pca_data data fed to the `prcomp` function. Remove non-continuous variables.
 #' @param pc_n the number of PCs to collect variance explained from.
 #' @param n the number of times to permute that data. **Warning:** high values
@@ -61,7 +64,7 @@ permutation_test <- function(
           pca_data %>%
             pull(.y),
           method=cor.method,
-          exact=FALSE # Only active is spearman chosen.
+          exact=FALSE # Only active if spearman chosen.
         )[["p.value"]]
       )
     )

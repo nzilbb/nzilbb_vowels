@@ -41,6 +41,10 @@ Permute data fed to PCA a given number of times, collecting the number of
 significant pairwise correlations in the permuted data and the variances
 explained for a given number of PCs.
 }
+\details{
+**Superseded by the `correlation_test` function for pairwise correlations and
+the `pca_test` function for variance explained and loadings.
+}
 \examples{
 \dontrun{permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')}
 \dontrun{permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = 'spearman')}
