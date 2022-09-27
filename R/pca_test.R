@@ -204,8 +204,8 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   pca_values <- pca_values %>%
     group_by(.data$source, .data$PC, .data$variable) %>%
     mutate(
-      low_index = stats::quantile(.data$index_loading, variance_half_tail),
-      high_index = stats::quantile(.data$index_loading, 1 - variance_half_tail)
+      low_index = stats::quantile(.data$index_loading, loadings_half_tail),
+      high_index = stats::quantile(.data$index_loading, 1 - loadings_half_tail)
     ) %>%
     ungroup()
 
