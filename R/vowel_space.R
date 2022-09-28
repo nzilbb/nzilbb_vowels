@@ -9,6 +9,7 @@
 #' is to be plotted.
 #' @param vowel_colours a named list of vowel = colour entries to indicate
 #' which colour to plot each vowel.
+#' @param label_size It is often convenient to adjust the size of the labels (in pts). Default is 4.
 #' @return `ggplot` object.
 #' @importFrom dplyr mutate filter summarise group_by vars
 #' @importFrom ggplot2 ggplot geom_label facet_wrap scale_colour_manual aes labs
@@ -20,7 +21,7 @@
 #' \dontrun{pca_contrib_plot(pca_object, pc_no=1, cutoff=50)}
 #' \dontrun{pca_contrib_plot(pca_object, pc_no=2, cutoff=70)}
 #' @export
-plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL) {
+plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL, label_size = 4) {
 
   base::stopifnot(
     "Column one must be a factor or character vector of speaker ids." =
@@ -89,7 +90,8 @@ plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL) 
     geom_label_repel(
       show.legend = FALSE,
       alpha = 0.7,
-      min.segment.length = 0
+      min.segment.length = 0,
+      size = label_size
     ) +
     geom_point(show.legend = FALSE) +
     scale_x_reverse(expand = expansion(mult = 0.1)) +

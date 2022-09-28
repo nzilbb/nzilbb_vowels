@@ -4,7 +4,12 @@
 \alias{plot_vowel_space}
 \title{Plot vowel space for speaker or speakers.}
 \usage{
-plot_vowel_space(vowel_data, speakers = NULL, vowel_colours = NULL)
+plot_vowel_space(
+  vowel_data,
+  speakers = NULL,
+  vowel_colours = NULL,
+  label_size = 4
+)
 }
 \arguments{
 \item{vowel_data}{data frame of vowel tokens as described above.}
@@ -14,6 +19,8 @@ is to be plotted.}
 
 \item{vowel_colours}{a named list of vowel = colour entries to indicate
 which colour to plot each vowel.}
+
+\item{label_size}{It is often convenient to adjust the size of the labels (in pts). Default is 4.}
 }
 \value{
 `ggplot` object.
