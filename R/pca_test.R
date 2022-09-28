@@ -159,6 +159,7 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
     ) %>%
     ungroup()
 
+  # There must be an easier way!
   variance_summary <- pca_values %>%
     group_by(.data$PC) %>%
     summarise(
@@ -186,6 +187,18 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
       high_confint_var = first(
         na.omit(if_else(source == "bootstrapped", .data$high_variance_explained, NULL))
       ),
+      mean_confint = base::mean(
+        na.omit(if_else(source == "bootstrapped", .data$eigenvalue, NULL))
+      ),
+      mean_confint_var = base::mean(
+        na.omit(if_else(source == "bootstrapped", .data$variance_explained, NULL))
+      ),
+      se_confint = stats::sd(
+        na.omit(if_else(source == "bootstrapped", .data$eigenvalue, NULL))
+      )/base::sqrt(n),
+      se_confint_var = stats::sd(
+        na.omit(if_else(source == "bootstrapped", .data$variance_explained, NULL))
+      )/base::sqrt(n),
       eigenvalue = first(
         na.omit(if_else(source == "original", .data$eigenvalue, NULL))
       ),
