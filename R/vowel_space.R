@@ -11,7 +11,7 @@
 #' which colour to plot each vowel.
 #' @return `ggplot` object.
 #' @importFrom dplyr mutate filter summarise group_by vars
-#' @importFrom ggplot2 ggplot geom_label facet_grid scale_color_manual aes labs
+#' @importFrom ggplot2 ggplot geom_label facet_grid scale_colour_manual aes labs
 #'   geom_point scale_x_reverse scale_y_reverse expansion geom_point
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom rlang .data
