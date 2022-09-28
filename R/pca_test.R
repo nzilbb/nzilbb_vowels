@@ -6,7 +6,7 @@
 #' and for each loading. Squared loadings are multiplied by the squared
 #' eigenvalue of the relevant PC. This ranks the loadings of PCs which explain
 #' a lot of variance higher than those from PCs which explain less. This
-#' approach to PCA testing follows Carmago (2022) and Viera (2012). This
+#' approach to PCA testing follows Carmago (2022) and Vieria (2012). This
 #' approach differs from Carmago's PCAtest package by splitting up the data and
 #' plotting functions and adopting more of the 'tidyverse' dialect.
 #'
