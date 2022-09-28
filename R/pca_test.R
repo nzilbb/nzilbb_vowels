@@ -50,6 +50,9 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
       all(map_lgl(pca_data, ~ base::class(.x) == "numeric"))
   )
 
+  # Collect number of speakers
+  n_speakers <- base::nrow(pca_data)
+
   # Run all required PCAs
 
   ## Original data
@@ -193,12 +196,12 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
       mean_confint_var = base::mean(
         na.omit(if_else(source == "bootstrapped", .data$variance_explained, NULL))
       ),
-      se_confint = stats::sd(
+      sd_confint = stats::sd(
         na.omit(if_else(source == "bootstrapped", .data$eigenvalue, NULL))
-      )/base::sqrt(n),
-      se_confint_var = stats::sd(
+      ),
+      sd_confint_var = stats::sd(
         na.omit(if_else(source == "bootstrapped", .data$variance_explained, NULL))
-      )/base::sqrt(n),
+      ),
       eigenvalue = first(
         na.omit(if_else(source == "original", .data$eigenvalue, NULL))
       ),
