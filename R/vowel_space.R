@@ -11,7 +11,7 @@
 #' which colour to plot each vowel.
 #' @return `ggplot` object.
 #' @importFrom dplyr mutate filter summarise group_by vars
-#' @importFrom ggplot2 ggplot geom_label facet_grid scale_colour_manual aes labs
+#' @importFrom ggplot2 ggplot geom_label facet_wrap scale_colour_manual aes labs
 #'   geom_point scale_x_reverse scale_y_reverse expansion geom_point
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom rlang .data
@@ -47,7 +47,7 @@ plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL) 
   }
 
   if (length(speakers) > 1) {
-    facet_element <- facet_grid(vars(.data[[speaker_col_name]]))
+    facet_element <- facet_wrap(vars(.data[[speaker_col_name]]))
   } else {
     facet_element <- NULL
   }
