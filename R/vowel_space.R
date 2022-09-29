@@ -9,7 +9,8 @@
 #' is to be plotted.
 #' @param vowel_colours a named list of vowel = colour entries to indicate
 #' which colour to plot each vowel.
-#' @param label_size It is often convenient to adjust the size of the labels (in pts). Default is 4.
+#' @param label_size It is often convenient to adjust the size of the labels (in
+#'   pts). Default is 4.
 #' @return `ggplot` object.
 #' @importFrom dplyr mutate filter summarise group_by vars
 #' @importFrom ggplot2 ggplot geom_label facet_wrap scale_colour_manual aes labs
