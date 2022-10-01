@@ -102,7 +102,8 @@ plot_correlation_counts <- function(cor_test, alpha = 0.05) {
     ) +
     labs(
       title = glue(
-        "Magnitude of Correlations in Original Data and {cor_test$iterations} Permutations"
+        "Count of Signficant Correlations in Original Data and ",
+        "{cor_test$iterations} Permutations"
       ),
       y = "Count of significant correlations",
       x = "",
