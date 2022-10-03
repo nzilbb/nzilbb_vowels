@@ -121,7 +121,8 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
         str_detect(.data$distribution, 'null'),
         "Null",
         "Sampling"
-      )
+      ),
+      distribution = factor(distribution, levels = c("Sampling", "Null"))
     ) %>%
     ggplot(
       mapping = base_mapping
@@ -212,8 +213,14 @@ plot_loadings <- function(
       ) %>%
       group_by(.data$source, .data$variable) %>%
       mutate(
-        low_limit = stats::quantile(.data$index_loading, (1 - pca_test$loadings_confint)/2),
-        high_limit = stats::quantile(.data$index_loading, 1 - (1 - pca_test$loadings_confint)/2)
+        low_limit = stats::quantile(
+          .data$index_loading,
+          (1 - pca_test$loadings_confint)/2
+        ),
+        high_limit = stats::quantile(
+          .data$index_loading,
+          1 - (1 - pca_test$loadings_confint)/2
+        )
       ) %>%
       ungroup() %>%
       mutate(
@@ -343,7 +350,8 @@ plot_loadings <- function(
     }
 
     violin_element <- geom_violin(
-        data = violin_data
+        data = violin_data,
+        alpha = 0.5
       )
 
   } else {
@@ -370,6 +378,9 @@ plot_loadings <- function(
     # geom_point(colour = "red") +
     geom_text(aes(label = .data$loading_sign), size = 8, colour = "black") +
     scale_x_discrete(guide = guide_axis(angle = 90)) +
+    scale_colour_manual(
+      values = c("Sampling" = "#F8766D", "Null" = "#00BFC4")
+    ) +
     labs(
       title = glue("Index Loadings for PC{pc_no}"),
       subtitle = subtitle,
