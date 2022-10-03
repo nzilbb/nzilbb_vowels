@@ -91,7 +91,7 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
   if (is.numeric(pc_max)) {
     plot_data <- pca_test$variance %>%
       filter(
-        as.numeric(str_sub(.data$PC, start = 3L)) < pc_max
+        as.numeric(str_sub(.data$PC, start = 3L)) <= pc_max
       )
   } else {
     plot_data <- pca_test$variance
