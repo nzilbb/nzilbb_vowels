@@ -20,7 +20,8 @@ is to be plotted.}
 \item{vowel_colours}{a named list of vowel = colour entries to indicate
 which colour to plot each vowel.}
 
-\item{label_size}{It is often convenient to adjust the size of the labels (in pts). Default is 4.}
+\item{label_size}{It is often convenient to adjust the size of the labels (in
+pts). Default is 4.}
 }
 \value{
 `ggplot` object.
