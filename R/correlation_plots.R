@@ -72,7 +72,7 @@ plot_correlation_magnitudes <- function(cor_test) {
 plot_correlation_counts <- function(cor_test, alpha = 0.05, jitter = FALSE) {
 
   if (jitter) {
-    jitter_element <- geom_jitter()
+    jitter_element <- geom_jitter(alpha = 0.5)
   } else {
     jitter_element <- NULL
   }
@@ -86,7 +86,7 @@ plot_correlation_counts <- function(cor_test, alpha = 0.05, jitter = FALSE) {
       n_sig = n()
     ) %>%
     mutate(
-      source = "Permuted"
+      source = "Null"
     ) %>%
     ggplot(
       aes(
@@ -109,7 +109,7 @@ plot_correlation_counts <- function(cor_test, alpha = 0.05, jitter = FALSE) {
           n_sig = n()
         ) %>%
         mutate(
-          source = "Original"
+          source = "Data"
         )
     ) +
     labs(
