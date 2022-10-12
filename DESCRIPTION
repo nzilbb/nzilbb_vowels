@@ -40,5 +40,6 @@ Imports:
     tidyselect,
     rsample,
     stringr,
-    ggrepel
+    ggrepel,
+    gghalves
 VignetteBuilder: knitr
