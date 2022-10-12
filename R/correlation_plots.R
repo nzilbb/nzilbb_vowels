@@ -95,9 +95,15 @@ plot_correlation_counts <- function(cor_test, alpha = 0.05, jitter = FALSE) {
         colour = .data$source
       )
     ) +
-    geom_violin(
+    geom_half_violin(
       alpha = 0.8,
+      side = "r",
       draw_quantiles = c(0.25, 0.5, 0.75)
+    ) +
+    geom_half_point(
+      size = 0.5,
+      alpha = 0.8,
+      side = "l"
     ) +
     jitter_element +
     geom_point(
