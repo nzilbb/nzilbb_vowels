@@ -46,8 +46,8 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
   # Check all columns in pca_data are numeric.
 
   base::stopifnot(
-    "All columns of pca_data must be numeric." =
-      all(map_lgl(pca_data, ~ base::class(.x) == "numeric"))
+    "All columns of pca_data must be numeric or integers." =
+      all(map_lgl(pca_data, is.numeric))
   )
 
   # Collect number of speakers
