@@ -122,7 +122,7 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
         "Null",
         "Sampling"
       ),
-      distribution = factor(distribution, levels = c("Sampling", "Null"))
+      distribution = factor(.data$distribution, levels = c("Sampling", "Null"))
     ) %>%
     ggplot(
       mapping = base_mapping
@@ -161,7 +161,9 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
 #' @param violin If TRUE, violin plots are added for the confidence intervals of
 #'   the sampling distribution.
 #' @param filter_boots if TRUE, only bootstrap iterations in which the variable
-#' with the highest median loading is in the top 3/4 of its range are plotted.
+#' with the highest median loading is above `quantile_threshold`.
+#' @param quantile_threshold a real value between 0 and 1. Use this to change
+#' the threshold used for filtering bootstrap iterations. The default is 0.25.
 #' @return `ggplot` object.
 #' @importFrom dplyr if_else lead rename mutate arrange filter
 #' @importFrom stringr str_sub str_detect

@@ -20,7 +20,7 @@ LazyData: true
 Depends: 
     R (>= 2.10),
     patchwork
-RoxygenNote: 7.2.1
+RoxygenNote: 7.2.3
 Suggests: 
     knitr,
     rmarkdown,
