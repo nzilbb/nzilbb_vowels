@@ -167,46 +167,46 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
     group_by(.data$PC) %>%
     summarise(
       low_null = first(
-        na.omit(if_else(source == "permuted", .data$low_eigenvalue, NULL))
+        na.omit(if_else(source == "permuted", .data$low_eigenvalue, NA_real_))
       ),
       low_null_var = first(
-        na.omit(if_else(source == "permuted", .data$low_variance_explained, NULL))
+        na.omit(if_else(source == "permuted", .data$low_variance_explained, NA_real_))
       ),
       high_null = first(
-        na.omit(if_else(source == "permuted", .data$high_eigenvalue, NULL))
+        na.omit(if_else(source == "permuted", .data$high_eigenvalue, NA_real_))
       ),
       high_null_var = first(
-        na.omit(if_else(source == "permuted", .data$high_variance_explained, NULL))
+        na.omit(if_else(source == "permuted", .data$high_variance_explained, NA_real_))
       ),
       low_confint = first(
-        na.omit(if_else(source == "bootstrapped", .data$low_eigenvalue, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$low_eigenvalue, NA_real_))
       ),
       low_confint_var = first(
-        na.omit(if_else(source == "bootstrapped", .data$low_variance_explained, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$low_variance_explained, NA_real_))
       ),
       high_confint = first(
-        na.omit(if_else(source == "bootstrapped", .data$high_eigenvalue, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$high_eigenvalue, NA_real_))
       ),
       high_confint_var = first(
-        na.omit(if_else(source == "bootstrapped", .data$high_variance_explained, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$high_variance_explained, NA_real_))
       ),
       mean_confint = base::mean(
-        na.omit(if_else(source == "bootstrapped", .data$eigenvalue, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$eigenvalue, NA_real_))
       ),
       mean_confint_var = base::mean(
-        na.omit(if_else(source == "bootstrapped", .data$variance_explained, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$variance_explained, NA_real_))
       ),
       sd_confint = stats::sd(
-        na.omit(if_else(source == "bootstrapped", .data$eigenvalue, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$eigenvalue, NA_real_))
       ),
       sd_confint_var = stats::sd(
-        na.omit(if_else(source == "bootstrapped", .data$variance_explained, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$variance_explained, NA_real_))
       ),
       eigenvalue = first(
-        na.omit(if_else(source == "original", .data$eigenvalue, NULL))
+        na.omit(if_else(source == "original", .data$eigenvalue, NA_real_))
       ),
       variance_explained = first(
-        na.omit(if_else(source == "original", .data$variance_explained, NULL))
+        na.omit(if_else(source == "original", .data$variance_explained, NA_real_))
       ),
     ) %>%
     mutate(
@@ -229,22 +229,22 @@ pca_test <- function(pca_data, n = 100, scale = TRUE,
     group_by(.data$PC, .data$variable) %>%
     summarise(
       low_null = first(
-        na.omit(if_else(source == "permuted", .data$low_index, NULL))
+        na.omit(if_else(source == "permuted", .data$low_index, NA_real_))
       ),
       high_null = first(
-        na.omit(if_else(source == "permuted", .data$high_index, NULL))
+        na.omit(if_else(source == "permuted", .data$high_index, NA_real_))
       ),
       low_confint = first(
-        na.omit(if_else(source == "bootstrapped", .data$low_index, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$low_index, NA_real_))
       ),
       high_confint = first(
-        na.omit(if_else(source == "bootstrapped", .data$high_index, NULL))
+        na.omit(if_else(source == "bootstrapped", .data$high_index, NA_real_))
       ),
       index_loading = first(
-        na.omit(if_else(source == "original", .data$index_loading, NULL))
+        na.omit(if_else(source == "original", .data$index_loading, NA_real_))
       ),
       loading = first(
-        na.omit(if_else(source == "original", .data$loading, NULL))
+        na.omit(if_else(source == "original", .data$loading, NA_real_))
       )
     ) %>%
     mutate(
