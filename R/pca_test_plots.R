@@ -176,7 +176,8 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
 #' \dontrun{plot_loadings(pca_object, pc_no=2, cutoff=70)}
 #' @export
 plot_loadings <- function(
-    pca_test, pc_no = 1, violin=FALSE, filter_boots = FALSE
+    pca_test, pc_no = 1, violin=FALSE, filter_boots = FALSE,
+    quantile_threshold = 0.25
 ) {
 
   stopifnot(
@@ -200,7 +201,10 @@ plot_loadings <- function(
       group_by(.data$source, .data$variable) %>%
       mutate(
         median_index = stats::median(.data$index_loading),
-        first_quartile = stats::quantile(.data$index_loading, 0.25)
+        quant_threshold = stats::quantile(
+          .data$index_loading,
+          quantile_threshold
+        )
       ) %>%
       ungroup() %>%
       mutate(
@@ -209,7 +213,9 @@ plot_loadings <- function(
       group_by(.data$source, .data$iteration) %>%
       filter(
         source != "bootstrapped" |
-        any(.data$largest_loading & .data$index_loading >= .data$first_quartile)
+        any(
+          .data$largest_loading & .data$index_loading >= .data$quant_threshold
+        )
       ) %>%
       group_by(.data$source, .data$variable) %>%
       mutate(
@@ -241,7 +247,7 @@ plot_loadings <- function(
         by = c("PC", "variable")
       )
 
-    # Needs to be added as a caption.
+    # Calculate count of kept iterations for subtitle
     kept_iterations <- plot_data %>%
       filter(
         .data$distribution == "Sampling"
