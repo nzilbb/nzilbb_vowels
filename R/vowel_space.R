@@ -162,7 +162,7 @@ plot_vowel_space <- function(
     ellipse_element +
     geom_label_repel(
       show.legend = FALSE,
-      alpha = 0.7,
+      alpha = 0.8,
       min.segment.length = 0,
       size = label_size
     ) +
