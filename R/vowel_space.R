@@ -122,7 +122,8 @@ plot_vowel_space <- function(
             y = .data[[F1_col_name]]
           ),
           data = vowel_data,
-          alpha = point_alpha
+          alpha = point_alpha,
+          show.legend = FALSE
         )
 
         ellipse_element <- stat_ellipse(
@@ -130,7 +131,8 @@ plot_vowel_space <- function(
             x = .data[[F2_col_name]],
             y = .data[[F1_col_name]]
           ),
-          data = vowel_data
+          data = vowel_data,
+          show.legend = FALSE
         )
     } else {
       point_element <- geom_point(
@@ -163,7 +165,7 @@ plot_vowel_space <- function(
       min.segment.length = 0,
       size = label_size
     ) +
-    geom_point(show.legend = FALSE) +
+    geom_point(show.legend = FALSE, size=2) +
     scale_x_reverse(expand = expansion(mult = 0.1)) +
     scale_y_reverse(expand = expansion(mult = 0.1)) +
     colour_element +
