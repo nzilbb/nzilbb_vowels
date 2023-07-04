@@ -140,6 +140,7 @@ plot_vowel_space <- function(
           x = .data[[F2_col_name]],
           y = .data[[F1_col_name]]
         ),
+        size = 0.5,
         data = vowel_data,
         alpha = point_alpha
       )
