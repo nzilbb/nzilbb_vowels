@@ -8,7 +8,11 @@ plot_vowel_space(
   vowel_data,
   speakers = NULL,
   vowel_colours = NULL,
-  label_size = 4
+  label_size = 4,
+  means_only = TRUE,
+  ellipses = FALSE,
+  point_alpha = 0.1,
+  facet = TRUE
 )
 }
 \arguments{
@@ -22,6 +26,17 @@ which colour to plot each vowel.}
 
 \item{label_size}{It is often convenient to adjust the size of the labels (in
 pts). Default is 4.}
+
+\item{means_only}{whether to plot means only or all data points. Default:
+TRUE.}
+
+\item{ellipses}{whether to 95% confidence ellipses. Only works if means_only
+is FALSE. Default is FALSE.}
+
+\item{point_alpha}{alpha value for data points if means_only is FALSE.}
+
+\item{facet}{whether to plot distinct speakers in distinct facets. Default is
+TRUE.}
 }
 \value{
 `ggplot` object.

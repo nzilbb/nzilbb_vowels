@@ -11,10 +11,18 @@
 #' which colour to plot each vowel.
 #' @param label_size It is often convenient to adjust the size of the labels (in
 #'   pts). Default is 4.
+#' @param means_only whether to plot means only or all data points. Default:
+#'   TRUE.
+#' @param ellipses whether to 95% confidence ellipses. Only works if means_only
+#'   is FALSE. Default is FALSE.
+#' @param point_alpha alpha value for data points if means_only is FALSE.
+#' @param facet whether to plot distinct speakers in distinct facets. Default is
+#'   TRUE.
 #' @return `ggplot` object.
 #' @importFrom dplyr mutate filter summarise group_by vars
 #' @importFrom ggplot2 ggplot geom_label facet_wrap scale_colour_manual aes labs
 #'   geom_point scale_x_reverse scale_y_reverse expansion geom_point
+#'   stat_ellipse
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom rlang .data
 #' @importFrom magrittr %>%
@@ -22,7 +30,16 @@
 #' \dontrun{pca_contrib_plot(pca_object, pc_no=1, cutoff=50)}
 #' \dontrun{pca_contrib_plot(pca_object, pc_no=2, cutoff=70)}
 #' @export
-plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL, label_size = 4) {
+plot_vowel_space <- function(
+    vowel_data,
+    speakers = NULL,
+    vowel_colours = NULL,
+    label_size = 4,
+    means_only = TRUE,
+    ellipses = FALSE,
+    point_alpha = 0.1,
+    facet = TRUE
+  ) {
 
   base::stopifnot(
     "Column one must be a factor or character vector of speaker ids." =
@@ -42,16 +59,50 @@ plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL, 
   F1_col_name <- base::names(vowel_data)[[3]]
   F2_col_name <- base::names(vowel_data)[[4]]
 
-  # Determine if more than one speaker is being plotted. If so, include facets.
-
+  # If no speaker list provided, speakers are all speakers in the data.
   if (base::is.null(speakers)) {
     speakers <- vowel_data[[speaker_col_name]] %>% base::unique()
   }
 
-  if (length(speakers) > 1) {
-    facet_element <- facet_wrap(vars(.data[[speaker_col_name]]))
+  if (facet == TRUE) {
+
+    # Calculate mean F1 and F2 values for each speaker.
+    means <- vowel_data %>%
+      filter(
+        .data[[speaker_col_name]] %in% speakers
+      ) %>%
+      group_by(
+        .data[[speaker_col_name]],
+        .data[[vowel_col_name]]
+      ) %>%
+      summarise(
+        F1 = base::mean(.data[[F1_col_name]]),
+        F2 = base::mean(.data[[F2_col_name]])
+      )
+
+    # Determine if more than one speaker is being plotted. If so, include facets.
+    if (length(speakers) > 1) {
+      facet_element <- facet_wrap(vars(.data[[speaker_col_name]]))
+
+    } else {
+      facet_element <- NULL
+    }
+
   } else {
     facet_element <- NULL
+
+    # Calculate mean F1 and F2 values for all data.
+    means <- vowel_data %>%
+      filter(
+        .data[[speaker_col_name]] %in% speakers
+      ) %>%
+      group_by(
+        .data[[vowel_col_name]]
+      ) %>%
+      summarise(
+        F1 = base::mean(.data[[F1_col_name]]),
+        F2 = base::mean(.data[[F2_col_name]])
+      )
   }
 
   # Add colours if provided.
@@ -61,25 +112,41 @@ plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL, 
     colour_element <- scale_colour_manual(values = vowel_colours)
   }
 
-  # Calculate mean F1 and F2 values for each speaker.
-  speaker_means <- vowel_data %>%
-    filter(
-      .data[[speaker_col_name]] %in% speakers
-    ) %>%
-    group_by(
-      .data[[speaker_col_name]],
-      .data[[vowel_col_name]]
-    ) %>%
-    summarise(
-      F1 = base::mean(.data[[F1_col_name]]),
-      F2 = base::mean(.data[[F2_col_name]])
-    )
+  ellipse_element <- NULL
 
-  # Determine 1/4 of x axis range. Adding this seems to be sufficient to
-  # include all labels.
-  quarter_range <- base::max(speaker_means$F2) - base::min(speaker_means$F2) / 4
+  if (means_only == FALSE) {
+    if (ellipses == TRUE) {
+      point_element <- geom_point(
+          mapping = aes(
+            x = .data[[F2_col_name]],
+            y = .data[[F1_col_name]]
+          ),
+          data = vowel_data,
+          alpha = point_alpha
+        )
 
-  speaker_means %>%
+        ellipse_element <- stat_ellipse(
+          mapping = aes(
+            x = .data[[F2_col_name]],
+            y = .data[[F1_col_name]]
+          ),
+          data = vowel_data
+        )
+    } else {
+      point_element <- geom_point(
+        mapping = aes(
+          x = .data[[F2_col_name]],
+          y = .data[[F1_col_name]]
+        ),
+        data = vowel_data,
+        alpha = point_alpha
+      )
+    }
+  } else {
+    point_element <- NULL
+  }
+
+  means %>%
     ggplot(
       aes(
         x = .data$F2,
@@ -88,6 +155,8 @@ plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL, 
         label = .data[[vowel_col_name]]
       )
     ) +
+    point_element +
+    ellipse_element +
     geom_label_repel(
       show.legend = FALSE,
       alpha = 0.7,
@@ -105,6 +174,5 @@ plot_vowel_space <- function(vowel_data, speakers = NULL, vowel_colours = NULL, 
     facet_element
 
 }
-
 
 # ADD PLOT VOWEL CHANGE HERE
