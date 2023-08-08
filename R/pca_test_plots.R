@@ -297,7 +297,7 @@ plot_loadings <- function(
       )
 
     subtitle = glue(
-      "Bootstraped Sampling and Permutation-Based Null Distributions"
+      "Bootstrapped Sampling and Permutation-Based Null Distributions"
     )
 
   }
