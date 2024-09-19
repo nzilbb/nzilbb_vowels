@@ -41,5 +41,6 @@ Imports:
     rsample,
     stringr,
     ggrepel,
-    gghalves
+    gghalves,
+    smacof
 VignetteBuilder: knitr
