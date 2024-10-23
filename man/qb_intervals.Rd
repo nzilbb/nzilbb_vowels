@@ -36,7 +36,7 @@ A data frame with 53940 rows and 10 variables:
 }
 }
 \source{
-\url{http://www.diamondse.info/}
+\url{https://osf.io/m8nkh/}
 }
 \usage{
 qb_intervals

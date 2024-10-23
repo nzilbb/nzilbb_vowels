@@ -5,7 +5,7 @@ Version: 0.2.1
 Authors@R: c(
   person(
     "Joshua", "Wilson Black", 
-    email = "joshua@wilsonblack.nz", role = c("aut", "cre"),
+    email = "joshua@wilsonblack.nz", role = c("aut", "cre", "cph"),
     comment = c(ORCID = "https://orcid.org/0000-0002-8272-5763")
   ),
   person("James", "Brand",
@@ -20,7 +20,7 @@ LazyData: true
 Depends: 
     R (>= 2.10),
     patchwork
-RoxygenNote: 7.2.3
+RoxygenNote: 7.3.2.9000
 Suggests: 
     knitr,
     rmarkdown,

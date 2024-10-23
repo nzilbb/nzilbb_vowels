@@ -24,7 +24,7 @@ A data frame with 26331 rows and 14 variables:
 }
 }
 \source{
-\url{https://github.com/JoshuaWilsonBlack/Amplitude_F1/}
+\url{https://osf.io/m8nkh/}
 }
 \usage{
 qb_vowels
