@@ -5,6 +5,7 @@
 
 <!-- badges: start -->
 
+[![R-CMD-check](https://github.com/JoshuaWilsonBlack/nzilbb_vowels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JoshuaWilsonBlack/nzilbb_vowels/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 This R package is designed to make it easier to carry out analysis of
@@ -30,6 +31,7 @@ whether the vowel types have different token counts from one another.
 The Lobanov 2.0 value for a vowel is given by:
 
 $$F_{lobanov2.0_i} = \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}$$
+
 Where, for ease of notation, we assume all values are from a single
 speaker. We signify the $n$ vowel types as $vowel_1, \ldots, vowel_2$,
 while $i$ indicates the formant number. We implement the function for
