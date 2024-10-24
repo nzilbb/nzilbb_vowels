@@ -30,7 +30,7 @@ pts). Default is 4.}
 \item{means_only}{whether to plot means only or all data points. Default:
 TRUE.}
 
-\item{ellipses}{whether to 95% confidence ellipses. Only works if means_only
+\item{ellipses}{whether to 95\% confidence ellipses. Only works if means_only
 is FALSE. Default is FALSE.}
 
 \item{point_alpha}{alpha value for data points if means_only is FALSE.}
@@ -39,7 +39,7 @@ is FALSE. Default is FALSE.}
 TRUE.}
 }
 \value{
-`ggplot` object.
+\code{ggplot} object.
 }
 \description{
 Given vowel data with the first column identifying speakers, the second

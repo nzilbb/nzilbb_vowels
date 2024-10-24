@@ -1,28 +1,36 @@
-#' Apply Lobanov 2.0 normalisation to first and second formant data.
+#' Apply Lobanov 2.0 normalisation
 #'
-#' We assume the same structure as the normalisation functions in  the `vowels`
-#' package. The first four columns should be:
+#' @description
+#' `lobanov_2()` takes a data frame where the first four columns are:
 #' 1. speaker identifiers,
 #' 2. vowel identifiers,
 #' 3. first formant values in Hertz,
 #' 4. second formant values in Hertz.
 #'
-#' Apply Lobanov 2.0 normalisation as developed in Brand et al. (2021). This
-#' variant of Lobanov normalisation is designed to work for datasets whether the
-#' vowel types have different token counts from one another. The Lobanov 2.0 value
-#' for a vowel is given by \eqn{F_{lobanov2.0_i} = \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}}.
-#' Where, for ease of notation, we assume all values are from a single speaker.
-#' We signify the n vowel types as vowel_1, \ldots, vowel_2, while i
-#' indicates the formant number. We implement the function for F1 and F2.
+#' It returns a dataframe with two additional columns, `F1_lob2` and `F2_lob2`,
+#' containing normalised formant values.
 #'
-#' @param vowel_data a data frame with speaker, vowel, F1, and F2 columns.
-#' @return input dataframe with additional columns `F1_lob2` and `F2_lob2`,
-#'   containing the lobanov normalised F1 and F2 values respectively.
+#' @details
+#' This functions applies Lobanov 2.0 normalisation presented in Brand et al.
+#' (2021). This variant of Lobanov normalisation is designed to work for
+#' datasets whether the vowel types have different token counts from one
+#' another. The Lobanov 2.0 value for a vowel is given by \eqn{F_{lobanov2.0_i}
+#' = \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots,
+#' \mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}}. Where, for
+#' ease of notation, we assume all values are from a single speaker. We signify
+#' the n vowel types as vowel_1, \ldots, vowel_2, while i indicates the formant
+#' number. We implement the function for F1 and F2.
+#'
+#' @param vowel_data a dataframe whose first four columns are speaker ids,
+#' vowel ids, F1 values, and F2 values.
+#' @returns a dataframe matching the input dataframe with additional columns
+#'   `F1_lob2` and `F2_lob2`, containing the lobanov normalised F1 and F2 values
+#'   respectively.
 #' @importFrom dplyr group_by ungroup mutate summarise select left_join
 #' @importFrom rlang .data
-#' @importFrom magrittr %>%
+#'
 #' @examples
-#' lobanov_2(onze_vowels)
+#' head(lobanov_2(onze_vowels))
 #' @export
 lobanov_2 <- function(vowel_data) {
 
@@ -44,15 +52,15 @@ lobanov_2 <- function(vowel_data) {
   F1_col_name <- names(vowel_data)[[3]]
   F2_col_name <- names(vowel_data)[[4]]
 
-  vowel_means <- vowel_data %>%
-    group_by(.data[[speaker_col_name]], .data[[vowel_col_name]]) %>%
+  vowel_means <- vowel_data |>
+    group_by(.data[[speaker_col_name]], .data[[vowel_col_name]]) |>
     summarise(
       vowel_mean_F1 = base::mean(.data[[F1_col_name]]),
       vowel_mean_F2 = base::mean(.data[[F2_col_name]]),
       vowel_sd_F1 = stats::sd(.data[[F1_col_name]]),
       vowel_sd_F2 = stats::sd(.data[[F2_col_name]]),
-    ) %>%
-    group_by(.data[[speaker_col_name]]) %>%
+    ) |>
+    group_by(.data[[speaker_col_name]]) |>
     mutate(
       mean_of_means_F1 = base::mean(.data$vowel_mean_F1),
       mean_of_means_F2 = base::mean(.data$vowel_mean_F2),
@@ -60,18 +68,18 @@ lobanov_2 <- function(vowel_data) {
       sd_of_means_F2 = stats::sd(.data$vowel_mean_F2)
     )
 
-  vowel_data %>%
-    left_join(vowel_means) %>%
-    ungroup() %>%
+  vowel_data |>
+    left_join(vowel_means) |>
+    ungroup() |>
     mutate(
       F1_lob2 = (.data[[F1_col_name]] - .data$mean_of_means_F1)/
         .data$sd_of_means_F1,
       F2_lob2 = (.data[[F2_col_name]] - .data$mean_of_means_F2)/
         .data$sd_of_means_F2
-    ) %>%
+    ) |>
     # Remove working variables.
     select(
-      -(.data$vowel_mean_F1:.data$sd_of_means_F2)
+      -("vowel_mean_F1":"sd_of_means_F2")
     )
 
 }

@@ -7,23 +7,25 @@
 correlation_test(pca_data, n = 100, cor.method = "pearson")
 }
 \arguments{
-\item{pca_data}{data fed to the `prcomp` function. Remove non-continuous variables.}
+\item{pca_data}{data fed to the \code{prcomp} function. Remove non-continuous variables.}
 
-\item{n}{the number of times to permute that data. **Warning:** high values
+\item{n}{the number of times to permute that data. \strong{Warning:} high values
 will take a long time to compute.}
 
 \item{cor.method}{method to use for correlations (default = "pearson").
 Alternative is "spearman".}
 }
 \value{
-object of class `correlation_test`, with attributes:
-* `$permuted_correlations` A tibble of length n of pairs from the original
+object of class \code{correlation_test}, with attributes:
+\itemize{
+\item \verb{$permuted_correlations} A tibble of length n of pairs from the original
 data, their correlations, and the significance of each correlation (as
 p-values).
-* `$actual_correlations` the correlations of each pair of variables
+\item \verb{$actual_correlations} the correlations of each pair of variables
 in the original data and their significance (as p-values).
-* `$iterations` the number of permutations carried out.
-* `$cor_method` the form of correlation used.
+\item \verb{$iterations} the number of permutations carried out.
+\item \verb{$cor_method} the form of correlation used.
+}
 }
 \description{
 Permute data a given number (n) of times, collecting pairwise correlations

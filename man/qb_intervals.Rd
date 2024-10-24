@@ -4,35 +4,35 @@
 \name{qb_intervals}
 \alias{qb_intervals}
 \title{Mean formant, articulation rate, and amplitude values for intervals generated
-for QuakeBox monologues. The same 77 speakers as in `qb_vowels` are used.}
+for QuakeBox monologues. The same 77 speakers as in \code{qb_vowels} are used.}
 \format{
 A data frame with 53940 rows and 10 variables:
 \describe{
-  \item{interval_length}{Length of interval in seconds.}
-  \item{speaker}{Anonymised speaker code.}
-  \item{interval}{Time in seconds at which interval ends.}
-  \item{articulation_rate}{Mean articulation rate within interval.}
-  \item{amplitude}{Mean maximum amplitude within interval.}
-  \item{DRESS_F1}{Speaker intercept from GAMM model of DRESS F1.}
-  \item{DRESS_F2}{Speaker intercept from GAMM model of DRESS F2.}
-  \item{FLEECE_F1}{Speaker intercept from GAMM model of FLEECE F1.}
-  \item{FLEECE_F2}{Speaker intercept from GAMM model of FLEECE F2.}
-  \item{GOOSE_F1}{Speaker intercept from GAMM model of GOOSE F1.}
-  \item{GOOSE_F2}{Speaker intercept from GAMM model of GOOSE F2.}
-  \item{KIT_F1}{Speaker intercept from GAMM model of KIT F1.}
-  \item{KIT_F2}{Speaker intercept from GAMM model of KIT F2.}
-  \item{LOT_F1}{Speaker intercept from GAMM model of LOT F1.}
-  \item{LOT_F2}{Speaker intercept from GAMM model of LOT F2.}
-  \item{NURSE_F1}{Speaker intercept from GAMM model of NURSE F1.}
-  \item{NURSE_F2}{Speaker intercept from GAMM model of NURSE F2.}
-  \item{START_F1}{Speaker intercept from GAMM model of START F1.}
-  \item{START_F2}{Speaker intercept from GAMM model of START F2.}
-  \item{STRUT_F1}{Speaker intercept from GAMM model of STRUT F1.}
-  \item{STRUT_F2}{Speaker intercept from GAMM model of STRUT F2.}
-  \item{THOUGHT_F1}{Speaker intercept from GAMM model of THOUGHT F1.}
-  \item{THOUGHT_F2}{Speaker intercept from GAMM model of THOUGHT F2.}
-  \item{TRAP_F1}{Speaker intercept from GAMM model of TRAP F1.}
-  \item{TRAP_F2}{Speaker intercept from GAMM model of TRAP F2.}
+\item{interval_length}{Length of interval in seconds.}
+\item{speaker}{Anonymised speaker code.}
+\item{interval}{Time in seconds at which interval ends.}
+\item{articulation_rate}{Mean articulation rate within interval.}
+\item{amplitude}{Mean maximum amplitude within interval.}
+\item{DRESS_F1}{Speaker intercept from GAMM model of DRESS F1.}
+\item{DRESS_F2}{Speaker intercept from GAMM model of DRESS F2.}
+\item{FLEECE_F1}{Speaker intercept from GAMM model of FLEECE F1.}
+\item{FLEECE_F2}{Speaker intercept from GAMM model of FLEECE F2.}
+\item{GOOSE_F1}{Speaker intercept from GAMM model of GOOSE F1.}
+\item{GOOSE_F2}{Speaker intercept from GAMM model of GOOSE F2.}
+\item{KIT_F1}{Speaker intercept from GAMM model of KIT F1.}
+\item{KIT_F2}{Speaker intercept from GAMM model of KIT F2.}
+\item{LOT_F1}{Speaker intercept from GAMM model of LOT F1.}
+\item{LOT_F2}{Speaker intercept from GAMM model of LOT F2.}
+\item{NURSE_F1}{Speaker intercept from GAMM model of NURSE F1.}
+\item{NURSE_F2}{Speaker intercept from GAMM model of NURSE F2.}
+\item{START_F1}{Speaker intercept from GAMM model of START F1.}
+\item{START_F2}{Speaker intercept from GAMM model of START F2.}
+\item{STRUT_F1}{Speaker intercept from GAMM model of STRUT F1.}
+\item{STRUT_F2}{Speaker intercept from GAMM model of STRUT F2.}
+\item{THOUGHT_F1}{Speaker intercept from GAMM model of THOUGHT F1.}
+\item{THOUGHT_F2}{Speaker intercept from GAMM model of THOUGHT F2.}
+\item{TRAP_F1}{Speaker intercept from GAMM model of TRAP F1.}
+\item{TRAP_F2}{Speaker intercept from GAMM model of TRAP F2.}
 }
 }
 \source{

@@ -14,9 +14,9 @@ pca_test(
 )
 }
 \arguments{
-\item{pca_data}{data fed to the `prcomp` function.}
+\item{pca_data}{data fed to the \code{prcomp} function.}
 
-\item{n}{the number of times to permute and bootstrap that data. **Warning:** high values
+\item{n}{the number of times to permute and bootstrap that data. \strong{Warning:} high values
 will take a long time to compute.}
 
 \item{scale}{whether the PCA variables should be scaled (default = TRUE).}
@@ -26,10 +26,12 @@ will take a long time to compute.}
 \item{loadings_confint}{size of confidence intervals for index loadings.}
 }
 \value{
-object of class `pca_test`
-* `$variance_explained` a tibble
-* `$index_loadings` list of length n of significant pairwise
+object of class \code{pca_test}
+\itemize{
+\item \verb{$variance_explained} a tibble
+\item \verb{$index_loadings} list of length n of significant pairwise
 correlations in n permutations of the data (<= 0.05).
+}
 }
 \description{
 Permute and bootstrap data fed to PCA a given number of times. Bootstrapped

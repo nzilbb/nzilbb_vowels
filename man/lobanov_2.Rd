@@ -2,34 +2,42 @@
 % Please edit documentation in R/lobanov_2.R
 \name{lobanov_2}
 \alias{lobanov_2}
-\title{Apply Lobanov 2.0 normalisation to first and second formant data.}
+\title{Apply Lobanov 2.0 normalisation}
 \usage{
 lobanov_2(vowel_data)
 }
 \arguments{
-\item{vowel_data}{a data frame with speaker, vowel, F1, and F2 columns.}
+\item{vowel_data}{a dataframe whose first four columns are speaker ids,
+vowel ids, F1 values, and F2 values.}
 }
 \value{
-input dataframe with additional columns `F1_lob2` and `F2_lob2`,
-  containing the lobanov normalised F1 and F2 values respectively.
+a dataframe matching the input dataframe with additional columns
+\code{F1_lob2} and \code{F2_lob2}, containing the lobanov normalised F1 and F2 values
+respectively.
 }
 \description{
-We assume the same structure as the normalisation functions in  the `vowels`
-package. The first four columns should be:
-1. speaker identifiers,
-2. vowel identifiers,
-3. first formant values in Hertz,
-4. second formant values in Hertz.
+\code{lobanov_2()} takes a data frame where the first four columns are:
+\enumerate{
+\item speaker identifiers,
+\item vowel identifiers,
+\item first formant values in Hertz,
+\item second formant values in Hertz.
+}
+
+It returns a dataframe with two additional columns, \code{F1_lob2} and \code{F2_lob2},
+containing normalised formant values.
 }
 \details{
-Apply Lobanov 2.0 normalisation as developed in Brand et al. (2021). This
-variant of Lobanov normalisation is designed to work for datasets whether the
-vowel types have different token counts from one another. The Lobanov 2.0 value
-for a vowel is given by \eqn{F_{lobanov2.0_i} = \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}}.
-Where, for ease of notation, we assume all values are from a single speaker.
-We signify the n vowel types as vowel_1, \ldots, vowel_2, while i
-indicates the formant number. We implement the function for F1 and F2.
+This functions applies Lobanov 2.0 normalisation presented in Brand et al.
+(2021). This variant of Lobanov normalisation is designed to work for
+datasets whether the vowel types have different token counts from one
+another. The Lobanov 2.0 value for a vowel is given by \eqn{F_{lobanov2.0_i}
+= \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots,
+\mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}}. Where, for
+ease of notation, we assume all values are from a single speaker. We signify
+the n vowel types as vowel_1, \ldots, vowel_2, while i indicates the formant
+number. We implement the function for F1 and F2.
 }
 \examples{
-lobanov_2(onze_vowels)
+head(lobanov_2(onze_vowels))
 }

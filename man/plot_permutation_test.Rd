@@ -7,20 +7,20 @@
 plot_permutation_test(permutation_results, violin = FALSE)
 }
 \arguments{
-\item{permutation_results}{object of class `permutation_results`.}
+\item{permutation_results}{object of class \code{permutation_results}.}
 
 \item{violin}{Determines whether the variances explained are depicted by
 distinct violin plots for each PC or by connected lines. the advantage of
 lines is that they correctly indicate that values for each PC depend on one
 another within a given permutation. That is, if an earlier PC soaks up a
 lot of the variation in a data set, then there is less variation left to
-explain by subsequent PCs. Default value is `FALSE`.}
+explain by subsequent PCs. Default value is \code{FALSE}.}
 }
 \value{
-`ggplot` object.
+\code{ggplot} object.
 }
 \description{
-Plots results of a permutation test carried out with the `permutation_test`
+Plots results of a permutation test carried out with the \code{permutation_test}
 function.
 }
 \examples{

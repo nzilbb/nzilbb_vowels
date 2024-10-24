@@ -7,7 +7,7 @@
 \method{summary}{correlation_test}(object, alpha = 0.05, n_cors = 5, ...)
 }
 \arguments{
-\item{object}{object of class `correlation test`,}
+\item{object}{object of class \verb{correlation test},}
 
 \item{alpha}{significance level for counting correlation as significant.}
 

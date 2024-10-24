@@ -7,15 +7,15 @@
 plot_pc_input(pca_object, pca_data, pca_test)
 }
 \arguments{
-\item{pca_object}{Output of `prcomp`.}
+\item{pca_object}{Output of \code{prcomp}.}
 
-\item{pca_data}{Data fed into `prcomp`. This should not include speaker identifiers.}
+\item{pca_data}{Data fed into \code{prcomp}. This should not include speaker identifiers.}
 
-\item{pca_test}{Output of `pca_test`}
+\item{pca_test}{Output of \code{pca_test}}
 }
 \description{
 It is useful to see the relationship between PCs and the raw values of the
 input data fed into PCA. This function takes the results of running
-`pca_test` the scores for each speaker from the pca object, and the raw
+\code{pca_test} the scores for each speaker from the pca object, and the raw
 data fed into the PCA analysis.
 }
