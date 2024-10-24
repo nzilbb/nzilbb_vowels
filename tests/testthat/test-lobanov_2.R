@@ -23,3 +23,14 @@ test_that("Error if formant columns not numeric", {
 
   expect_error(qb_vowels %>% lobanov_2(), "numeric")
 })
+
+test_that("Normalised values haven't changed in qb_vowels.", {
+  expect_snapshot(
+    lobanov_2(qb_vowels),
+    cran = FALSE,
+    error = FALSE,
+    transform = NULL,
+    variant = NULL,
+    cnd_class = FALSE
+  )
+})
