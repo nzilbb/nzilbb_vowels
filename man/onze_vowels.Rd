@@ -3,7 +3,7 @@
 \docType{data}
 \name{onze_vowels}
 \alias{onze_vowels}
-\title{Monophthong data for random sample of speakers from the ONZE corpus.}
+\title{Monophthong data for random sample of speakers from the ONZE corpus}
 \format{
 A dataframe with 101572 rows and 8 variables:
 \describe{

@@ -3,8 +3,7 @@
 \docType{data}
 \name{onze_intercepts_full}
 \alias{onze_intercepts_full}
-\title{Speaker random intercepts for 418 speakers, as given in
-supplementary materials for Brand et al. 2021.}
+\title{Speaker random intercepts for 418 ONZE speakers}
 \format{
 A data frame with 481 rows and 21 variables: \describe{
 \item{speaker}{Anonymised speaker code.}
@@ -38,7 +37,9 @@ onze_intercepts_full
 }
 \description{
 A dataset containing the speaker intercepts extracted from GAMM models fit in
-Brand et al. (2021). Full details are available in analysis file following the
-url given below.
+\insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+}
+\references{
+\insertAllCited{}
 }
 \keyword{datasets}

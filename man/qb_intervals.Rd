@@ -3,13 +3,12 @@
 \docType{data}
 \name{qb_intervals}
 \alias{qb_intervals}
-\title{Mean formant, articulation rate, and amplitude values for intervals generated
-for QuakeBox monologues. The same 77 speakers as in \code{qb_vowels} are used.}
+\title{Formant and amplitude for intervals of QuakeBox monologues}
 \format{
 A data frame with 53940 rows and 10 variables:
 \describe{
 \item{interval_length}{Length of interval in seconds.}
-\item{speaker}{Anonymised speaker code.}
+\item{speaker}{Anonymised speaker code (char).}
 \item{interval}{Time in seconds at which interval ends.}
 \item{articulation_rate}{Mean articulation rate within interval.}
 \item{amplitude}{Mean maximum amplitude within interval.}
@@ -43,7 +42,8 @@ qb_intervals
 }
 \description{
 QuakeBox monologues are divided into intervals of fixed length within mean
-values are calcualted for formants, amplitude, and articulation rate.
+values are calcualted for formants, amplitude, and articulation rate. Data
+from 77 speakers is provide (the same sample as \code{qb_vowels}).
 }
 \details{
 Two interval lengths are given: 60 seconds and 240 seconds.
@@ -51,6 +51,9 @@ Two interval lengths are given: 60 seconds and 240 seconds.
 Formant data is z-scored by speaker and vowel, while the amplitude and
 articulation rate are z-scored by speaker.
 
-Original data was generated for Wilson Black et al. 2022.
+Original data was generated for \insertCite{Wilson_Black_2023;textual}{nzilbb.vowels}.
+}
+\references{
+\insertAllCited{}
 }
 \keyword{datasets}

@@ -1,4 +1,4 @@
-#' Monophthong data for random sample of speakers from the ONZE corpus.
+#' Monophthong data for random sample of speakers from the ONZE corpus
 #'
 #' A dataset containing the the first and second formants, speech rate,
 #' gender, and year of birth for 100 random speakers from the ONZE corpus.
@@ -6,59 +6,68 @@
 #' birth years on or after 1900 to ensure a full span of the time period. Data
 #' is present for the following NZE monophthongs, represented by Wells lexical
 #' sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
-#' for FOOT is excluded (as in Brand et al. 2021).
+#' for FOOT is excluded due to low token counts.
 #'
-#' Dataset is derived from the data made available in the supplementary materials
-#' for Brand et al. (2021).
+#' This dataset is derived from the data made available in the supplementary
+#' materials for
+#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
 #'
-#' @format A data frame with 101572 rows and 8 variables:
+#' @format A dataframe with 101572 rows and 8 variables:
 #' \describe{
-#'   \item{speaker}{Anonymised speaker code.}
-#'   \item{vowel}{Factor variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP.}
+#'   \item{speaker}{Anonymised speaker code (factor).}
+#'   \item{vowel}{Variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP (factor).}
 #'   \item{F1_50}{First formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
 #'   \item{F2_50}{Second formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
 #'   \item{speech_rate}{Average speaker speech rate for whole recording.}
-#'   \item{gender}{Gender of speaker, two levels: "M", "F".}
+#'   \item{gender}{Gender of speaker, two levels: "M", "F" (factor).}
 #'   \item{yob}{Year of birth of speaker.}
-#'   \item{word}{Anonymised word code.}
+#'   \item{word}{Anonymised word code (factor).}
 #' }
 #' @source \url{https://osf.io/q4j29/}
+#' @importFrom Rdpack reprompt
+#'
+#' @references
+#'   \insertAllCited{}
 "onze_vowels"
 
-#' Monophthong data for speakers from the ONZE corpus.
+#' Monophthong data for speakers from the ONZE corpus
 #'
 #' A dataset containing the the first and second formants, speech rate,
-#' gender, and year of birth for 481 speakers from the ONZE corpus. Data
+#' gender, and year of birth for 481 speakers from the ONZE corpus.
+#' 50 speakers are sampled with birth years before 1900 and 50 sampled with
+#' birth years on or after 1900 to ensure a full span of the time period. Data
 #' is present for the following NZE monophthongs, represented by Wells lexical
 #' sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
-#' for FOOT is excluded (as in Brand et al. (2021)).
+#' for FOOT is excluded due to low token counts.
 #'
-#' This data was initially made available in the supplementary materials
-#' for Brand et al. (2021).
+#' This dataset is derived from the data made available in the supplementary
+#' materials for
+#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
 #'
 #' @format A data frame with 414679 rows and 8 variables:
 #' \describe{
-#'   \item{speaker}{Anonymised speaker code.}
-#'   \item{vowel}{Factor variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP.}
+#'   \item{speaker}{Anonymised speaker code (factor).}
+#'   \item{vowel}{Variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP (factor).}
 #'   \item{F1_50}{First formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
 #'   \item{F2_50}{Second formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
 #'   \item{speech_rate}{Average speaker speech rate for whole recording.}
-#'   \item{gender}{Gender of speaker, two levels: "M", "F".}
+#'   \item{gender}{Gender of speaker, two levels: "M", "F" (factor).}
 #'   \item{yob}{Year of birth of speaker.}
-#'   \item{word}{Anonymised word code.}
+#'   \item{word}{Anonymised word code (factor).}
 #' }
 #' @source \url{https://osf.io/q4j29/}
+#'
+#' @references
+#'   \insertAllCited{}
 "onze_vowels_full"
 
-#' Speaker random intercepts for a sample of 100 speakers, as given in
-#' supplementary materials for Brand et al. 2021.
+#' Speaker random intercepts from GAMMs for 100 ONZE speakers
 #'
 #' A dataset containing the speaker intercepts extracted from GAMM models fit in
-#' Brand et al. 2021. Full details are available in analysis file following the
-#' url given below.
+#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
 #'
 #' @format A data frame with 100 rows and 21 variables: \describe{
-#'   \item{speaker}{Anonymised speaker code.}
+#'   \item{speaker}{Anonymised speaker code (character).}
 #'   \item{F1_DRESS}{Speaker intercept from GAMM model of DRESS F1.}
 #'   \item{F2_DRESS}{Speaker intercept from GAMM model of DRESS F2.}
 #'   \item{F1_FLEECE}{Speaker intercept from GAMM model of FLEECE F1.}
@@ -81,14 +90,15 @@
 #'   \item{F2_TRAP}{Speaker intercept from GAMM model of TRAP F2.}
 #' }
 #' @source \url{https://osf.io/q4j29/}
+#'
+#' @references
+#'   \insertAllCited{}
 "onze_intercepts"
 
-#' Speaker random intercepts for 418 speakers, as given in
-#' supplementary materials for Brand et al. 2021.
+#' Speaker random intercepts for 418 ONZE speakers
 #'
 #' A dataset containing the speaker intercepts extracted from GAMM models fit in
-#' Brand et al. (2021). Full details are available in analysis file following the
-#' url given below.
+#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
 #'
 #' @format A data frame with 481 rows and 21 variables: \describe{
 #'   \item{speaker}{Anonymised speaker code.}
@@ -114,54 +124,60 @@
 #'   \item{F2_TRAP}{Speaker intercept from GAMM model of TRAP F2.}
 #' }
 #' @source \url{https://osf.io/q4j29/}
+#'
+#' @references
+#'   \insertAllCited{}
 "onze_intercepts_full"
 
-#' Vowel data for 77 speakers from the QuakeBox corpus, with 11 in each age category.
+#' Formants from QuakeBox 1
 #'
 #' A dataset containing formant values, amplitude, articulation rate, and
 #' following segment data for 10 New Zealand English monophthongs, along with
 #' participant demographics.
 #'
-#' Original data was generated for Wilson Black et al. 2022.
+#' Original data was generated for \insertCite{Wilson_Black_2023;textual}{nzilbb.vowels}.
 #'
 #' @format A data frame with 26331 rows and 14 variables:
 #' \describe{
-#'   \item{speaker}{Anonymised speaker code.}
-#'   \item{vowel}{Factor variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP, FOOT.}
+#'   \item{speaker}{Anonymised speaker code (char).}
+#'   \item{vowel}{Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP, FOOT (char).}
 #'   \item{F1_50}{First formant in Hz, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
 #'   \item{F2_50}{Second formant in Hz, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
-#'   \item{participant_age_category}{Age category of speaker. Levels: 18-25, 26-35, 36-45, ..., 76-85.}
-#'   \item{participant_gender}{Gender of participant. Levels: M, F.}
-#'   \item{participant_nz_ethnic}{New Zealand ethnic category of participant. Levels: NZ mixed ethnicity, NZ European, Other.}
+#'   \item{participant_age_category}{Age category of speaker. Values: 18-25, 26-35, 36-45, ..., 76-85 (char).}
+#'   \item{participant_gender}{Gender of participant. Values: M, F (char).}
+#'   \item{participant_nz_ethnic}{New Zealand ethnic category of participant. Values: NZ mixed ethnicity, NZ European, Other (char).}
 #'   \item{word_freq}{Frequency of word from which vowel token is taken in CELEX.}
-#'   \item{word}{Anonymised word id. Allows for fitting models with word as random effect without revealing content of transcript.}
+#'   \item{word}{Anonymised word id (char).}
 #'   \item{time}{Time in seconds at which vowel segment starts.}
 #'   \item{vowel_duration}{Length of vowel in seconds.}
 #'   \item{articulation_rate}{Articulation rate of utterance from which token is taken.}
-#'   \item{following_segment_category}{Category of following segment. NB: liquids have already been removed. Levels: labial, velar, other.}
+#'   \item{following_segment_category}{Category of following segment. NB: liquids have already been removed. Levels: labial, velar, other (factor).}
 #'   \item{amplitude}{Maximum amplitude of word from which vowel token is taken, generated by LaBB-CAT interface with Praat.}
 #'}
 #'
 #' @source \url{https://osf.io/m8nkh/}
+#'
+#' @references
+#'   \insertAllCited{}
 "qb_vowels"
 
-#' Mean formant, articulation rate, and amplitude values for intervals generated
-#' for QuakeBox monologues. The same 77 speakers as in `qb_vowels` are used.
+#' Formant and amplitude for intervals of QuakeBox monologues
 #'
 #' QuakeBox monologues are divided into intervals of fixed length within mean
-#' values are calcualted for formants, amplitude, and articulation rate.
+#' values are calcualted for formants, amplitude, and articulation rate. Data
+#' from 77 speakers is provide (the same sample as `qb_vowels`).
 #'
 #' Two interval lengths are given: 60 seconds and 240 seconds.
 #'
 #' Formant data is z-scored by speaker and vowel, while the amplitude and
 #' articulation rate are z-scored by speaker.
 #'
-#' Original data was generated for Wilson Black et al. 2022.
+#' Original data was generated for \insertCite{Wilson_Black_2023;textual}{nzilbb.vowels}.
 #'
 #' @format A data frame with 53940 rows and 10 variables:
 #' \describe{
 #'   \item{interval_length}{Length of interval in seconds.}
-#'   \item{speaker}{Anonymised speaker code.}
+#'   \item{speaker}{Anonymised speaker code (char).}
 #'   \item{interval}{Time in seconds at which interval ends.}
 #'   \item{articulation_rate}{Mean articulation rate within interval.}
 #'   \item{amplitude}{Mean maximum amplitude within interval.}
@@ -187,4 +203,7 @@
 #'   \item{TRAP_F2}{Speaker intercept from GAMM model of TRAP F2.}
 #' }
 #' @source \url{https://osf.io/m8nkh/}
+#'
+#' @references
+#'   \insertAllCited{}
 "qb_intervals"

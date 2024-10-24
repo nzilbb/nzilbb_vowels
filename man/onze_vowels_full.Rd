@@ -3,7 +3,7 @@
 \docType{data}
 \name{onze_vowels_full}
 \alias{onze_vowels_full}
-\title{Monophthong data for speakers from the ONZE corpus.}
+\title{Monophthong data for speakers from the ONZE corpus}
 \format{
 A data frame with 414679 rows and 8 variables:
 \describe{
