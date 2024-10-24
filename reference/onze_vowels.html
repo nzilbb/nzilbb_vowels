@@ -5,13 +5,13 @@ gender, and year of birth for 100 random speakers from the ONZE corpus.
 birth years on or after 1900 to ensure a full span of the time period. Data
 is present for the following NZE monophthongs, represented by Wells lexical
 sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
-for FOOT is excluded (as in Brand et al. 2021)."><meta property="og:description" content="A dataset containing the the first and second formants, speech rate,
+for FOOT is excluded due to low token counts."><meta property="og:description" content="A dataset containing the the first and second formants, speech rate,
 gender, and year of birth for 100 random speakers from the ONZE corpus.
 50 speakers are sampled with birth years before 1900 and 50 sampled with
 birth years on or after 1900 to ensure a full span of the time period. Data
 is present for the following NZE monophthongs, represented by Wells lexical
 sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
-for FOOT is excluded (as in Brand et al. 2021)."></head><body>
+for FOOT is excluded due to low token counts."></head><body>
     <a href="#main" class="visually-hidden-focusable">Skip to contents</a>
 
 
@@ -51,7 +51,7 @@ gender, and year of birth for 100 random speakers from the ONZE corpus.
 birth years on or after 1900 to ensure a full span of the time period. Data
 is present for the following NZE monophthongs, represented by Wells lexical
 sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
-for FOOT is excluded (as in Brand et al. 2021).</p>
+for FOOT is excluded due to low token counts.</p>
     </div>
 
     <div class="section level2">
@@ -61,11 +61,11 @@ for FOOT is excluded (as in Brand et al. 2021).</p>
 
     <div class="section level2">
     <h2 id="format">Format<a class="anchor" aria-label="anchor" href="#format"></a></h2>
-    <p>A data frame with 101572 rows and 8 variables:</p><dl><dt>speaker</dt>
-<dd><p>Anonymised speaker code.</p></dd>
+    <p>A dataframe with 101572 rows and 8 variables:</p><dl><dt>speaker</dt>
+<dd><p>Anonymised speaker code (factor).</p></dd>
 
 <dt>vowel</dt>
-<dd><p>Factor variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP.</p></dd>
+<dd><p>Variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP (factor).</p></dd>
 
 <dt>F1_50</dt>
 <dd><p>First formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.</p></dd>
@@ -77,13 +77,13 @@ for FOOT is excluded (as in Brand et al. 2021).</p>
 <dd><p>Average speaker speech rate for whole recording.</p></dd>
 
 <dt>gender</dt>
-<dd><p>Gender of speaker, two levels: "M", "F".</p></dd>
+<dd><p>Gender of speaker, two levels: "M", "F" (factor).</p></dd>
 
 <dt>yob</dt>
 <dd><p>Year of birth of speaker.</p></dd>
 
 <dt>word</dt>
-<dd><p>Anonymised word code.</p></dd>
+<dd><p>Anonymised word code (factor).</p></dd>
 
 
 </dl></div>
@@ -93,8 +93,13 @@ for FOOT is excluded (as in Brand et al. 2021).</p>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>Dataset is derived from the data made available in the supplementary materials
-for Brand et al. (2021).</p>
+    <p>This dataset is derived from the data made available in the supplementary
+materials for
+brandSystematicCovariationMonophthongs2021;textualnzilbb.vowels.</p>
+    </div>
+    <div class="section level2">
+    <h2 id="references">References<a class="anchor" aria-label="anchor" href="#references"></a></h2>
+    <p></p>
     </div>
 
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
