@@ -43,6 +43,8 @@ Imports:
     stringr,
     ggrepel,
     gghalves,
-    smacof
+    smacof,
+    Rdpack
+RdMacros: Rdpack
 VignetteBuilder: knitr
 URL: https://joshuawilsonblack.github.io/nzilbb_vowels/

@@ -5,16 +5,16 @@
 \alias{onze_vowels}
 \title{Monophthong data for random sample of speakers from the ONZE corpus.}
 \format{
-A data frame with 101572 rows and 8 variables:
+A dataframe with 101572 rows and 8 variables:
 \describe{
-\item{speaker}{Anonymised speaker code.}
-\item{vowel}{Factor variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP.}
+\item{speaker}{Anonymised speaker code (factor).}
+\item{vowel}{Variable with Wells lexical sets for 10 NZE monophthongs. Levels:  DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP (factor).}
 \item{F1_50}{First formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
 \item{F2_50}{Second formant, extracted from vowel mid-point using LaBB-CAT interface with Praat.}
 \item{speech_rate}{Average speaker speech rate for whole recording.}
-\item{gender}{Gender of speaker, two levels: "M", "F".}
+\item{gender}{Gender of speaker, two levels: "M", "F" (factor).}
 \item{yob}{Year of birth of speaker.}
-\item{word}{Anonymised word code.}
+\item{word}{Anonymised word code (factor).}
 }
 }
 \source{
@@ -30,10 +30,14 @@ gender, and year of birth for 100 random speakers from the ONZE corpus.
 birth years on or after 1900 to ensure a full span of the time period. Data
 is present for the following NZE monophthongs, represented by Wells lexical
 sets: DRESS, FLEECE, GOOSE, KIT, LOT, NURSE, START, STRUT, THOUGHT, TRAP. Data
-for FOOT is excluded (as in Brand et al. 2021).
+for FOOT is excluded due to low token counts.
 }
 \details{
-Dataset is derived from the data made available in the supplementary materials
-for Brand et al. (2021).
+This dataset is derived from the data made available in the supplementary
+materials for
+\insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+}
+\references{
+\insertAllCited{}
 }
 \keyword{datasets}
