@@ -2,7 +2,8 @@
 % Please edit documentation in R/correlation_test.R
 \name{summary.correlation_test}
 \alias{summary.correlation_test}
-\title{Summary function for correlation test object. Set alpha to change significance}
+\title{Summary function for correlation test object. Set alpha to change
+significance level.}
 \usage{
 \method{summary}{correlation_test}(object, alpha = 0.05, n_cors = 5, ...)
 }

@@ -2,18 +2,19 @@
 % Please edit documentation in R/correlation_test.R
 \name{correlation_test}
 \alias{correlation_test}
-\title{Run permutation test on correlations in a dataset.}
+\title{Permutation test of pairwise correlations}
 \usage{
 correlation_test(pca_data, n = 100, cor.method = "pearson")
 }
 \arguments{
-\item{pca_data}{data fed to the \code{prcomp} function. Remove non-continuous variables.}
+\item{pca_data}{dataframe or matrix containing only continuous variables.
+(as accepted by the \code{prcomp} function.)}
 
-\item{n}{the number of times to permute that data. \strong{Warning:} high values
-will take a long time to compute.}
+\item{n}{the number of times (integer) to permute that data. \strong{Warning:}
+high values will take a long time to compute. Default: 100.}
 
 \item{cor.method}{method to use for correlations (default = "pearson").
-Alternative is "spearman".}
+Alternative is "spearman" (see \code{?cor.test}).}
 }
 \value{
 object of class \code{correlation_test}, with attributes:
@@ -29,8 +30,21 @@ in the original data and their significance (as p-values).
 }
 \description{
 Permute data a given number (n) of times, collecting pairwise correlations
-and testing them for significance.
+and testing them for significance. See \code{\link[=plot_correlation_magnitudes]{plot_correlation_magnitudes()}} and
+\code{\link[=plot_correlation_counts]{plot_correlation_counts()}} for plotting functions which take the output of
+this function.
 }
 \examples{
-\dontrun{correlation_test(pca_data, n = 100, cor.method = 'pearson')}
+  # get a small sample of random intercepts.
+  pca_data <- onze_intercepts |>
+    select(-speaker) |>
+    slice_sample(n=10)
+
+  # apply correlation test with 10 permutations.
+  # actual use will require at least 100.
+  cor_test <- correlation_test(pca_data, n = 10, cor.method = 'pearson')
+  summary(cor_test)
+
+  # use spearman correlation instead.
+  cor_test_spear <- correlation_test(pca_data, n = 10, cor.method = 'spearman')
 }
