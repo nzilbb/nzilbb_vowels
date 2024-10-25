@@ -14,12 +14,16 @@ plot_correlation_magnitudes(cor_test)
 \code{ggplot} object.
 }
 \description{
-This plot type is used in Brand et al. (2021). It presents the magnitudes
-of the correlations from the real data as a solid red line, and the correlations
-from each iteration of the permutation test as light blue lines. This gives
-a visual sense of the distribution of random correlations compared with those
-in the actual data.
+This plot type is used in
+\insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+It presents the magnitudes of the correlations from the real data as a solid
+red line, and the correlations from each iteration of the permutation test as
+light blue lines. This gives a visual sense of the distribution of random
+correlations compared with those in the actual data.
 }
 \examples{
 \dontrun{plot_correlation_magnitudes(cor_test)}
+}
+\references{
+\insertAllCited{}
 }
