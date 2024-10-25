@@ -2,7 +2,7 @@
 % Please edit documentation in R/correlation_plots.R
 \name{plot_correlation_counts}
 \alias{plot_correlation_counts}
-\title{Create plot of correlation counts from \code{correlation_test} object.}
+\title{Plot of correlation counts from \code{correlation_test} object}
 \usage{
 plot_correlation_counts(cor_test, alpha = 0.05, half_violin = FALSE)
 }
@@ -13,15 +13,31 @@ plot_correlation_counts(cor_test, alpha = 0.05, half_violin = FALSE)
 \item{alpha}{significance level for counting correlation as significant.}
 
 \item{half_violin}{Plot correlation counts using a half violin plot and half
-point plot.}
+point plot. Quantiles are not currently supported.}
 }
 \value{
 \code{ggplot} object.
 }
 \description{
-This plot presents the distribution of counts of significant correlations at
-a given alpha level and the count of significant correlations in the
-original data.
+Plot the number of statistically significant pairwise correlations in a data
+set given an alpha value against the distribution of counts of statistically
+significant pairwise correlations in permuted data. This is an informal test
+which is useful to convincing yourself that there is structure in your data
+which PCA might be able to uncover.
+}
+\details{
+The resulting plot presents the distribution of \emph{counts} of statistically
+significant correlations at a given alpha level in the permuted data and the
+count of statistically significant correlations in the original data. If the
+red dot is above the uppermost line inside the blue violin plot, we say the
+number of statistically significant correlations in the real data is itself
+statistically significant. Usually this is used as a rough sanity check in
+the course of a PCA workflow and we want to see the red dot well above the
+violin (as in the example below).
+
+The resulting plot is a \code{ggplot2} plot and can be modified using functions
+from that package. For instance, titles can be removed using the \code{\link[ggplot2:labs]{ggplot2::labs()}}
+function (as in the examples below).
 }
 \examples{
 \dontrun{plot_correlation_counts(cor_test)}

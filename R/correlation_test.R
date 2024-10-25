@@ -31,12 +31,13 @@
 #' @examples
 #'   # get a small sample of random intercepts.
 #'   pca_data <- onze_intercepts |>
-#'     select(-speaker) |>
-#'     slice_sample(n=10)
+#'     dplyr::select(-speaker) |>
+#'     dplyr::slice_sample(n=10)
 #'
 #'   # apply correlation test with 10 permutations.
-#'   # actual use will require at least 100.
+#'   # actual use requires at least 100.
 #'   cor_test <- correlation_test(pca_data, n = 10, cor.method = 'pearson')
+#'   # Return summary of significant correlations
 #'   summary(cor_test)
 #'
 #'   # use spearman correlation instead.

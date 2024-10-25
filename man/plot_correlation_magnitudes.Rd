@@ -2,7 +2,7 @@
 % Please edit documentation in R/correlation_plots.R
 \name{plot_correlation_magnitudes}
 \alias{plot_correlation_magnitudes}
-\title{Create plot of correlation magnitude from \code{correlation_test} object.}
+\title{Plot distribution of correlations from \code{correlation_test} object}
 \usage{
 plot_correlation_magnitudes(cor_test)
 }
@@ -19,7 +19,11 @@ This plot type is used in
 It presents the magnitudes of the correlations from the real data as a solid
 red line, and the correlations from each iteration of the permutation test as
 light blue lines. This gives a visual sense of the distribution of random
-correlations compared with those in the actual data.
+correlations compared with those in the actual data. If there are significant
+pairwise correlations in the data, the thick red line should be visually
+lower and wider across the plot than the thinner blue lines. If there are no
+significant pairwise correlations, then the thick red line will have the
+same shape as the blue lines.
 }
 \examples{
 \dontrun{plot_correlation_magnitudes(cor_test)}
