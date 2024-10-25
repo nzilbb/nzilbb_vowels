@@ -84,20 +84,28 @@ in the original data and their significance (as p-values).</p></li>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="co"># get a small sample of random intercepts.</span></span></span>
 <span class="r-in"><span>  <span class="va">pca_data</span> <span class="op">&lt;-</span> <span class="va">onze_intercepts</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>    <span class="fu">select</span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
-<span class="r-in"><span>    <span class="fu">slice_sample</span><span class="op">(</span>n<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error in slice_sample(select(onze_intercepts, -speaker), n = 10):</span> could not find function "slice_sample"</span>
+<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
+<span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># apply correlation test with 10 permutations.</span></span></span>
-<span class="r-in"><span>  <span class="co"># actual use will require at least 100.</span></span></span>
+<span class="r-in"><span>  <span class="co"># actual use requires at least 100.</span></span></span>
 <span class="r-in"><span>  <span class="va">cor_test</span> <span class="op">&lt;-</span> <span class="fu">correlation_test</span><span class="op">(</span><span class="va">pca_data</span>, n <span class="op">=</span> <span class="fl">10</span>, cor.method <span class="op">=</span> <span class="st">'pearson'</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'pca_data' not found</span>
+<span class="r-in"><span>  <span class="co"># Return summary of significant correlations</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cor_test</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'cor_test' not found</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Correlation test results.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Count of significant pairwise correlations in original data at alpha = 0.05: 14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean significant pairwise correlations in permuted data (n = 10) at alpha = 0.05: 9.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Min = 7, Max = 13.</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> </span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Top 5 pairwise correlations in original data:</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F2_LOT, F2_THOUGHT: -0.9</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F1_GOOSE, F2_START: 0.81</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F1_GOOSE, F2_THOUGHT: -0.78</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F2_DRESS, F2_KIT: 0.76</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> F2_FLEECE, F2_NURSE: -0.75</span>
 <span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="co"># use spearman correlation instead.</span></span></span>
 <span class="r-in"><span>  <span class="va">cor_test_spear</span> <span class="op">&lt;-</span> <span class="fu">correlation_test</span><span class="op">(</span><span class="va">pca_data</span>, n <span class="op">=</span> <span class="fl">10</span>, cor.method <span class="op">=</span> <span class="st">'spearman'</span><span class="op">)</span></span></span>
-<span class="r-err co"><span class="r-pr">#&gt;</span> <span class="error">Error:</span> object 'pca_data' not found</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
