@@ -75,7 +75,10 @@ lobanov_2 <- function(vowel_data) {
     )
 
   vowel_data |>
-    left_join(vowel_means) |>
+    left_join(
+      vowel_means,
+      by = c(speaker_col_name, vowel_col_name)
+    ) |>
     ungroup() |>
     mutate(
       F1_lob2 = (.data[[F1_col_name]] - .data$mean_of_means_F1)/

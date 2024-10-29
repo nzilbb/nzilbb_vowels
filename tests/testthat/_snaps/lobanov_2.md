@@ -2,8 +2,6 @@
 
     Code
       lobanov_2(qb_vowels)
-    Message
-      Joining with `by = join_by(speaker, vowel)`
     Output
       # A tibble: 26,331 x 16
          speaker     vowel F1_50 F2_50 participant_age_category participant_gender
