@@ -39,7 +39,7 @@ As with the other plotting functions in this package, the result is a
   # Plot PC1 with a cutoff value of 60\%
   pca_contrib_plot(onze_pca, pc_no = 1, cutoff = 60)
 
-  # Plot PC2 with a not cutoff value.
+  # Plot PC2 with no cutoff value.
   pca_contrib_plot(onze_pca, pc_no = 2, cutoff = NULL)
 
 }
