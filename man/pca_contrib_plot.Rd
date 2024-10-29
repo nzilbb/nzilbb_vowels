@@ -2,7 +2,7 @@
 % Please edit documentation in R/pca_contrib_plot.R
 \name{pca_contrib_plot}
 \alias{pca_contrib_plot}
-\title{Create plot of variables by contribution to given PC.}
+\title{PCA contribution plots}
 \usage{
 pca_contrib_plot(pca_object, pc_no = 1, cutoff = 50)
 }
@@ -22,12 +22,27 @@ is plotted.}
 \code{ggplot} object.
 }
 \description{
-Plots match those given in supplementary material for Brand et al. (2021).
-Variables are arranged by ascending contribution to the given PC, where
-contribution is the squared loading for the variable expressed as a
-percentage.
+Plot the contribution of each variable in a data set to a given Principal
+Component (PC). Variables are arranged by ascending contribution to the PC,
+where contribution is the squared loading for the variable expressed as a
+percentage. These plots match those given in supplementary material for
+\insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+}
+\details{
+As with the other plotting functions in this package, the result is a
+\code{ggplot2} plot. It can be modified using \code{ggplot2} functions (see, e.g.,
+\code{\link[=plot_correlation_magnitudes]{plot_correlation_magnitudes()}}.
 }
 \examples{
-\dontrun{pca_contrib_plot(pca_object, pc_no=1, cutoff=50)}
-\dontrun{pca_contrib_plot(pca_object, pc_no=2, cutoff=70)}
+  onze_pca <- prcomp(onze_intercepts |> dplyr::select(-speaker), scale = TRUE)
+
+  # Plot PC1 with a cutoff value of 60\%
+  pca_contrib_plot(onze_pca, pc_no = 1, cutoff = 60)
+
+  # Plot PC2 with a not cutoff value.
+  pca_contrib_plot(onze_pca, pc_no = 2, cutoff = NULL)
+
+}
+\references{
+\insertAllCited{}
 }
