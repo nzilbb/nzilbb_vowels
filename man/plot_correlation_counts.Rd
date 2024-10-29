@@ -46,7 +46,7 @@ function (as in the examples below).
   cor_plot <- plot_correlation_counts(cor_test)
   cor_plot
 
-  make statistical test more strict by reducing the alpha.
+  # make statistical test more strict by reducing the alpha.
   cor_plot_strict <- plot_correlation_counts(cor_test, alpha = 0.01)
 
   # modify plot using `ggplot2` functions, e.g.
