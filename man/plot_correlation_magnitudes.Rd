@@ -26,7 +26,16 @@ significant pairwise correlations, then the thick red line will have the
 same shape as the blue lines.
 }
 \examples{
-\dontrun{plot_correlation_magnitudes(cor_test)}
+  # Test correlations (use at least n = 100)
+  cor_test <- correlation_test(onze_intercepts |>
+    dplyr::select(-speaker), n = 10)
+  cor_plot <- plot_correlation_magnitudes(cor_test)
+  cor_plot
+
+  # modify plot using `ggplot2` functions, e.g.
+  cor_plot +
+    ggplot2::labs(title = NULL) +
+    ggplot2::theme_bw()
 }
 \references{
 \insertAllCited{}

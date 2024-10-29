@@ -21,7 +21,16 @@
 #' @importFrom glue glue
 #' @importFrom Rdpack reprompt
 #' @examples
-#' \dontrun{plot_correlation_magnitudes(cor_test)}
+#'   # Test correlations (use at least n = 100)
+#'   cor_test <- correlation_test(onze_intercepts |>
+#'     dplyr::select(-speaker), n = 10)
+#'   cor_plot <- plot_correlation_magnitudes(cor_test)
+#'   cor_plot
+#'
+#'   # modify plot using `ggplot2` functions, e.g.
+#'   cor_plot +
+#'     ggplot2::labs(title = NULL) +
+#'     ggplot2::theme_bw()
 #' @references
 #'   \insertAllCited{}
 #' @export
@@ -95,7 +104,19 @@ plot_correlation_magnitudes <- function(cor_test) {
 #' @importFrom magrittr %>%
 #' @importFrom glue glue
 #' @examples
-#' \dontrun{plot_correlation_counts(cor_test)}
+#'   # Test correlations (use at least n = 100)
+#'   cor_test <- correlation_test(onze_intercepts |>
+#'     dplyr::select(-speaker), n = 10)
+#'   cor_plot <- plot_correlation_counts(cor_test)
+#'   cor_plot
+#'
+#'   make statistical test more strict by reducing the alpha.
+#'   cor_plot_strict <- plot_correlation_counts(cor_test, alpha = 0.01)
+#'
+#'   # modify plot using `ggplot2` functions, e.g.
+#'   cor_plot_strict +
+#'     ggplot2::labs(title = NULL) +
+#'     ggplot2::theme_bw()
 #' @export
 plot_correlation_counts <- function(
     cor_test, alpha = 0.05, half_violin = FALSE
