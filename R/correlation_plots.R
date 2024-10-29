@@ -15,7 +15,7 @@
 #'   `correlation_test`.
 #' @return `ggplot` object.
 #' @importFrom dplyr bind_rows
-#' @importFrom ggplot2 ggplot scale_alpha_manual scale_size_manual aes labs
+#' @importFrom ggplot2 ggplot scale_alpha_manual scale_linewidth_manual aes labs
 #'   stat_density guides after_stat
 #' @importFrom magrittr %>%
 #' @importFrom glue glue
@@ -54,12 +54,12 @@ plot_correlation_magnitudes <- function(cor_test) {
         colour = .data$Source,
         group = .data$iteration,
         alpha = .data$Source,
-        size = .data$Source
+        linewidth = .data$Source
       )
     ) +
     stat_density(geom = "line", position= "identity") +
     scale_alpha_manual(values = c("Permuted" = low_alpha, "Original" = 1)) +
-    scale_size_manual(values = c("Permuted" = 0.1, "Original" = 2)) +
+    scale_linewidth_manual(values = c("Permuted" = 0.1, "Original" = 2)) +
     labs(
       title = glue(
         "Magnitude of Correlations in Original Data and {cor_test$iterations} Permutations"
