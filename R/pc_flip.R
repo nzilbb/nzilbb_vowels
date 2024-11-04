@@ -34,6 +34,7 @@
 #'   flipped_pca <- pc_flip(pca_obj, pc_no = 3, flip_var = "F1_GOOSE")
 pc_flip <- function(pca_obj, pc_no, flip_var = NULL) {
 
+  # This test could be a little more strict.
   stopifnot("`pc_no` must have a numeric value." = is.numeric(pc_no))
 
   if (inherits(pca_obj, "prcomp")) {
