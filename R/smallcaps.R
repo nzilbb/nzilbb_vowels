@@ -12,7 +12,7 @@ smallcaps <- function() {
 
   if (extension == "qmd") {
     pre <- "["
-    post <- "](.smallcaps)"
+    post <- "]{.smallcaps}"
   } else {
     pre <- '<span style="font-variant: small-caps;">'
     post <- '</span>'
