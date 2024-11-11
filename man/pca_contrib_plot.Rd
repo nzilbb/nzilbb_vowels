@@ -26,7 +26,7 @@ Plot the contribution of each variable in a data set to a given Principal
 Component (PC). Variables are arranged by ascending contribution to the PC,
 where contribution is the squared loading for the variable expressed as a
 percentage. These plots match those given in supplementary material for
-\insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+Brand et al. (2021).
 }
 \details{
 As with the other plotting functions in this package, the result is a
@@ -44,5 +44,8 @@ As with the other plotting functions in this package, the result is a
 
 }
 \references{
-\insertAllCited{}
+Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+Systematic co-variation of monophthongs across speakers of New Zealand
+English. Journal of Phonetics. Elsevier. 88. 101096.
+doi:\href{https://doi.org/10.1016/j.wocn.2021.101096}{10.1016/j.wocn.2021.101096}.
 }

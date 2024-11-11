@@ -2,8 +2,7 @@
 % Please edit documentation in R/pca_test.R
 \name{pca_test}
 \alias{pca_test}
-\title{Generate bootstrapped confidence intervals and permutation based null
-distribution for PCA analysis.}
+\title{PCA with confidence intervals and null distributions}
 \usage{
 pca_test(
   pca_data,
@@ -51,4 +50,14 @@ plotting functions and adopting more of the 'tidyverse' dialect.
     variance_confint = 0.95,
     loadings_confint = 0.9)
 }
+}
+\references{
+Camargo, Arley (2022),
+PCAtest: testing the statistical significance of Principal Component
+Analysis in R. \emph{PeerJ} 10. e12967.
+doi:\href{https://doi.org/10.7717/peerj.12967}{10.7717/peerj.12967}.
+
+Vieira, Vasco (2012): Permutation tests to estimate significances on
+Principal Components Analysis. \emph{Computational Ecology and Software} 2.
+103–123.
 }

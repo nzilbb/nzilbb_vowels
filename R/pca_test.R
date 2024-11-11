@@ -1,5 +1,4 @@
-#' Generate bootstrapped confidence intervals and permutation based null
-#' distribution for PCA analysis.
+#' PCA with confidence intervals and null distributions
 #'
 #' Permute and bootstrap data fed to PCA a given number of times. Bootstrapped
 #' data is used to estimate confidence bands for variance explained by each PC
@@ -39,6 +38,15 @@
 #'     variance_confint = 0.95,
 #'     loadings_confint = 0.9)
 #' }
+#' @references Camargo, Arley (2022),
+#'   PCAtest: testing the statistical significance of Principal Component
+#'   Analysis in R. _PeerJ_ 10. e12967.
+#'   doi:[10.7717/peerj.12967](https://doi.org/10.7717/peerj.12967).
+#'
+#'   Vieira, Vasco (2012): Permutation tests to estimate significances on
+#'   Principal Components Analysis. _Computational Ecology and Software_ 2.
+#'   103–123.
+#'
 #' @export
 pca_test <- function(pca_data, n = 100, scale = TRUE,
                      variance_confint = 0.95, loadings_confint = 0.9) {

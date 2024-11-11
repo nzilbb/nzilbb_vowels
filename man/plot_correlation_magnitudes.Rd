@@ -15,7 +15,7 @@ plot_correlation_magnitudes(cor_test)
 }
 \description{
 This plot type is used in
-\insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+Brand et al. (2021).
 It presents the magnitudes of the correlations from the real data as a solid
 red line, and the correlations from each iteration of the permutation test as
 light blue lines. This gives a visual sense of the distribution of random
@@ -38,5 +38,8 @@ same shape as the blue lines.
     ggplot2::theme_bw()
 }
 \references{
-\insertAllCited{}
+Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+Systematic co-variation of monophthongs across speakers of New Zealand
+English. Journal of Phonetics. Elsevier. 88. 101096.
+doi:\href{https://doi.org/10.1016/j.wocn.2021.101096}{10.1016/j.wocn.2021.101096}.
 }

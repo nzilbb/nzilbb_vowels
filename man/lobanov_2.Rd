@@ -29,7 +29,7 @@ containing normalised formant values.
 }
 \details{
 This functions applies Lobanov 2.0 normalisation presented in
-\insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}. This variant
+Brand et al. (2021). This variant
 of Lobanov normalisation is designed to work for datasets whether the vowel
 types have different token counts from one
 another. The Lobanov 2.0 value for a vowel is given by \deqn{F_{lobanov2.0_i}
@@ -45,5 +45,8 @@ head(normed_vowels)
 
 }
 \references{
-\insertAllCited{}
+Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+Systematic co-variation of monophthongs across speakers of New Zealand
+English. Journal of Phonetics. Elsevier. 88. 101096.
+doi:\href{https://doi.org/10.1016/j.wocn.2021.101096}{10.1016/j.wocn.2021.101096}.
 }

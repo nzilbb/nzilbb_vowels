@@ -4,7 +4,7 @@
 #' Component (PC). Variables are arranged by ascending contribution to the PC,
 #' where contribution is the squared loading for the variable expressed as a
 #' percentage. These plots match those given in supplementary material for
-#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+#' Brand et al. (2021).
 #'
 #' As with the other plotting functions in this package, the result is a
 #' `ggplot2` plot. It can be modified using `ggplot2` functions (see, e.g.,
@@ -37,7 +37,10 @@
 #'   pca_contrib_plot(onze_pca, pc_no = 2, cutoff = NULL)
 #'
 #' @references
-#'   \insertAllCited{}
+#'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+#'   Systematic co-variation of monophthongs across speakers of New Zealand
+#'   English. Journal of Phonetics. Elsevier. 88. 101096.
+#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
 #' @export
 pca_contrib_plot <- function(pca_object, pc_no=1, cutoff=50) {
 

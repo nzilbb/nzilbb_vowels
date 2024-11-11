@@ -9,8 +9,7 @@
 #' for FOOT is excluded due to low token counts.
 #'
 #' This dataset is derived from the data made available in the supplementary
-#' materials for
-#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+#' materials of Brand et al. (2021).
 #'
 #' @format A dataframe with 101572 rows and 8 variables:
 #' \describe{
@@ -27,7 +26,10 @@
 #' @importFrom Rdpack reprompt
 #'
 #' @references
-#'   \insertAllCited{}
+#'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+#'   Systematic co-variation of monophthongs across speakers of New Zealand
+#'   English. Journal of Phonetics. Elsevier. 88. 101096.
+#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
 "onze_vowels"
 
 #' Monophthong data for speakers from the ONZE corpus
@@ -41,8 +43,7 @@
 #' for FOOT is excluded due to low token counts.
 #'
 #' This dataset is derived from the data made available in the supplementary
-#' materials for
-#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+#' materials of Brand et al. (2021).
 #'
 #' @format A data frame with 414679 rows and 8 variables:
 #' \describe{
@@ -58,13 +59,16 @@
 #' @source \url{https://osf.io/q4j29/}
 #'
 #' @references
-#'   \insertAllCited{}
+#'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+#'   Systematic co-variation of monophthongs across speakers of New Zealand
+#'   English. Journal of Phonetics. Elsevier. 88. 101096.
+#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
 "onze_vowels_full"
 
 #' Speaker random intercepts from GAMMs for 100 ONZE speakers
 #'
 #' A dataset containing the speaker intercepts extracted from GAMM models fit in
-#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+#' Brand et al. (2021).
 #'
 #' @format A data frame with 100 rows and 21 variables: \describe{
 #'   \item{speaker}{Anonymised speaker code (character).}
@@ -92,13 +96,16 @@
 #' @source \url{https://osf.io/q4j29/}
 #'
 #' @references
-#'   \insertAllCited{}
+#'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+#'   Systematic co-variation of monophthongs across speakers of New Zealand
+#'   English. Journal of Phonetics. Elsevier. 88. 101096.
+#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
 "onze_intercepts"
 
 #' Speaker random intercepts for 418 ONZE speakers
 #'
 #' A dataset containing the speaker intercepts extracted from GAMM models fit in
-#' \insertCite{brandSystematicCovariationMonophthongs2021;textual}{nzilbb.vowels}.
+#' Brand et al. (2021).
 #'
 #' @format A data frame with 481 rows and 21 variables: \describe{
 #'   \item{speaker}{Anonymised speaker code.}
@@ -126,7 +133,10 @@
 #' @source \url{https://osf.io/q4j29/}
 #'
 #' @references
-#'   \insertAllCited{}
+#'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
+#'   Systematic co-variation of monophthongs across speakers of New Zealand
+#'   English. Journal of Phonetics. Elsevier. 88. 101096.
+#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
 "onze_intercepts_full"
 
 #' Formants from QuakeBox 1
@@ -135,7 +145,7 @@
 #' following segment data for 10 New Zealand English monophthongs, along with
 #' participant demographics.
 #'
-#' Original data was generated for \insertCite{Wilson_Black_2023;textual}{nzilbb.vowels}.
+#' Original data was generated for Wilson Black et al. (2023).
 #'
 #' @format A data frame with 26331 rows and 14 variables:
 #' \describe{
@@ -158,7 +168,10 @@
 #' @source \url{https://osf.io/m8nkh/}
 #'
 #' @references
-#'   \insertAllCited{}
+#'  Wilson Black, Joshua, Jennifer Hay, Lynn Clark & James Brand (2023): The
+#'  overlooked effect of amplitude on within-speaker vowel variation.
+#'  Linguistics Vanguard. Walter de Gruyter GmbH. 9(1). 173–189.
+#'  doi:[10.1515/lingvan-2022-0086](http://dx.doi.org/10.1515/lingvan-2022-0086).
 "qb_vowels"
 
 #' Formant and amplitude for intervals of QuakeBox monologues
@@ -172,7 +185,7 @@
 #' Formant data is z-scored by speaker and vowel, while the amplitude and
 #' articulation rate are z-scored by speaker.
 #'
-#' Original data was generated for \insertCite{Wilson_Black_2023;textual}{nzilbb.vowels}.
+#' Original data was generated for Wilson Black et al. (2023).
 #'
 #' @format A data frame with 53940 rows and 10 variables:
 #' \describe{
@@ -205,5 +218,8 @@
 #' @source \url{https://osf.io/m8nkh/}
 #'
 #' @references
-#'   \insertAllCited{}
+#'  Wilson Black, Joshua, Jennifer Hay, Lynn Clark & James Brand (2023): The
+#'  overlooked effect of amplitude on within-speaker vowel variation.
+#'  Linguistics Vanguard. Walter de Gruyter GmbH. 9(1). 173–189.
+#'  doi:[10.1515/lingvan-2022-0086](http://dx.doi.org/10.1515/lingvan-2022-0086).
 "qb_intervals"

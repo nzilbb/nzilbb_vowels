@@ -35,9 +35,12 @@ following segment data for 10 New Zealand English monophthongs, along with
 participant demographics.
 }
 \details{
-Original data was generated for \insertCite{Wilson_Black_2023;textual}{nzilbb.vowels}.
+Original data was generated for Wilson Black et al. (2023).
 }
 \references{
-\insertAllCited{}
+Wilson Black, Joshua, Jennifer Hay, Lynn Clark & James Brand (2023): The
+overlooked effect of amplitude on within-speaker vowel variation.
+Linguistics Vanguard. Walter de Gruyter GmbH. 9(1). 173–189.
+doi:\href{http://dx.doi.org/10.1515/lingvan-2022-0086}{10.1515/lingvan-2022-0086}.
 }
 \keyword{datasets}
