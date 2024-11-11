@@ -125,7 +125,7 @@ plot_pc_vs <- function(vowel_data, pca_obj, pc_no = 1, is_sig = FALSE) {
       arrow = arrow(length = unit(2, "mm")),
       linewidth = 1
     ) +
-    geom_label() +
+    geom_label(size=3, alpha=0.8) +
     scale_x_reverse(expand = expansion(mult = 0.1)) +
     scale_y_reverse(expand = expansion(mult = 0.1)) +
     labs(
