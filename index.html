@@ -14,8 +14,8 @@
 <link rel="apple-touch-icon" type="image/png" sizes="60x60" href="apple-touch-icon-60x60.png">
 <script src="deps/jquery-3.6.0/jquery-3.6.0.min.js"></script><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <link href="deps/bootstrap-5.3.1/bootstrap.min.css" rel="stylesheet">
-<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.4.2/css/all.min.css" rel="stylesheet">
-<link href="deps/font-awesome-6.4.2/css/v4-shims.min.css" rel="stylesheet">
+<script src="deps/bootstrap-5.3.1/bootstrap.bundle.min.js"></script><link href="deps/font-awesome-6.5.2/css/all.min.css" rel="stylesheet">
+<link href="deps/font-awesome-6.5.2/css/v4-shims.min.css" rel="stylesheet">
 <script src="deps/headroom-0.11.0/headroom.min.js"></script><script src="deps/headroom-0.11.0/jQuery.headroom.min.js"></script><script src="deps/bootstrap-toc-1.0.1/bootstrap-toc.min.js"></script><script src="deps/clipboard.js-2.0.11/clipboard.min.js"></script><script src="deps/search-1.0.0/autocomplete.jquery.min.js"></script><script src="deps/search-1.0.0/fuse.min.js"></script><script src="deps/search-1.0.0/mark.min.js"></script><script src="deps/MathJax-3.2.2/tex-chtml.min.js"></script><!-- pkgdown --><script src="pkgdown.js"></script><meta property="og:title" content="Functions and Data For Vowel Covariation Studies">
 <meta name="description" content="Data and functions to illustrate methods developed in recent studies Vowel covariation at the New Zealand Institute of Language, Brain, and Behaviour.">
 <meta property="og:description" content="Data and functions to illustrate methods developed in recent studies Vowel covariation at the New Zealand Institute of Language, Brain, and Behaviour.">
@@ -60,7 +60,8 @@
 </div>
 <!-- badges: start -->
 
-<p>This R package is designed to make it easier to carry out analysis of monophthong covariation.</p>
+<p>The <code>nzilbb.vowels</code> packages contains useful functions and data for the investigation of vocalic covariation. The core of the package is a set of functions to aid PCA-based studies of monophthongs.</p>
+<p>The package evolves along with ongoing research on vocalic covariation carried out at <a href="https://www.canterbury.ac.nz/research/about-uc-research/research-groups-and-centres/new-zealand-institute-of-language-brain-and-behaviour" class="external-link">NZILBB</a>.</p>
 <div class="section level2">
 <h2 id="installation">Installation<a class="anchor" aria-label="anchor" href="#installation"></a>
 </h2>
@@ -72,92 +73,43 @@
 <div class="section level2">
 <h2 id="example">Example<a class="anchor" aria-label="anchor" href="#example"></a>
 </h2>
-<div class="section level3">
-<h3 id="lobanov_2">
-<code>lobanov_2</code><a class="anchor" aria-label="anchor" href="#lobanov_2"></a>
-</h3>
-<p>Apply Lobanov 2.0 normalisation as developed in Brand et al. (2021). This variant of Lobanov normalisation is designed to work for datasets whether the vowel types have different token counts from one another. The Lobanov 2.0 value for a vowel is given by:</p>
-<p><span class="math display">\[F_{lobanov2.0_i} = \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}\]</span></p>
-<p>Where, for ease of notation, we assume all values are from a single speaker. We signify the <span class="math inline">\(n\)</span> vowel types as <span class="math inline">\(vowel_1, \ldots, vowel_2\)</span>, while <span class="math inline">\(i\)</span> indicates the formant number. We implement the function for <span class="math inline">\(F_1\)</span> and <span class="math inline">\(F_2\)</span>.</p>
-</div>
-<div class="section level3">
-<h3 id="pca_contrib_plot">
-<code>pca_contrib_plot</code><a class="anchor" aria-label="anchor" href="#pca_contrib_plot"></a>
-</h3>
-<p>Take a PCA object produced by <code>prcomp</code> and plot a PC by the percentage contribution of the original variables to the PC. For instance:</p>
-<p><img src="man/images/contrib_plot.png"></p>
-<p>A cutoff value of 50% is given by default. This highlights the collection of highest-contribution variables which account for 50% of the PC in question. This can be turned off by setting <code>cutoff = NULL</code>.</p>
-<p>The PC to plot is selected by the argument <code>pc_n</code>.</p>
-</div>
-<div class="section level3">
-<h3 id="permutation_test">
-<code>permutation_test</code><a class="anchor" aria-label="anchor" href="#permutation_test"></a>
-</h3>
-<p>This function runs a permutation test on a PCA analysis. Given data in a format acceptable by <code>prcomp</code> (a data frame with all numeric columns), the function repeats the analysis on <code>n</code> permutations of the data in each column. It returns an S3 object with attributes:</p>
-<ul>
-<li>
-<code>$permuted_variances</code> <code>n</code> x <code>pc_no</code> matrix of variances explained by first <code>pc_no</code> PCs in <code>n</code> permutations of original data.</li>
-<li>
-<code>$permuted_correlations</code> list of length <code>n</code> of significant pairwise correlations in <code>n</code> permutations of the data (&lt;= 0.05).</li>
-<li>
-<code>$actual_variances</code> <code>pc_n</code> x 2 tibble of variances explained by first <code>pc_n</code> PCs with original data.</li>
-<li>
-<code>$actual_correlations</code> the number of significant pairwise correlations (&lt;= 0.05) in the original data.</li>
-</ul>
-</div>
-<div class="section level3">
-<h3 id="plot_permutation_test">
-<code>plot_permutation_test</code><a class="anchor" aria-label="anchor" href="#plot_permutation_test"></a>
-</h3>
-<p>Plots the results of the permutation test. If argument <code>violin</code> is set to <code>FALSE</code>, then a the values for each permutation are connected with a line.</p>
-<p>For instance: <img src="man/images/permutation_plot.png"></p>
-<p>The plots for the number of significant correlations and for variance explained by each PC are joined together using the <code>patchwork</code> library.</p>
-<p><em>In the near future, this will be turned into a generic plot for the <code>permutation_test</code> class</em></p>
-</div>
-<div class="section level3">
-<h3 id="pca-vowel-space-visualisation">PCA Vowel Space Visualisation<a class="anchor" aria-label="anchor" href="#pca-vowel-space-visualisation"></a>
-</h3>
-<p><strong>TODO</strong></p>
-</div>
-<div class="section level3">
-<h3 id="fit-per-vowel-models">Fit Per-Vowel Models<a class="anchor" aria-label="anchor" href="#fit-per-vowel-models"></a>
-</h3>
-<p><strong>TODO</strong></p>
-</div>
-<div class="section level3">
-<h3 id="extract-by-speaker-intercepts">Extract By-Speaker Intercepts<a class="anchor" aria-label="anchor" href="#extract-by-speaker-intercepts"></a>
-</h3>
-<p><strong>TODO</strong></p>
-</div>
+<div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://joshuawilsonblack.github.io/nzilbb_vowels/">nzilbb.vowels</a></span><span class="op">)</span></span>
+<span><span class="co">#&gt; Loading required package: patchwork</span></span>
+<span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu">ggplot2</span><span class="fu">::</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># normalise vowels using Lobanov 2.0 normalisation (see Brand et al. (2021))</span></span>
+<span><span class="va">onze_vowels</span> <span class="op">&lt;-</span> <span class="va">onze_vowels</span> <span class="op">|&gt;</span> </span>
+<span>  <span class="fu"><a href="reference/lobanov_2.html">lobanov_2</a></span><span class="op">(</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># apply PCA to random intercepts from GAMM models (again, from Brand et al. (2021))</span></span>
+<span><span class="va">onze_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span></span>
+<span>  <span class="va">onze_intercepts</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span>,</span>
+<span>  scale <span class="op">=</span> <span class="cn">TRUE</span></span>
+<span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Test PCA using bootstrapping approach (see Wilson Black et al. (2022))</span></span>
+<span><span class="va">onze_pca_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="reference/pca_test.html">pca_test</a></span><span class="op">(</span><span class="va">onze_intercepts</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span><span class="op">)</span></span>
+<span></span>
+<span><span class="co"># Plot variance explained by each PC.</span></span>
+<span><span class="fu"><a href="reference/plot_variance_explained.html">plot_variance_explained</a></span><span class="op">(</span><span class="va">onze_pca_test</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-2-1.png" width="100%"></p>
+<div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Plot index loadings of PC1</span></span>
+<span><span class="fu"><a href="reference/plot_loadings.html">plot_loadings</a></span><span class="op">(</span><span class="va">onze_pca_test</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-2-2.png" width="100%"></p>
+<div class="sourceCode" id="cb4"><pre class="downlit sourceCode r">
+<code class="sourceCode R"><span></span>
+<span><span class="co"># Plot PC in vowel space</span></span>
+<span><span class="fu"><a href="reference/plot_pc_vs.html">plot_pc_vs</a></span><span class="op">(</span><span class="va">onze_vowels</span>, <span class="va">onze_pca_test</span><span class="op">)</span></span></code></pre></div>
+<p><img src="reference/figures/README-unnamed-chunk-2-3.png" width="100%"></p>
+<p>For more information, see <a href="https://compass.onlinelibrary.wiley.com/doi/full/10.1111/lnc3.12479" class="external-link">Wilson Black et al. (2022)</a> and associated <a href="https://nzilbb.github.io/PCA_method_supplementary/PCA_method_supplementary.html" class="external-link">supplementary material</a>.</p>
 </div>
 <div class="section level2">
-<h2 id="packaged-data">Packaged Data<a class="anchor" aria-label="anchor" href="#packaged-data"></a>
+<h2 id="rstudio-add-in">RStudio Add-in<a class="anchor" aria-label="anchor" href="#rstudio-add-in"></a>
 </h2>
-<p>The package includes two pairs of datasets. One is designed to allow exploration of analysis in the style of Brand et al. (2021), the second is designed to follow the analysis of Wilson Black et al. (2022).</p>
-<ol style="list-style-type: decimal">
-<li>A sample of 100 speakers from ONZE.
-<ul>
-<li>
-<code>onze_vowels</code>: the mean F1 and F2 values for 100 speakers in the ONZE corpus, with 50 born at or before 1920 and 50 after.</li>
-<li>
-<code>onze_intercepts</code>: random intercepts for the 100 speakers in <code>onze_means</code>. Intercepts generated by Brand et al. (2021).</li>
-</ul>
-</li>
-<li>A sample of 77 speakers from QuakeBox, with 11 in each age category.
-<ul>
-<li>
-<code>qb_vowels</code>: vowel tokens for speaker monologues after filtering to remove unstressed tokens, stop words, and outliers.</li>
-<li>
-<code>qb_intervals</code>: monologues divided into 60 and 240 second intervals for the same speakers as <code>qb_vowels</code>.</li>
-</ul>
-</li>
-</ol>
-<p>It is recommended to use these datasets in order to try out methods. We do not recommend that these are directly used for research. Full anonymised datasets are given in supplementary data for Brand et al. (2021) and Wilson Black et al. (under review). If you are interested in research on the basis of the ONZE or QuakeBox corpora, contact <a href="https://www.canterbury.ac.nz/nzilbb/" class="external-link">NZILBB</a>.</p>
-</div>
-<div class="section level2">
-<h2 id="rstudio-addin">RStudio Addin<a class="anchor" aria-label="anchor" href="#rstudio-addin"></a>
-</h2>
-<p>It is often useful to have Wells lexical sets in small capitals in R Markdown documents. The way to achieve this manually is to add “<span class="smallcaps">vowel</span>”. This package includes an RStudio add in, which can be attached to a keyboard shortcut, to quickly include this code within an R Markdown document. For instance:</p>
+<p>It is often useful to have Wells lexical sets in small capitals in R Markdown documents. The way to achieve this manually is to add “<span class="smallcaps">vowel</span>”. This package includes an RStudio add in, which can be attached to a keyboard shortcut. (see ‘Addins’ at the top of the RStudio window). This add in works for both Quarto and RMarkdown files.</p>
 <p><img src="man/images/addin.png"></p>
 </div>
 </div>
