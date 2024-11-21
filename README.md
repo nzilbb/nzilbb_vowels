@@ -82,4 +82,4 @@ add in, which can be attached to a keyboard shortcut. (see ‘Addins’ at
 the top of the RStudio window). This add in works for both Quarto and
 RMarkdown files.
 
-![](man/images/addin.png)
+<img src="man/figures/README-addin.png" width="100%" />
