@@ -8,8 +8,13 @@
 [![R-CMD-check](https://github.com/JoshuaWilsonBlack/nzilbb_vowels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JoshuaWilsonBlack/nzilbb_vowels/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-This R package is designed to make it easier to carry out analysis of
-monophthong covariation.
+The `nzilbb.vowels` packages contains useful functions and data for the
+investigation of vocalic covariation. The core of the package is a set
+of functions to aid PCA-based studies of monophthongs.
+
+The package evolves along with ongoing research on vocalic covariation
+carried out at
+[NZILBB](https://www.canterbury.ac.nz/research/about-uc-research/research-groups-and-centres/new-zealand-institute-of-language-brain-and-behaviour).
 
 ## Installation
 
@@ -23,105 +28,58 @@ devtools::install_github("JoshuaWilsonBlack/nzilbb_vowels")
 
 ## Example
 
-### `lobanov_2`
+``` r
+library(nzilbb.vowels)
+#> Loading required package: patchwork
+ggplot2::theme_set(ggplot2::theme_bw())
 
-Apply Lobanov 2.0 normalisation as developed in Brand et al. (2021).
-This variant of Lobanov normalisation is designed to work for datasets
-whether the vowel types have different token counts from one another.
-The Lobanov 2.0 value for a vowel is given by:
+# normalise vowels using Lobanov 2.0 normalisation (see Brand et al. (2021))
+onze_vowels <- onze_vowels |> 
+  lobanov_2()
 
-$$F_{lobanov2.0_i} = \frac{F_{raw_i} - \mu(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}{\sigma(\mu_{vowel_1}, \ldots, \mu_{vowel_n})}$$
+# apply PCA to random intercepts from GAMM models (again, from Brand et al. (2021))
+onze_pca <- prcomp(
+  onze_intercepts |> dplyr::select(-speaker),
+  scale = TRUE
+)
 
-Where, for ease of notation, we assume all values are from a single
-speaker. We signify the $n$ vowel types as $vowel_1, \ldots, vowel_2$,
-while $i$ indicates the formant number. We implement the function for
-$F_1$ and $F_2$.
+# Test PCA using bootstrapping approach (see Wilson Black et al. (2022))
+onze_pca_test <- pca_test(onze_intercepts |> dplyr::select(-speaker))
 
-### `pca_contrib_plot`
+# Plot variance explained by each PC.
+plot_variance_explained(onze_pca_test)
+```
 
-Take a PCA object produced by `prcomp` and plot a PC by the percentage
-contribution of the original variables to the PC. For instance:
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
-![](man/images/contrib_plot.png)
+``` r
 
-A cutoff value of 50% is given by default. This highlights the
-collection of highest-contribution variables which account for 50% of
-the PC in question. This can be turned off by setting `cutoff = NULL`.
+# Plot index loadings of PC1
+plot_loadings(onze_pca_test)
+```
 
-The PC to plot is selected by the argument `pc_n`.
+<img src="man/figures/README-unnamed-chunk-2-2.png" width="100%" />
 
-### `permutation_test`
+``` r
 
-This function runs a permutation test on a PCA analysis. Given data in a
-format acceptable by `prcomp` (a data frame with all numeric columns),
-the function repeats the analysis on `n` permutations of the data in
-each column. It returns an S3 object with attributes:
+# Plot PC in vowel space
+plot_pc_vs(onze_vowels, onze_pca_test)
+```
 
-- `$permuted_variances` `n` x `pc_no` matrix of variances explained by
-  first `pc_no` PCs in `n` permutations of original data.
-- `$permuted_correlations` list of length `n` of significant pairwise
-  correlations in `n` permutations of the data (\<= 0.05).
-- `$actual_variances` `pc_n` x 2 tibble of variances explained by first
-  `pc_n` PCs with original data.
-- `$actual_correlations` the number of significant pairwise correlations
-  (\<= 0.05) in the original data.
+<img src="man/figures/README-unnamed-chunk-2-3.png" width="100%" />
 
-### `plot_permutation_test`
+For more information, see [Wilson Black et
+al. (2022)](https://compass.onlinelibrary.wiley.com/doi/full/10.1111/lnc3.12479)
+and associated [supplementary
+material](https://nzilbb.github.io/PCA_method_supplementary/PCA_method_supplementary.html).
 
-Plots the results of the permutation test. If argument `violin` is set
-to `FALSE`, then a the values for each permutation are connected with a
-line.
-
-For instance: ![](man/images/permutation_plot.png)
-
-The plots for the number of significant correlations and for variance
-explained by each PC are joined together using the `patchwork` library.
-
-*In the near future, this will be turned into a generic plot for the
-`permutation_test` class*
-
-### PCA Vowel Space Visualisation
-
-**TODO**
-
-### Fit Per-Vowel Models
-
-**TODO**
-
-### Extract By-Speaker Intercepts
-
-**TODO**
-
-## Packaged Data
-
-The package includes two pairs of datasets. One is designed to allow
-exploration of analysis in the style of Brand et al. (2021), the second
-is designed to follow the analysis of Wilson Black et al. (2022).
-
-1.  A sample of 100 speakers from ONZE.
-    - `onze_vowels`: the mean F1 and F2 values for 100 speakers in the
-      ONZE corpus, with 50 born at or before 1920 and 50 after.
-    - `onze_intercepts`: random intercepts for the 100 speakers in
-      `onze_means`. Intercepts generated by Brand et al. (2021).
-2.  A sample of 77 speakers from QuakeBox, with 11 in each age category.
-    - `qb_vowels`: vowel tokens for speaker monologues after filtering
-      to remove unstressed tokens, stop words, and outliers.
-    - `qb_intervals`: monologues divided into 60 and 240 second
-      intervals for the same speakers as `qb_vowels`.
-
-It is recommended to use these datasets in order to try out methods. We
-do not recommend that these are directly used for research. Full
-anonymised datasets are given in supplementary data for Brand et
-al. (2021) and Wilson Black et al. (under review). If you are interested
-in research on the basis of the ONZE or QuakeBox corpora, contact
-[NZILBB](https://www.canterbury.ac.nz/nzilbb/).
-
-## RStudio Addin
+## RStudio Add-in
 
 It is often useful to have Wells lexical sets in small capitals in R
 Markdown documents. The way to achieve this manually is to add
 “<span class="smallcaps">vowel</span>”. This package includes an RStudio
-add in, which can be attached to a keyboard shortcut, to quickly include
-this code within an R Markdown document. For instance:
+add in, which can be attached to a keyboard shortcut. (see ‘Addins’ at
+the top of the RStudio window). This add in works for both Quarto and
+RMarkdown files.
 
 ![](man/images/addin.png)
