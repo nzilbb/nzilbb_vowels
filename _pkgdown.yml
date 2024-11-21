@@ -3,3 +3,37 @@ template:
   bootstrap: 5
   math-rendering: mathjax
 
+reference:
+  - title: Data manipulation and generation
+    desc: >
+      Functions for manipulating or generating data.
+    contents:
+      - lobanov_2
+      - pc_flip
+      - correlation_test
+      - pca_test
+      - permutation_test
+      - summary.correlation_test
+  - title: Plotting functions
+    desc: >
+      Functions for plotting.
+    contents:
+      - plot_correlation_counts
+      - plot_correlation_magnitudes
+      - plot_loadings
+      - plot_pc_input
+      - plot_pc_vs
+      - plot_vowel_space
+      - plot_permutation_test
+      - plot_variance_explained
+      - pca_contrib_plot
+  - title: Datasets
+    desc: >
+      Included datasets.
+    contents:
+      - onze_vowels
+      - onze_vowels_full
+      - onze_intercepts
+      - onze_intercepts_full
+      - qb_vowels
+      - qb_intervals
