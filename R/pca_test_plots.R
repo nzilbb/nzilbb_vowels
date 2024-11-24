@@ -117,7 +117,7 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
     filter(
       .data$distribution == .data$distribution_2
     ) |>
-    select(-.data$distribution_2) |>
+    select(-"distribution_2") |>
     mutate(
       distribution = if_else(
         str_detect(.data$distribution, 'null'),
@@ -296,7 +296,7 @@ plot_loadings <- function(
       filter(
         .data$distribution == .data$distribution_2
       ) |>
-      select(-.data$distribution_2) |>
+      select(-"distribution_2") |>
       mutate(
         distribution = if_else(
           str_detect(.data$distribution, 'null'),
