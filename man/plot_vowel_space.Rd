@@ -45,8 +45,20 @@ TRUE.}
 Given vowel data with the first column identifying speakers, the second
 identifying vowels, the third containing F1 and the fourth containing F2
 values, plot a vowel space using the speaker's mean values for each vowel.
+Typically it is best to produce a plot from scratch. The primary purpose of
+this function is to generate quick plots for interactive use, rather than to
+produce plots for publication.
 }
 \examples{
-\dontrun{pca_contrib_plot(pca_object, pc_no=1, cutoff=50)}
-\dontrun{pca_contrib_plot(pca_object, pc_no=2, cutoff=70)}
+# Plot mean vowel space across
+plot_vowel_space(
+  onze_vowels,
+  speakers = NULL,
+  vowel_colours = NULL,
+  label_size = 4,
+  means_only = TRUE,
+  ellipses = FALSE,
+  point_alpha = 0.1,
+  facet = FALSE
+ )
 }
