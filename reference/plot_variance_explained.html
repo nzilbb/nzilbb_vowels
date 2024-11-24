@@ -32,7 +32,7 @@ function."><meta property="og:image" content="https://joshuawilsonblack.github.i
 </nav><div class="container template-reference-topic">
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
-      <img src="../logo.png" class="logo" alt=""><h1>Create plot of variances explained from pca_test object</h1>
+      <img src="../logo.png" class="logo" alt=""><h1>Create plot of variances explained from <code>pca_test</code> object</h1>
 
       <div class="d-none name"><code>plot_variance_explained.Rd</code></div>
     </div>
@@ -72,15 +72,20 @@ FALSE, represent as eigenvalues.</p></dd>
     </div>
     <div class="section level2">
     <h2 id="details">Details<a class="anchor" aria-label="anchor" href="#details"></a></h2>
-    <p>By default the variance explained is represented as a percentage. If the
-option percent is set to FALSE, then the variance explained is represented
-by the eigenvalues corresponding to each PC.</p>
+    <p>By default, variance explained is represented as a percentage. If the
+argument <code>percent</code> is set to FALSE, then the variance explained is
+represented by the eigenvalues corresponding to each PC.</p>
     </div>
 
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">plot_variance_explained</span><span class="op">(</span><span class="va">pca_object</span><span class="op">)</span> <span class="co"># \dontrun{}</span></span></span>
-<span class="r-in"><span><span class="kw">if</span> <span class="op">(</span><span class="cn">FALSE</span><span class="op">)</span> <span class="fu">plot_variance_explained</span><span class="op">(</span><span class="va">pca_object</span>, pc_max<span class="op">=</span><span class="fl">5</span>, percent<span class="op">=</span><span class="cn">FALSE</span><span class="op">)</span> <span class="co"># \dontrun{}</span></span></span>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="va">onze_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="pca_test.html">pca_test</a></span><span class="op">(</span><span class="va">onze_intercepts</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="co"># Plot with percentages</span></span></span>
+<span class="r-in"><span>  <span class="fu">plot_variance_explained</span><span class="op">(</span><span class="va">onze_pca</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="plot_variance_explained-1.png" alt="" width="700" height="433"></span>
+<span class="r-in"><span>  <span class="co"># Plot with eigenvalues and only the first 5 PCs.</span></span></span>
+<span class="r-in"><span>  <span class="fu">plot_variance_explained</span><span class="op">(</span><span class="va">onze_pca</span>, pc_max <span class="op">=</span> <span class="fl">5</span>, percent <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></span>
+<span class="r-plt img"><img src="plot_variance_explained-2.png" alt="" width="700" height="433"></span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>
