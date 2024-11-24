@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_permutation_test.R
 \name{plot_permutation_test}
 \alias{plot_permutation_test}
-\title{Create plot of results of permutation test.}
+\title{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Create plot from \code{\link[=permutation_test]{permutation_test()}}.}
 \usage{
 plot_permutation_test(permutation_results, violin = FALSE)
 }
@@ -20,9 +20,16 @@ explain by subsequent PCs. Default value is \code{FALSE}.}
 \code{ggplot} object.
 }
 \description{
-Plots results of a permutation test carried out with the \code{permutation_test}
+Plots results of a permutation test carried out with the \code{\link[=permutation_test]{permutation_test()}}
 function.
 }
 \examples{
-\dontrun{plot_permutation_test(permutation_results)}
+onze_perm <- permutation_test(
+  onze_intercepts |> dplyr::select(-speaker),
+  pc_n = 5,
+  n = 10,
+  scale = TRUE,
+  cor.method = 'pearson'
+ )
+plot_permutation_test(onze_perm)
 }

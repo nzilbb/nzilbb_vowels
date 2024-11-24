@@ -1,6 +1,6 @@
-#' Create plot of results of permutation test.
+#' `r lifecycle::badge('superseded')` Create plot from [permutation_test()].
 #'
-#' Plots results of a permutation test carried out with the `permutation_test`
+#' Plots results of a permutation test carried out with the [permutation_test()]
 #' function.
 #'
 #' @param permutation_results object of class `permutation_results`.
@@ -20,7 +20,14 @@
 #' @importFrom magrittr %>%
 #' @importFrom patchwork plot_annotation
 #' @examples
-#' \dontrun{plot_permutation_test(permutation_results)}
+#' onze_perm <- permutation_test(
+#'   onze_intercepts |> dplyr::select(-speaker),
+#'   pc_n = 5,
+#'   n = 10,
+#'   scale = TRUE,
+#'   cor.method = 'pearson'
+#'  )
+#' plot_permutation_test(onze_perm)
 #' @export
 plot_permutation_test <- function(permutation_results, violin = FALSE) {
 
