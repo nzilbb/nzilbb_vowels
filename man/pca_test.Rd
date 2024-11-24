@@ -58,14 +58,12 @@ See \code{\link[=plot_loadings]{plot_loadings()}} and \code{\link[=plot_variance
 functions.
 }
 \examples{
-\dontrun{
-  onze_pca <- pca_test(
-    onze_intercepts |> dplyr::select(-speaker),
-    n = 10,
-    scale = TRUE
-  )
-  summary(onze_pca)
-}
+onze_pca <- pca_test(
+  onze_intercepts |> dplyr::select(-speaker),
+  n = 10,
+  scale = TRUE
+)
+summary(onze_pca)
 }
 \references{
 Camargo, Arley (2022),

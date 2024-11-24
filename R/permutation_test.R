@@ -1,11 +1,11 @@
-#' Run permutation test on PCA analysis.
+#' `r lifecycle::badge('superseded')` Run permutation test on PCA analysis.
 #'
 #' Permute data fed to PCA a given number of times, collecting the number of
 #' significant pairwise correlations in the permuted data and the variances
 #' explained for a given number of PCs.
 #'
-#' **Superseded by the `correlation_test` function for pairwise correlations and
-#' the `pca_test` function for variance explained and loadings.
+#' `r lifecycle::badge('superseded')` Use [correlation_test()] for pairwise
+#' correlations and [pca_test()] for variance explained and loadings.
 #'
 #' @param pca_data data fed to the `prcomp` function. Remove non-continuous variables.
 #' @param pc_n the number of PCs to collect variance explained from.
@@ -31,8 +31,14 @@
 #' @importFrom tidyr expand
 #' @importFrom tidyselect everything
 #' @examples
-#' \dontrun{permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')}
-#' \dontrun{permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = 'spearman')}
+#' permutation_test(
+#'   onze_intercepts |> dplyr::select(-speaker),
+#'   pc_n = 5,
+#'   n = 10,
+#'   scale = TRUE,
+#'   cor.method = 'pearson'
+#'  )
+#'
 #' @export
 permutation_test <- function(
   pca_data, pc_n = 5, n=100, scale = TRUE, cor.method = 'pearson'

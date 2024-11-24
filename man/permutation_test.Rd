@@ -2,7 +2,7 @@
 % Please edit documentation in R/permutation_test.R
 \name{permutation_test}
 \alias{permutation_test}
-\title{Run permutation test on PCA analysis.}
+\title{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Run permutation test on PCA analysis.}
 \usage{
 permutation_test(
   pca_data,
@@ -44,10 +44,16 @@ significant pairwise correlations in the permuted data and the variances
 explained for a given number of PCs.
 }
 \details{
-**Superseded by the \code{correlation_test} function for pairwise correlations and
-the \code{pca_test} function for variance explained and loadings.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Use \code{\link[=correlation_test]{correlation_test()}} for pairwise
+correlations and \code{\link[=pca_test]{pca_test()}} for variance explained and loadings.
 }
 \examples{
-\dontrun{permutation_test(pca_data, pc_n = 5, n = 100, scale = TRUE, cor.method = 'pearson')}
-\dontrun{permutation_test(pca_data, pc_n = 10, n = 500, scale = FALSE, cor.method = 'spearman')}
+permutation_test(
+  onze_intercepts |> dplyr::select(-speaker),
+  pc_n = 5,
+  n = 10,
+  scale = TRUE,
+  cor.method = 'pearson'
+ )
+
 }

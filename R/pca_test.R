@@ -45,14 +45,12 @@
 #' @importFrom stats na.omit
 #' @importFrom glue glue
 #' @examples
-#' \dontrun{
-#'   onze_pca <- pca_test(
-#'     onze_intercepts |> dplyr::select(-speaker),
-#'     n = 10,
-#'     scale = TRUE
-#'   )
-#'   summary(onze_pca)
-#' }
+#' onze_pca <- pca_test(
+#'   onze_intercepts |> dplyr::select(-speaker),
+#'   n = 10,
+#'   scale = TRUE
+#' )
+#' summary(onze_pca)
 #' @references Camargo, Arley (2022),
 #'   PCAtest: testing the statistical significance of Principal Component
 #'   Analysis in R. _PeerJ_ 10. e12967.
