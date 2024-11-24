@@ -18,37 +18,53 @@ pca_test(
 \item{n}{the number of times to permute and bootstrap that data. \strong{Warning:} high values
 will take a long time to compute.}
 
-\item{scale}{whether the PCA variables should be scaled (default = TRUE).}
+\item{scale}{whether the PCA variables should be scaled (default: TRUE).}
 
-\item{variance_confint}{size of confidence intervals for variance explained.}
+\item{variance_confint}{size of confidence intervals for variance explained
+(default: 0.95).}
 
-\item{loadings_confint}{size of confidence intervals for index loadings.}
+\item{loadings_confint}{size of confidence intervals for index loadings
+(default: 0.9).}
 }
 \value{
-object of class \code{pca_test}
+object of class \code{pca_test}, containing:
 \itemize{
-\item \verb{$variance_explained} a tibble
-\item \verb{$index_loadings} list of length n of significant pairwise
-correlations in n permutations of the data (<= 0.05).
+\item \verb{$variance} a tibble containing the variances explained and confidence
+intervals for each PC.
+\item \verb{$loadings} a tibble containing the index loadings and confidence intervals
+for each variable and PC.
+\item \verb{$raw_data} a tibble containing the variance explained and loadings for
+each bootstrapped and permuted analysis.
+\item \verb{$variance_confint} confidence intervals applied to variance explained.
+\item \verb{$loadings_confint} confidence interval applied to loadings.
+\item \verb{$n} the number of iterations of both permutation and bootstrapping.
 }
 }
 \description{
-Permute and bootstrap data fed to PCA a given number of times. Bootstrapped
-data is used to estimate confidence bands for variance explained by each PC
-and for each loading. Squared loadings are multiplied by the squared
-eigenvalue of the relevant PC. This ranks the loadings of PCs which explain
-a lot of variance higher than those from PCs which explain less. This
-approach to PCA testing follows Carmago (2022) and Vieria (2012). This
-approach differs from Carmago's PCAtest package by splitting up the data and
-plotting functions and adopting more of the 'tidyverse' dialect.
+Permute and bootstrap data fed to PCA \code{n} times. Bootstrapped data is used to
+estimate confidence bands for variance explained by each PC and for each
+loading. Squared loadings are multiplied by the squared eigenvalue of the
+relevant PC. This ranks the loadings of PCs which explain a lot of variance
+higher than those from PCs which explain less. This approach to PCA testing
+follows Carmago (2022) and Vieria (2012). This approach differs from
+Carmago's PCAtest package by separating data generation and plotting.
+}
+\details{
+Default confidence bands on variance explained at 0.95 (i.e. alpha of 0.05).
+In line with Vieria (2012), the default confidence bands on the index
+loadings are at 0.9.
+
+See \code{\link[=plot_loadings]{plot_loadings()}} and \code{\link[=plot_variance_explained]{plot_variance_explained()}} for useful plotting
+functions.
 }
 \examples{
-\dontrun{pca_test(
-    pca_data,
-    n = 100,
-    scale = TRUE,
-    variance_confint = 0.95,
-    loadings_confint = 0.9)
+\dontrun{
+  onze_pca <- pca_test(
+    onze_intercepts |> dplyr::select(-speaker),
+    n = 10,
+    scale = TRUE
+  )
+  summary(onze_pca)
 }
 }
 \references{
