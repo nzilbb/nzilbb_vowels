@@ -2,7 +2,7 @@
 % Please edit documentation in R/pca_test_plots.R
 \name{plot_variance_explained}
 \alias{plot_variance_explained}
-\title{Create plot of variances explained from pca_test object}
+\title{Create plot of variances explained from \code{pca_test} object}
 \usage{
 plot_variance_explained(pca_test, pc_max = NA, percent = TRUE)
 }
@@ -24,11 +24,14 @@ permutation. The function accepts the result of calling the \code{pca_test}
 function.
 }
 \details{
-By default the variance explained is represented as a percentage. If the
-option percent is set to FALSE, then the variance explained is represented
-by the eigenvalues corresponding to each PC.
+By default, variance explained is represented as a percentage. If the
+argument \code{percent} is set to FALSE, then the variance explained is
+represented by the eigenvalues corresponding to each PC.
 }
 \examples{
-\dontrun{plot_variance_explained(pca_object)}
-\dontrun{plot_variance_explained(pca_object, pc_max=5, percent=FALSE)}
+  onze_pca <- pca_test(onze_intercepts |> dplyr::select(-speaker), n = 10)
+  # Plot with percentages
+  plot_variance_explained(onze_pca)
+  # Plot with eigenvalues and only the first 5 PCs.
+  plot_variance_explained(onze_pca, pc_max = 5, percent = FALSE)
 }
