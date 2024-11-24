@@ -1,9 +1,13 @@
 #' Plot Scores from Significant PCs Against PCA Input
 #'
-#' It is useful to see the relationship between PCs and the raw values of the
-#' input data fed into PCA. This function takes the results of running
-#' `pca_test` the scores for each speaker from the pca object, and the raw
-#' data fed into the PCA analysis.
+#' It is sometimes useful to see the relationship between PCs and the raw values
+#' of the input data fed into PCA. This function takes the results of running
+#' `pca_test`, the scores for each speaker from the pca object, and the raw data
+#' fed into the PCA analysis. In the usual model-to-pca analysis pipeline, the
+#' resulting plot depicts by-speaker random intercepts for each vowel and an
+#' indication of which variables are significantly loaded onto the PCs. It
+#' allows the researcher to visualise the strength of the relationship between
+#' intercepts and PC scores.
 #' @param pca_object Output of `prcomp`.
 #' @param pca_data Data fed into `prcomp`. This should not include speaker identifiers.
 #' @param pca_test Output of `pca_test`
@@ -15,29 +19,35 @@
 #' @importFrom tidyr pivot_longer separate
 #' @importFrom stringr str_detect
 #' @importFrom rlang .data
+#' @examples
+#' pca_data <- onze_intercepts |> dplyr::select(-speaker)
+#' onze_pca <- prcomp(pca_data, scale = TRUE)
+#' onze_pca_test <- pca_test(pca_data, n = 10)
+#' plot_pc_input(onze_pca, pca_data, onze_pca_test)
+#'
 #' @export
 plot_pc_input <- function(pca_object, pca_data, pca_test) {
 
-  pca_data_scores <- pca_data %>%
+  pca_data_scores <- pca_data |>
     bind_cols(as_tibble(pca_object$x))
 
-  plot_data <- pca_data_scores %>%
+  plot_data <- pca_data_scores |>
     pivot_longer(
       cols = contains("PC"),
       names_to = "PC",
       values_to = "PC_score"
-    ) %>%
+    ) |>
     pivot_longer(
       cols = names(pca_data),
       names_to = "variable",
       values_to = "value"
-    ) %>%
+    ) |>
     separate(
       col = .data$variable,
       into = c("var_1", "var_2"),
       sep = "_",
       remove = FALSE
-    ) %>%
+    ) |>
     mutate(
       vowel = if_else(
         str_detect(.data$var_1, "F[0-9]+"),
@@ -49,22 +59,22 @@ plot_pc_input <- function(pca_object, pca_data, pca_test) {
         .data$var_1,
         .data$var_2
       )
-    ) %>%
+    ) |>
     left_join(
-      pca_test$loadings %>%
+      pca_test$loadings |>
         select(.data$PC, .data$variable, .data$sig_loading),
       by = c("PC", "variable")
-    ) %>%
+    ) |>
     mutate(
       sig_loading = if_else(.data$sig_loading, "Significant", "Not significant")
-    ) %>%
+    ) |>
     filter(
-      .data$PC %in% (pca_test$variance %>%
-        filter(.data$sig_PC) %>%
+      .data$PC %in% (pca_test$variance |>
+        filter(.data$sig_PC) |>
         pull(.data$PC))
     )
 
-  plot_data %>%
+  plot_data |>
     ggplot(
       aes(
         x = .data$PC_score,

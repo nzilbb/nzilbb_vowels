@@ -14,8 +14,19 @@ plot_pc_input(pca_object, pca_data, pca_test)
 \item{pca_test}{Output of \code{pca_test}}
 }
 \description{
-It is useful to see the relationship between PCs and the raw values of the
-input data fed into PCA. This function takes the results of running
-\code{pca_test} the scores for each speaker from the pca object, and the raw
-data fed into the PCA analysis.
+It is sometimes useful to see the relationship between PCs and the raw values
+of the input data fed into PCA. This function takes the results of running
+\code{pca_test}, the scores for each speaker from the pca object, and the raw data
+fed into the PCA analysis. In the usual model-to-pca analysis pipeline, the
+resulting plot depicts by-speaker random intercepts for each vowel and an
+indication of which variables are significantly loaded onto the PCs. It
+allows the researcher to visualise the strength of the relationship between
+intercepts and PC scores.
+}
+\examples{
+pca_data <- onze_intercepts |> dplyr::select(-speaker)
+onze_pca <- prcomp(pca_data, scale = TRUE)
+onze_pca_test <- pca_test(pca_data, n = 10)
+plot_pc_input(onze_pca, pca_data, onze_pca_test)
+
 }
