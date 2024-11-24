@@ -45,7 +45,8 @@ Imports:
     ggrepel,
     gghalves,
     smacof,
-    Rdpack
+    Rdpack,
+    lifecycle
 RdMacros: Rdpack
 VignetteBuilder: knitr
 URL: https://joshuawilsonblack.github.io/nzilbb_vowels/
