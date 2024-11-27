@@ -2,7 +2,7 @@
 % Please edit documentation in R/plot_permutation_test.R
 \name{plot_permutation_test}
 \alias{plot_permutation_test}
-\title{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Create plot from \code{\link[=permutation_test]{permutation_test()}}.}
+\title{Create plot from \code{\link[=permutation_test]{permutation_test()}}.}
 \usage{
 plot_permutation_test(permutation_results, violin = FALSE)
 }
@@ -20,8 +20,9 @@ explain by subsequent PCs. Default value is \code{FALSE}.}
 \code{ggplot} object.
 }
 \description{
-Plots results of a permutation test carried out with the \code{\link[=permutation_test]{permutation_test()}}
-function.
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Plots results of a permutation test
+carried out with the \code{\link[=permutation_test]{permutation_test()}} function. Now use either
+\code{\link[=correlation_test]{correlation_test()}} or \code{\link[=pca_test]{pca_test()}} and the associated plotting functions.
 }
 \examples{
 onze_perm <- permutation_test(

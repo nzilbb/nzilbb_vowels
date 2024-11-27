@@ -1,7 +1,8 @@
-#' `r lifecycle::badge('superseded')` Create plot from [permutation_test()].
+#' Create plot from [permutation_test()].
 #'
-#' Plots results of a permutation test carried out with the [permutation_test()]
-#' function.
+#' `r lifecycle::badge('superseded')` Plots results of a permutation test
+#' carried out with the [permutation_test()] function. Now use either
+#' [correlation_test()] or [pca_test()] and the associated plotting functions.
 #'
 #' @param permutation_results object of class `permutation_results`.
 #' @param violin Determines whether the variances explained are depicted by

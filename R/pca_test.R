@@ -23,7 +23,7 @@
 #' (default: 0.95).
 #' @param loadings_confint size of confidence intervals for index loadings
 #' (default: 0.9).
-#' @returns object of class `pca_test`, containing:
+#' @returns object of class `pca_test_results`, containing:
 #' * `$variance` a tibble containing the variances explained and confidence
 #' intervals for each PC.
 #' * `$loadings` a tibble containing the index loadings and confidence intervals

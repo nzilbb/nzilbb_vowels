@@ -223,3 +223,12 @@
 #'  Linguistics Vanguard. Walter de Gruyter GmbH. 9(1). 173–189.
 #'  doi:[10.1515/lingvan-2022-0086](http://dx.doi.org/10.1515/lingvan-2022-0086).
 "qb_intervals"
+
+#' Similarity matrix from online perception test.
+#'
+#' Mean similarity ratings for 38 QuakeBox speakers from an online pairwise
+#' similarity task. Random noise added.
+#'
+#' @format A 38x38 matrix
+#'
+"sim_matrix"

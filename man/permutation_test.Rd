@@ -2,7 +2,7 @@
 % Please edit documentation in R/permutation_test.R
 \name{permutation_test}
 \alias{permutation_test}
-\title{\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Run permutation test on PCA analysis.}
+\title{Run permutation test on PCA analysis.}
 \usage{
 permutation_test(
   pca_data,
@@ -39,12 +39,12 @@ PCs with original data.
 }
 }
 \description{
-Permute data fed to PCA a given number of times, collecting the number of
+\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Permute data fed to PCA a given number of times, collecting the number of
 significant pairwise correlations in the permuted data and the variances
 explained for a given number of PCs.
 }
 \details{
-\ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#superseded}{\figure{lifecycle-superseded.svg}{options: alt='[Superseded]'}}}{\strong{[Superseded]}} Use \code{\link[=correlation_test]{correlation_test()}} for pairwise
+This function is now superseded. Use \code{\link[=correlation_test]{correlation_test()}} for pairwise
 correlations and \code{\link[=pca_test]{pca_test()}} for variance explained and loadings.
 }
 \examples{

@@ -11,6 +11,7 @@ reference:
       - lobanov_2
       - pc_flip
       - correlation_test
+      - mds_test
       - pca_test
       - permutation_test
       - summary.correlation_test
@@ -21,6 +22,7 @@ reference:
       - plot_correlation_counts
       - plot_correlation_magnitudes
       - plot_loadings
+      - plot_mds_test
       - plot_pc_input
       - plot_pc_vs
       - plot_vowel_space
@@ -37,3 +39,4 @@ reference:
       - onze_intercepts_full
       - qb_vowels
       - qb_intervals
+      - sim_matrix

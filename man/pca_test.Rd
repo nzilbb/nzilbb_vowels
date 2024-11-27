@@ -27,7 +27,7 @@ will take a long time to compute.}
 (default: 0.9).}
 }
 \value{
-object of class \code{pca_test}, containing:
+object of class \code{pca_test_results}, containing:
 \itemize{
 \item \verb{$variance} a tibble containing the variances explained and confidence
 intervals for each PC.

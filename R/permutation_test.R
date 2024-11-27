@@ -1,10 +1,10 @@
-#' `r lifecycle::badge('superseded')` Run permutation test on PCA analysis.
+#' Run permutation test on PCA analysis.
 #'
-#' Permute data fed to PCA a given number of times, collecting the number of
+#' `r lifecycle::badge('superseded')` Permute data fed to PCA a given number of times, collecting the number of
 #' significant pairwise correlations in the permuted data and the variances
 #' explained for a given number of PCs.
 #'
-#' `r lifecycle::badge('superseded')` Use [correlation_test()] for pairwise
+#' This function is now superseded. Use [correlation_test()] for pairwise
 #' correlations and [pca_test()] for variance explained and loadings.
 #'
 #' @param pca_data data fed to the `prcomp` function. Remove non-continuous variables.
