@@ -1,11 +1,11 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nzilbb.vowels <a href="https://joshuawilsonblack.github.io/nzilbb_vowels/"><img src="man/figures/logo.png" align="right" height="138" alt="nzilbb.vowels website" /></a>
+# nzilbb.vowels <a href="https://nzilbb.github.io/nzilbb_vowels/"><img src="man/figures/logo.png" align="right" height="138" alt="nzilbb.vowels website" /></a>
 
 <!-- badges: start -->
 
-[![R-CMD-check](https://github.com/JoshuaWilsonBlack/nzilbb_vowels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/JoshuaWilsonBlack/nzilbb_vowels/actions/workflows/R-CMD-check.yaml)
+[![R-CMD-check](https://github.com/nzilbb/nzilbb_vowels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nzilbb/nzilbb_vowels/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 The `nzilbb.vowels` packages contains useful functions and data for the
@@ -18,12 +18,14 @@ carried out at
 
 ## Installation
 
+### Development version
+
 You can install the development version of nzilbb.vowels from
 [GitHub](https://github.com/) with:
 
 ``` r
 # install.packages("devtools")
-devtools::install_github("JoshuaWilsonBlack/nzilbb_vowels")
+devtools::install_github("nzilbb/nzilbb_vowels")
 ```
 
 ## Example
