@@ -49,4 +49,4 @@ Imports:
     lifecycle
 RdMacros: Rdpack
 VignetteBuilder: knitr
-URL: https://joshuawilsonblack.github.io/nzilbb_vowels/
+URL: https://nzilbb.github.io/nzilbb_vowels/
