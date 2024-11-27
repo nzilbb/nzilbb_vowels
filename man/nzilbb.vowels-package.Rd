@@ -13,7 +13,7 @@ Data and functions to illustrate methods developed in recent studies Vowel covar
 \seealso{
 Useful links:
 \itemize{
-  \item \url{https://joshuawilsonblack.github.io/nzilbb_vowels/}
+  \item \url{https://nzilbb.github.io/nzilbb_vowels/}
 }
 
 }

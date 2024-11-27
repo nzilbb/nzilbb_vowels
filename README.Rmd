@@ -17,6 +17,7 @@ knitr::opts_chunk$set(
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/nzilbb/nzilbb_vowels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nzilbb/nzilbb_vowels/actions/workflows/R-CMD-check.yaml)
+[![DOI](https://zenodo.org/badge/563172693.svg)](https://doi.org/10.5281/zenodo.8303223)
 <!-- badges: end -->
 
 The `nzilbb.vowels` packages contains useful functions and data for the 
