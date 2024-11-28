@@ -37,22 +37,21 @@
 #' @export
 #'
 #' @examples
-#' # Apply interval MDS to `sym_matrix`, with 100 permutations and bootstraps
-#' # testing up to 5 dimensions.
-#' if (interactive()) {
-#'   mds_test(
-#'     sim_matrix,
-#'     n_boots = 100,
-#'     n_perms = 100,
-#'     test_dimensions = 5,
-#'     mds_type = 'interval'
-#'  )
-#' }
+#' # Apply interval MDS to `sim_matrix`, with 5 permutations and bootstraps
+#' # testing up to 3 dimensions. In real usage, increase `n_boots` and `n_perms`
+#' # to at least 50.
+#' mds_test(
+#'  sim_matrix,
+#'  n_boots = 5,
+#'  n_perms = 5,
+#'  test_dimensions = 3,
+#'  mds_type = 'interval'
+#' )
 #'
 mds_test <- function(
   similarity_matrix,
-  n_boots = 25,
-  n_perms = 25,
+  n_boots = 50,
+  n_perms = 50,
   test_dimensions = 5,
   principal = TRUE,
   mds_type = 'ordinal',

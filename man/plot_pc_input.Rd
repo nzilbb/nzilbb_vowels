@@ -13,6 +13,9 @@ plot_pc_input(pca_object, pca_data, pca_test)
 
 \item{pca_test}{Output of \code{pca_test}}
 }
+\value{
+a \code{ggplot} object.
+}
 \description{
 It is sometimes useful to see the relationship between PCs and the raw values
 of the input data fed into PCA. This function takes the results of running

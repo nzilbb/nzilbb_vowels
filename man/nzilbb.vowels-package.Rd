@@ -4,11 +4,11 @@
 \name{nzilbb.vowels-package}
 \alias{nzilbb.vowels}
 \alias{nzilbb.vowels-package}
-\title{nzilbb.vowels: Functions and Data for Vowel Covariation Studies}
+\title{nzilbb.vowels: Vowel Covariation Tools}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-A collection of tools to support research on vocalic covariation, especially research using Principal Component Analysis. Functions are provided to test whether PCA is appropriate, to determine how many PCs to report, and to choose which loadings to focus on in interpretation. Plotting functions are also provided to display PCA results in the vowel space. Datasets are also provided from recent work at the New Zealand Institute of Language, Brain and Behaviour.
+Tools to support research on vowel covariation. Methods are provided to support Principal Component Analysis workflows (as in Brand et al. (2021) \doi{10.1016/j.wocn.2021.101096} and Wilson Black et al. (2023) \doi{10.1515/lingvan-2022-0086}).
 }
 \seealso{
 Useful links:

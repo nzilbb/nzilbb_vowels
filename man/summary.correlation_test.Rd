@@ -16,6 +16,9 @@ significance level.}
 
 \item{...}{additional arguments affecting the summary produced.}
 }
+\value{
+a \code{glue} object.
+}
 \description{
 Set alpha to change significance level and n_cors to change number of pairwise
 correlations given.

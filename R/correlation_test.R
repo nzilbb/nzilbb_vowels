@@ -139,9 +139,9 @@ get_correlations <- function(pair_names, pca_data, cor.method) {
 #' @param alpha significance level for counting correlation as significant.
 #' @param n_cors number of pairwise correlations to list.
 #' @param ...	 additional arguments affecting the summary produced.
+#' @return a `glue` object.
 #' @export
 summary.correlation_test <- function(object, alpha = 0.05, n_cors = 5, ...) {
-
 
   original_cor_count <- object$original_correlations |>
     filter(.data$cor_p < alpha) |>

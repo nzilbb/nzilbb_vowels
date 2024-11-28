@@ -25,6 +25,7 @@
 #' onze_pca_test <- pca_test(pca_data, n = 10)
 #' plot_pc_input(onze_pca, pca_data, onze_pca_test)
 #'
+#' @return a `ggplot` object.
 #' @export
 plot_pc_input <- function(pca_object, pca_data, pca_test) {
 
