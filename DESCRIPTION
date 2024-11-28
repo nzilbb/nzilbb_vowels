@@ -1,7 +1,7 @@
 Package: nzilbb.vowels
 Type: Package
 Title: Functions and Data for Vowel Covariation Studies
-Version: 0.2.1
+Version: 0.3.0
 Authors@R: c(
   person(
     "Joshua", "Wilson Black", 
