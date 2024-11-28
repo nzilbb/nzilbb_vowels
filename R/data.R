@@ -29,7 +29,7 @@
 #'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
 #'   Systematic co-variation of monophthongs across speakers of New Zealand
 #'   English. Journal of Phonetics. Elsevier. 88. 101096.
-#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
+#'   doi:10.1016/j.wocn.2021.101096
 "onze_vowels"
 
 #' Monophthong data for speakers from the ONZE corpus
@@ -62,7 +62,7 @@
 #'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
 #'   Systematic co-variation of monophthongs across speakers of New Zealand
 #'   English. Journal of Phonetics. Elsevier. 88. 101096.
-#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
+#'   doi:10.1016/j.wocn.2021.101096
 "onze_vowels_full"
 
 #' Speaker random intercepts from GAMMs for 100 ONZE speakers
@@ -99,7 +99,7 @@
 #'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
 #'   Systematic co-variation of monophthongs across speakers of New Zealand
 #'   English. Journal of Phonetics. Elsevier. 88. 101096.
-#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
+#'   doi:10.1016/j.wocn.2021.101096
 "onze_intercepts"
 
 #' Speaker random intercepts for 418 ONZE speakers
@@ -136,7 +136,7 @@
 #'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
 #'   Systematic co-variation of monophthongs across speakers of New Zealand
 #'   English. Journal of Phonetics. Elsevier. 88. 101096.
-#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
+#'   doi:10.1016/j.wocn.2021.101096
 "onze_intercepts_full"
 
 #' Formants from QuakeBox 1
@@ -171,7 +171,7 @@
 #'  Wilson Black, Joshua, Jennifer Hay, Lynn Clark & James Brand (2023): The
 #'  overlooked effect of amplitude on within-speaker vowel variation.
 #'  Linguistics Vanguard. Walter de Gruyter GmbH. 9(1). 173–189.
-#'  doi:[10.1515/lingvan-2022-0086](http://dx.doi.org/10.1515/lingvan-2022-0086).
+#'  doi:10.1515/lingvan-2022-0086
 "qb_vowels"
 
 #' Formant and amplitude for intervals of QuakeBox monologues
@@ -221,7 +221,7 @@
 #'  Wilson Black, Joshua, Jennifer Hay, Lynn Clark & James Brand (2023): The
 #'  overlooked effect of amplitude on within-speaker vowel variation.
 #'  Linguistics Vanguard. Walter de Gruyter GmbH. 9(1). 173–189.
-#'  doi:[10.1515/lingvan-2022-0086](http://dx.doi.org/10.1515/lingvan-2022-0086).
+#'  doi:10.1515/lingvan-2022-0086
 "qb_intervals"
 
 #' Similarity matrix from online perception test.

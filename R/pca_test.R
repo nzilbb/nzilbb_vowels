@@ -54,7 +54,7 @@
 #' @references Camargo, Arley (2022),
 #'   PCAtest: testing the statistical significance of Principal Component
 #'   Analysis in R. _PeerJ_ 10. e12967.
-#'   doi:[10.7717/peerj.12967](https://doi.org/10.7717/peerj.12967).
+#'   doi:10.7717/peerj.12967
 #'
 #'   Vieira, Vasco (2012): Permutation tests to estimate significances on
 #'   Principal Components Analysis. _Computational Ecology and Software_ 2.

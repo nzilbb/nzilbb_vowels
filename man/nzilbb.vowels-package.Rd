@@ -4,16 +4,18 @@
 \name{nzilbb.vowels-package}
 \alias{nzilbb.vowels}
 \alias{nzilbb.vowels-package}
-\title{nzilbb.vowels: Functions and Data For Vowel Covariation Studies}
+\title{nzilbb.vowels: Functions and Data for Vowel Covariation Studies}
 \description{
 \if{html}{\figure{logo.png}{options: style='float: right' alt='logo' width='120'}}
 
-Data and functions to illustrate methods developed in recent studies Vowel covariation at the New Zealand Institute of Language, Brain, and Behaviour.
+A collection of tools to support research on vocalic covariation, especially research using Principal Component Analysis. Functions are provided to test whether PCA is appropriate, to determine how many PCs to report, and to choose which loadings to focus on in interpretation. Plotting functions are also provided to display PCA results in the vowel space. Datasets are also provided from recent work at the New Zealand Institute of Language, Brain and Behaviour.
 }
 \seealso{
 Useful links:
 \itemize{
   \item \url{https://nzilbb.github.io/nzilbb_vowels/}
+  \item \url{https://github.com/nzilbb/nzilbb_vowels}
+  \item Report bugs at \url{https://github.com/nzilbb/nzilbb_vowels/issues/}
 }
 
 }
@@ -22,7 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
-  \item James Brand \email{james.brand@ff.cuni.cz} (\href{https://orcid.org/0000-0002-2853-9169}{ORCID})
+  \item James Brand \email{james.brand.ac@gmail.com} (\href{https://orcid.org/0000-0002-2853-9169}{ORCID})
 }
 
 }

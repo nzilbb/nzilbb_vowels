@@ -57,6 +57,6 @@ Original data was generated for Wilson Black et al. (2023).
 Wilson Black, Joshua, Jennifer Hay, Lynn Clark & James Brand (2023): The
 overlooked effect of amplitude on within-speaker vowel variation.
 Linguistics Vanguard. Walter de Gruyter GmbH. 9(1). 173–189.
-doi:\href{http://dx.doi.org/10.1515/lingvan-2022-0086}{10.1515/lingvan-2022-0086}.
+doi:10.1515/lingvan-2022-0086
 }
 \keyword{datasets}

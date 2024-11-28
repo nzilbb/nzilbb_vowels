@@ -39,7 +39,7 @@
 #'   Brand, James, Jen Hay, Lynn Clark, Kevin Watson & Márton Sóskuthy (2021):
 #'   Systematic co-variation of monophthongs across speakers of New Zealand
 #'   English. Journal of Phonetics. Elsevier. 88. 101096.
-#'   doi:[10.1016/j.wocn.2021.101096](https://doi.org/10.1016/j.wocn.2021.101096).
+#'   doi:10.1016/j.wocn.2021.101096
 #' @export
 lobanov_2 <- function(vowel_data) {
 

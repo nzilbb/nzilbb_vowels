@@ -1,6 +1,6 @@
 Package: nzilbb.vowels
 Type: Package
-Title: Functions and Data For Vowel Covariation Studies
+Title: Functions and Data for Vowel Covariation Studies
 Version: 0.2.1
 Authors@R: c(
   person(
@@ -9,11 +9,16 @@ Authors@R: c(
     comment = c(ORCID = "https://orcid.org/0000-0002-8272-5763")
   ),
   person("James", "Brand",
-    email = "james.brand@ff.cuni.cz", role = "aut",
+    email = "james.brand.ac@gmail.com", role = "aut",
     comment = c(ORCID = "https://orcid.org/0000-0002-2853-9169")
   ))
-Description: Data and functions to illustrate methods developed in recent studies
-  Vowel covariation at the New Zealand Institute of Language, Brain, and Behaviour.
+Description: A collection of tools to support research on vocalic covariation, 
+    especially research using Principal Component Analysis. Functions are 
+    provided to test whether PCA is appropriate, to determine how many PCs to 
+    report, and to choose which loadings to focus on in interpretation. Plotting 
+    functions are also provided to display PCA results in the vowel space. 
+    Datasets are also provided from recent work at the New Zealand Institute of 
+    Language, Brain and Behaviour.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
@@ -48,5 +53,5 @@ Imports:
     Rdpack,
     lifecycle
 RdMacros: Rdpack
-VignetteBuilder: knitr
-URL: https://nzilbb.github.io/nzilbb_vowels/
+URL: https://nzilbb.github.io/nzilbb_vowels/, https://github.com/nzilbb/nzilbb_vowels
+BugReports: https://github.com/nzilbb/nzilbb_vowels/issues/
