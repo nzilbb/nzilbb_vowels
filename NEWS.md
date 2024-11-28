@@ -1,3 +1,5 @@
+# nzilbb.vowels 0.3.1
+
 # nzilbb.vowels 0.3.0
 
 # nzilbb.vowels 0.3
