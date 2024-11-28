@@ -19,6 +19,12 @@ carried out at
 
 ## Installation
 
+Install from CRAN:
+
+``` r
+install.packages('nzilbb.vowels')
+```
+
 ### Development version
 
 You can install the development version of nzilbb.vowels from

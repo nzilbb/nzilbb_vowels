@@ -29,6 +29,11 @@ out at [NZILBB](https://www.canterbury.ac.nz/research/about-uc-research/research
 
 ## Installation
 
+Install from CRAN:
+```r
+install.packages('nzilbb.vowels')
+```
+
 ### Development version
 
 You can install the development version of nzilbb.vowels from
