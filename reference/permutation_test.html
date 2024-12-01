@@ -11,7 +11,7 @@ explained for a given number of PCs."><meta property="og:image" content="https:/
 
     <a class="navbar-brand me-2" href="../index.html">nzilbb.vowels</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.1</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.1</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -23,6 +23,7 @@ explained for a given number of PCs."><meta property="og:image" content="https:/
 <li class="nav-item"><a class="nav-link" href="../news/index.html">Changelog</a></li>
       </ul><ul class="navbar-nav"><li class="nav-item"><form class="form-inline" role="search">
  <input class="form-control" type="search" name="search-input" id="search-input" autocomplete="off" aria-label="Search site" placeholder="Search for" data-search-index="../search.json"></form></li>
+<li class="nav-item"><a class="external-link nav-link" href="https://github.com/nzilbb/nzilbb_vowels/" aria-label="GitHub"><span class="fa fab fa-github fa-lg"></span></a></li>
       </ul></div>
 
 
@@ -31,7 +32,7 @@ explained for a given number of PCs."><meta property="og:image" content="https:/
 <div class="row">
   <main id="main" class="col-md-9"><div class="page-header">
       <img src="../logo.png" class="logo" alt=""><h1>Run permutation test on PCA analysis.</h1>
-
+      <small class="dont-index">Source: <a href="https://github.com/nzilbb/nzilbb_vowels/blob/main/R/permutation_test.R" class="external-link"><code>R/permutation_test.R</code></a></small>
       <div class="d-none name"><code>permutation_test.Rd</code></div>
     </div>
 
@@ -106,19 +107,19 @@ correlations and <code><a href="pca_test.html">pca_test()</a></code> for varianc
 <span class="r-in"><span> <span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $permuted_variances</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span>           PC1        PC2        PC3        PC4        PC5</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.10035139 0.08710470 0.08323354 0.07762683 0.06760223</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.09003776 0.08305271 0.07842767 0.07104812 0.06974112</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.09991849 0.09113667 0.07798557 0.07564895 0.06550545</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.10473515 0.08704997 0.08123940 0.07906010 0.07433931</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.09804940 0.08999558 0.08015930 0.07472181 0.06995225</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.09346045 0.08768051 0.08209320 0.07410834 0.06661119</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.09484123 0.08416786 0.07542503 0.07086044 0.06603212</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.09979899 0.09583668 0.07978208 0.07523975 0.07417293</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.09041724 0.08375506 0.07829196 0.07310492 0.06588910</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.10192328 0.08706154 0.07614326 0.07370574 0.06930026</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 1  0.10087601 0.08879798 0.08032575 0.07587374 0.07218578</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 2  0.10033966 0.09083708 0.08173040 0.07139712 0.06669756</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 3  0.08842098 0.07999117 0.07854846 0.07381645 0.07092127</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 4  0.10318165 0.08848091 0.07999481 0.07450134 0.06900145</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 5  0.09295884 0.08456273 0.08102493 0.07494879 0.07029683</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 6  0.09180853 0.08459227 0.07765252 0.07313609 0.07019674</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 7  0.09942178 0.08360813 0.07871929 0.07291580 0.06770617</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 8  0.09378021 0.08558982 0.07711176 0.06803352 0.06344125</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 9  0.09087670 0.08223823 0.07581839 0.07071398 0.06941024</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> 10 0.09174463 0.08944009 0.08107437 0.07628478 0.06726242</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $permuted_correlations</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 11 10 14 19 16 10  4 16  7 14</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>  [1] 11 12  9 13  8  6 11  7  5  9</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> $actual_variances</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> <span style="color: #949494;"># A tibble: 5 × 2</span></span>
