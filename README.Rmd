@@ -13,7 +13,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# nzilbb.vowels <a href="https://nzilbb.github.io/nzilbb_vowels/"><img src="man/figures/logo.png" align="right" height="138" alt="nzilbb.vowels website" /></a>
+# nzilbb.vowels: Vowel Covariation Tools <a href="https://nzilbb.github.io/nzilbb_vowels/"><img src="man/figures/logo.png" align="right" height="138" alt="nzilbb.vowels website" /></a>
 
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/nzilbb/nzilbb_vowels/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/nzilbb/nzilbb_vowels/actions/workflows/R-CMD-check.yaml)

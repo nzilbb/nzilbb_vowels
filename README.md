@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# nzilbb.vowels <a href="https://nzilbb.github.io/nzilbb_vowels/"><img src="man/figures/logo.png" align="right" height="138" alt="nzilbb.vowels website" /></a>
+# nzilbb.vowels: Vowel Covariation Tools <a href="https://nzilbb.github.io/nzilbb_vowels/"><img src="man/figures/logo.png" align="right" height="138" alt="nzilbb.vowels website" /></a>
 
 <!-- badges: start -->
 
