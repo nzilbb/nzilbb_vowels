@@ -5,7 +5,7 @@
 \title{Test optimal number of MDS dimensions.}
 \usage{
 mds_test(
-  similarity_matrix,
+  dissimilarity_matrix,
   n_boots = 50,
   n_perms = 50,
   test_dimensions = 5,
@@ -16,7 +16,7 @@ mds_test(
 )
 }
 \arguments{
-\item{similarity_matrix}{Square matrix of speaker similarity scores.}
+\item{dissimilarity_matrix}{Square matrix of dissimilarity scores.}
 
 \item{n_boots}{Number of bootstrapping iterations (default: 25).}
 
@@ -47,8 +47,8 @@ object of class \code{mds_test_results}, containing:
 \description{
 \ifelse{html}{\href{https://lifecycle.r-lib.org/articles/stages.html#experimental}{\figure{lifecycle-experimental.svg}{options: alt='[Experimental]'}}}{\strong{[Experimental]}} Generate bootstrapped confidence intervals and permutation based null
 distribution for MDS analysis. Output shows how much stress is reduced by
-adding an additional dimension to the MDS analysis of \code{similarity_matrix},
-and bootstrapped iterations of \code{similarity_matrix},
+adding an additional dimension to the MDS analysis of \code{dissimilarity_matrix},
+and bootstrapped iterations of \code{dissimilarity_matrix},
 compared with the stress reduction expected from a matrix with no meaningful
 structure. This function is inspired by \code{\link[=pca_test]{pca_test()}}, but is less connected
 with statistical literature than that function. We currently reject
@@ -61,7 +61,7 @@ notably lower than the permuted distribution when plotted by \code{\link[=plot_m
 # testing up to 3 dimensions. In real usage, increase `n_boots` and `n_perms`
 # to at least 50.
 mds_test(
- sim_matrix,
+ smacof::sim2diss(sim_matrix, method="reverse"),
  n_boots = 5,
  n_perms = 5,
  test_dimensions = 3,

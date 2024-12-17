@@ -2,8 +2,8 @@
 #'
 #' `r lifecycle::badge('experimental')` Generate bootstrapped confidence intervals and permutation based null
 #' distribution for MDS analysis. Output shows how much stress is reduced by
-#' adding an additional dimension to the MDS analysis of `similarity_matrix`,
-#' and bootstrapped iterations of `similarity_matrix`,
+#' adding an additional dimension to the MDS analysis of `dissimilarity_matrix`,
+#' and bootstrapped iterations of `dissimilarity_matrix`,
 #' compared with the stress reduction expected from a matrix with no meaningful
 #' structure. This function is inspired by [pca_test()], but is less connected
 #' with statistical literature than that function. We currently reject
@@ -11,7 +11,7 @@
 #' chance. That is, when the distribution from the boostrapped analyses sits
 #' notably lower than the permuted distribution when plotted by [plot_mds_test()]
 #'
-#' @param similarity_matrix Square matrix of speaker similarity scores.
+#' @param dissimilarity_matrix Square matrix of dissimilarity scores.
 #' @param n_boots Number of bootstrapping iterations (default: 25).
 #' @param n_perms Number of permutations (default: 25).
 #' @param test_dimensions Number of MDS dimensions to test for stress reduction (default: 5).
@@ -20,7 +20,7 @@
 #' @param spline_degree How many spline degrees when `type` is 'mspline' (default: 2)
 #' @param spline_int_knots How many internal knots when `type` is 'mspline' (default: 2)
 #'
-#' @importFrom smacof sim2diss smacofSym
+#' @importFrom smacof smacofSym
 #' @importFrom rsample bootstraps
 #' @importFrom tibble tibble
 #' @importFrom dplyr bind_rows mutate group_by lag
@@ -41,7 +41,7 @@
 #' # testing up to 3 dimensions. In real usage, increase `n_boots` and `n_perms`
 #' # to at least 50.
 #' mds_test(
-#'  sim_matrix,
+#'  smacof::sim2diss(sim_matrix, method="reverse"),
 #'  n_boots = 5,
 #'  n_perms = 5,
 #'  test_dimensions = 3,
@@ -49,7 +49,7 @@
 #' )
 #'
 mds_test <- function(
-  similarity_matrix,
+  dissimilarity_matrix,
   n_boots = 50,
   n_perms = 50,
   test_dimensions = 5,
@@ -58,13 +58,9 @@ mds_test <- function(
   spline_degree = 2,
   spline_int_knots = 2
 ) {
-
-  # Switch from similarity matrix to dissimilarity matrix
-  df <- sim2diss(similarity_matrix, method = "reverse")
-
   # Set up boostrapping splits
   bootstrap_indices <- bootstraps(
-    data.frame(1:nrow(similarity_matrix)),
+    data.frame(1:nrow(dissimilarity_matrix)),
     times = n_boots
   )
 
@@ -79,7 +75,7 @@ mds_test <- function(
       stress_dist = map(
         .data$dims,
         ~ stress_distribution(
-          df,
+          dissimilarity_matrix,
           n_boots,
           .x,
           bootstrap_indices,
@@ -108,7 +104,7 @@ mds_test <- function(
       stress_dist = map(
         .data$dims,
         ~ permutation_distribution(
-          df,
+          dissimilarity_matrix,
           n_perms,
           .x,
           mds_type,
@@ -131,7 +127,7 @@ mds_test <- function(
     stress_dist = map_dbl(
       1:test_dimensions,
       ~ (smacofSym(
-        df,
+        dissimilarity_matrix,
         type = mds_type,
         principal = principal,
         ndim = .x,
@@ -240,17 +236,30 @@ generate_bootstrap <- function(splits, dis_matrix) {
 }
 
 generate_perm <- function(dis_matrix) {
-  perm_matrix <- matrix(nrow = nrow(dis_matrix), ncol = ncol(dis_matrix))
+  # perm_matrix <- matrix(nrow = nrow(dis_matrix), ncol = ncol(dis_matrix))
+  #
+  # for (i in 1:nrow(dis_matrix)) {
+  #   perm_matrix[i,] = sample(
+  #     dis_matrix[i, ],
+  #     size = ncol(dis_matrix),
+  #     replace = FALSE
+  #   )
+  #   # 0 is self-dissimilarity.
+  #   perm_matrix[i, i] <- 0
+  # }
+  # perm_matrix
+  perm_matrix <- dis_matrix
 
-  for (i in 1:nrow(dis_matrix)) {
-    perm_matrix[i,] = sample(
-      dis_matrix[i, ],
-      size = ncol(dis_matrix),
-      replace = FALSE
-    )
-    # 0 is self-dissimilarity.
-    perm_matrix[i, i] <- 0
-  }
+  # assuming square
+  diagonal_entries <- seq(1, length(perm_matrix), nrow(perm_matrix)) +
+    seq(0, nrow(perm_matrix)-1)
+
+  perm_matrix[-diagonal_entries] <- sample(
+    perm_matrix[-diagonal_entries],
+    size = length(perm_matrix) - nrow(perm_matrix),
+    replace=FALSE
+  )
+
   perm_matrix
 }
 
