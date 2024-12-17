@@ -19,6 +19,7 @@
 #' @param mds_type What kind of MDS to apply, see [smacof::smacofSym()] (default: 'ordinal')
 #' @param spline_degree How many spline degrees when `type` is 'mspline' (default: 2)
 #' @param spline_int_knots How many internal knots when `type` is 'mspline' (default: 2)
+#' @param ... Arguments passed to [smacof::smacofSym()]
 #'
 #' @importFrom smacof smacofSym
 #' @importFrom rsample bootstraps
@@ -56,7 +57,8 @@ mds_test <- function(
   principal = TRUE,
   mds_type = 'ordinal',
   spline_degree = 2,
-  spline_int_knots = 2
+  spline_int_knots = 2,
+  ...
 ) {
   # Set up boostrapping splits
   bootstrap_indices <- bootstraps(
@@ -74,16 +76,18 @@ mds_test <- function(
     mutate(
       stress_dist = map(
         .data$dims,
-        ~ stress_distribution(
+        \(x, ...) stress_distribution(
           dissimilarity_matrix,
           n_boots,
-          .x,
+          x,
           bootstrap_indices,
           mds_type,
           principal,
           spline_degree,
-          spline_int_knots
-        )
+          spline_int_knots,
+          ...
+        ),
+        ...
       )
     )
 
@@ -103,15 +107,17 @@ mds_test <- function(
     mutate(
       stress_dist = map(
         .data$dims,
-        ~ permutation_distribution(
+        \(x, ...) permutation_distribution(
           dissimilarity_matrix,
           n_perms,
-          .x,
+          x,
           mds_type,
           principal,
           spline_degree,
-          spline_int_knots
-        )
+          spline_int_knots,
+          ...
+        ),
+        ...
       )
     )
 
@@ -126,22 +132,16 @@ mds_test <- function(
     dims = 1:test_dimensions,
     stress_dist = map_dbl(
       1:test_dimensions,
-      ~ (smacofSym(
+      \(x, ...) {(smacofSym(
         dissimilarity_matrix,
         type = mds_type,
         principal = principal,
-        ndim = .x,
+        ndim = x,
         spline.degree = spline_degree,
         spline.intKnots = spline_int_knots,
-        weightmat = NULL,
-        init = "torgerson",
-        ties = "primary",
-        verbose = FALSE,
-        relax = FALSE,
-        modulus = 1,
-        itmax = 1000,
-        eps = 1e-06
-      ))$stress
+        ...
+      ))$stress},
+      ...
     )
   )
 
@@ -194,13 +194,14 @@ stress_distribution <- function(
     mds_type,
     principal,
     spline_degree,
-    spline_int_knots
+    spline_int_knots,
+    ...
 ) {
 
   bootstrap_dist <- map(
     1:n_bootstraps,
-    ~ (
-      bs_indices$splits[[.x]]$in_id |>
+    \(x, ...) (
+      bs_indices$splits[[x]]$in_id |>
         generate_bootstrap(dis_matrix = dis_matrix) |>
         # Specifying arguments to avoid relying on defaults.
         smacofSym(
@@ -209,16 +210,10 @@ stress_distribution <- function(
           ndim = n_dim,
           spline.degree = spline_degree,
           spline.intKnots = spline_int_knots,
-          weightmat = NULL,
-          init = "torgerson",
-          ties = "primary",
-          verbose = FALSE,
-          relax = FALSE,
-          modulus = 1,
-          itmax = 1000,
-          eps = 1e-06
+          ...
         )
-    )$stress
+    )$stress,
+    ...
   )
 }
 
@@ -270,12 +265,13 @@ permutation_distribution <- function(
     mds_type,
     principal,
     spline_degree,
-    spline_int_knots
+    spline_int_knots,
+    ...
 )
 {
   perm_dist <- map(
     1:n_perms,
-    ~ (
+    \(x, ...) (
       generate_perm(dis_matrix) |>
         smacofSym(
           type = mds_type,
@@ -283,16 +279,10 @@ permutation_distribution <- function(
           ndim = n_dim,
           spline.degree = spline_degree,
           spline.intKnots = spline_int_knots,
-          weightmat = NULL,
-          init = "torgerson",
-          ties = "primary",
-          verbose = FALSE,
-          relax = FALSE,
-          modulus = 1,
-          itmax = 1000,
-          eps = 1e-06
+          ...
         )
-    )$stress
+    )$stress,
+    ...
   )
 }
 

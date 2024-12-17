@@ -12,7 +12,8 @@ mds_test(
   principal = TRUE,
   mds_type = "ordinal",
   spline_degree = 2,
-  spline_int_knots = 2
+  spline_int_knots = 2,
+  ...
 )
 }
 \arguments{
@@ -31,6 +32,8 @@ mds_test(
 \item{spline_degree}{How many spline degrees when \code{type} is 'mspline' (default: 2)}
 
 \item{spline_int_knots}{How many internal knots when \code{type} is 'mspline' (default: 2)}
+
+\item{...}{Arguments passed to \code{\link[smacof:smacofSym]{smacof::smacofSym()}}}
 }
 \value{
 object of class \code{mds_test_results}, containing:
