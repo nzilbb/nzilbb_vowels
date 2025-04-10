@@ -10,6 +10,7 @@ reference:
     contents:
       - lobanov_2
       - pc_flip
+      - pca_rotate_2d
       - correlation_test
       - mds_test
       - pca_test
