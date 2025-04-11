@@ -12,11 +12,11 @@
 #' and 'princomp', adding an additional 'note' which collects all the rotations
 #' which have been applied. This allows any plotting function which works with
 #' the outputs of `prcomp()` or `princomp()` to work. This may result in plots
-#' with incorrectly identify rotated components as principal components. Be
+#' which incorrectly identify rotated components as principal components. Be
 #' careful not to include any such plot in a research output.
 #'
 #' @param pca_obj The result of a call to `prcomp()` or `princomp()`. **NB** It
-#'  does not make sense to apply this function to `pca_test`.
+#'  does not make sense to apply this function to the output of `pca_test`.
 #' @param angle A number indicating the number of degrees to rotate around the
 #'   origin clockwise. Negative values will rotated counterclockwise.
 #' @param pcs A two-element vector identifying the two PCs to rotate.

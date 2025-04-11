@@ -8,7 +8,7 @@ pca_rotate_2d(pca_obj, angle, pcs = c(1, 2))
 }
 \arguments{
 \item{pca_obj}{The result of a call to \code{prcomp()} or \code{princomp()}. \strong{NB} It
-does not make sense to apply this function to \code{pca_test}.}
+does not make sense to apply this function to the output of \code{pca_test}.}
 
 \item{angle}{A number indicating the number of degrees to rotate around the
 origin clockwise. Negative values will rotated counterclockwise.}
@@ -33,7 +33,7 @@ describing the rotation. This function modifies objects of the class 'prcomp'
 and 'princomp', adding an additional 'note' which collects all the rotations
 which have been applied. This allows any plotting function which works with
 the outputs of \code{prcomp()} or \code{princomp()} to work. This may result in plots
-with incorrectly identify rotated components as principal components. Be
+which incorrectly identify rotated components as principal components. Be
 careful not to include any such plot in a research output.
 }
 \examples{
