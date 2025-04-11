@@ -62,7 +62,7 @@ allows for manual 2D rotations of principal components.</p>
 
 <dl><dt id="arg-pca-obj">pca_obj<a class="anchor" aria-label="anchor" href="#arg-pca-obj"></a></dt>
 <dd><p>The result of a call to <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp()</a></code> or <code><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp()</a></code>. <strong>NB</strong> It
-does not make sense to apply this function to <code>pca_test</code>.</p></dd>
+does not make sense to apply this function to the output of <code>pca_test</code>.</p></dd>
 
 
 <dt id="arg-angle">angle<a class="anchor" aria-label="anchor" href="#arg-angle"></a></dt>
@@ -88,7 +88,7 @@ describing the rotation. This function modifies objects of the class 'prcomp'
 and 'princomp', adding an additional 'note' which collects all the rotations
 which have been applied. This allows any plotting function which works with
 the outputs of <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp()</a></code> or <code><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp()</a></code> to work. This may result in plots
-with incorrectly identify rotated components as principal components. Be
+which incorrectly identify rotated components as principal components. Be
 careful not to include any such plot in a research output.</p>
     </div>
 
