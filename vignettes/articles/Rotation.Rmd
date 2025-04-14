@@ -1,0 +1,19 @@
+---
+title: "PCA Rotation"
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(nzilbb.vowels)
+```
+
+```{r}
+test <- readRDS('data/QB1_anon.rds')
+```
+
