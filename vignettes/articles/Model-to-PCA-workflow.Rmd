@@ -196,7 +196,7 @@ initial_plot <- onze_wide |>
 initial_plot
 ```
 
-In @fig-3d, the most obvious thing to note is that [dress]{.smallcaps} and
+In \@ref(fig:fig-3d), the most obvious thing to note is that [dress]{.smallcaps} and
 [kit]{.smallcaps} are strongly correlated with one another. A second observation
 is that the overall colour of the points in the bottom left seems darker than
 in the top right. This suggests that [kit]{.smallcaps}'s first formant values
@@ -250,10 +250,10 @@ onze_wide <- onze_wide |>
 
 PCA starts by finding the 'centre' of the data. This is just the point at the
 mean value of each variable. It can be useful to think of the data as a 'cloud'
-of points. In @fig-3d we depict this cloud using both spatial position and
+of points. In \@ref(fig:fig-3d) we depict this cloud using both spatial position and
 colour.
 
-```{r fig-centre, fig.cap = "@fig-3d with centre of point cloud added."}
+```{r fig-centre, fig.cap = "DRESS, TRAP, and KIT F1 with centre of point cloud indicated."}
 centre_plot <- initial_plot +
   geom_point(data = centre_data, size = 15, shape = 4, stroke = 3) +
   labs(
@@ -265,7 +265,7 @@ centre_plot <- initial_plot +
 centre_plot
 ```
 
-@fig-centre has a large 'X' indicating the centre point, or mean value, for each
+\@ref(fig:fig-centre) has a large 'X' indicating the centre point, or mean value, for each
 variable. It is obviously in the middle of the $x$ and $y$ axes. If you look at
 the shade of blue, with the help of the colour scale, you'll see that the mean
 value of [kit]{.smallcaps} is somewhere around $500%$.
@@ -310,7 +310,7 @@ pc1_plot <- centre_plot +
 pc1_plot
 ```
 
-@fig-PC1 shows this line. It is clear that it passes through [dress]{.smallcaps}
+\@ref(fig:fig-PC1) shows this line. It is clear that it passes through [dress]{.smallcaps}
 and [trap]{.smallcaps} the 'longest' way. It is harder to see this for
 [kit]{.smallcaps}, but spend a few moments convincing yourself that this is
 true.
@@ -350,7 +350,7 @@ pc2_plot <- initial_plot +
 pc2_plot
 ```
 
-The slightly thinner line in @fig-PC2 represents PC2. If we look at the end of
+The slightly thinner line in \@ref(fig:fig-PC2) represents PC2. If we look at the end of
 the line at the bottom left, we see high values for [kit]{.smallcaps}, and lower
 values for [dress]{.smallcaps} and [trap]{.smallcaps}. At the other end we see
 lower values for [kit]{.smallcaps}, and higher values for [dress]{.smallcaps}
@@ -401,7 +401,7 @@ ind_plot
 There's one further issue to consider. We know that PC1 captures overall
 increase and decrease in formant values, but does a high PC1 score mean the
 formant values increase or decrease? When we drew the PC1 and PC2 lines, we
-didn't have to decide on a direction. For instance, in @fig-PC2, we
+didn't have to decide on a direction. For instance, in \@ref(fig:fig-PC2), we
 haven't decided whether PC1 scores **increase** when we move from the centre
 point to the left of the plot along the PC1 line or whether they **decrease**.
 Either option is fine and which ever PCA function you use in R will make a choice
@@ -441,12 +441,12 @@ bi_plot <- ind_plot +
 bi_plot
 ```
 
-@fig-biplot shows the **loadings** of the original variable for PC1
+\@ref(fig:fig-biplot) shows the **loadings** of the original variable for PC1
 and PC2. It is important to keep the terminology of **scores** and **loadings**
 clear in your mind. **Loadings** relate the original variables to the PCs, while
 **scores** relate the individual data points, in our case speakers, to the PCs.
 
-How do you read @fig-biplot? The arrows show which way the original
+How do you read \@ref(fig:fig-biplot)? The arrows show which way the original
 variables move as we move around the plot. If we go in the direction of an
 arrow, then that variable is increasing in value. So, for instance, if we start
 in the centre and move to the right, along PC1, the values for our original
@@ -464,9 +464,9 @@ realisations of [trap]{.smallcaps} and [dress]{.smallcaps} and lower
 realisations of [kit]{.smallcaps}.
 ]
 
-In @fig-biplot we have achieved a representation of speakers in terms of
+In \@ref(fig:fig-biplot) we have achieved a representation of speakers in terms of
 two variables with a clear linguistic meaning: overall vocal tract length and
-position in the NZE short front vowel shift. When we started, in @fig-3d,
+position in the NZE short front vowel shift. When we started, in \@ref(fig:fig-3d),
 we had three variables, all of which contained formant values. The great
 advantage of PCA is that it we can often achieve this in much more complex data
 sets.
@@ -528,7 +528,7 @@ biplot_sup <- onze_wide |>
 biplot_sup
 ```
 
-@fig-biplot-sup is exactly what we expect. Low PC2 values correspond to
+\@ref(fig:fig-biplot-sup) is exactly what we expect. Low PC2 values correspond to
 speakers who were born earlier. The older speakers are the more conservative.
 Other questions are raised by the plot (why does the cloud of points taper off
 towards the bottom left, for instance?), but we will leave these for your own
@@ -1220,7 +1220,7 @@ plot_correlation_magnitudes(cor_test) +
   plot_annotation(tag_levels = "A")
 ```
 
-@fig-qb1-cortests shows that there are many more high magnitude correlations in our
+\@ref(fig:fig-qb1-cortests) shows that there are many more high magnitude correlations in our
 dataset than in random data (panel A) and that the count of statistically
 significant pairwise correlations ($\alpha$ = 0.05) is much higher than found in
 random data (panel B).
@@ -1310,7 +1310,7 @@ variance_explained |>
   )
 ```
 
-@fig-screeplot is an example of a "screeplot". Various methods are out there for
+\@ref(fig:fig-screeplot) is an example of a "screeplot". Various methods are out there for
 determining how many PCs to take here. Almost all of them amount to rules of
 thumb, and those which are more deterministic are not necessarily appropriate.
 There's no way to avoid applying judgement here!
@@ -1342,7 +1342,7 @@ We can then plot our variant of the screeplot with the
 plot_variance_explained(qb_pca_test, pc_max = 10)
 ```
 
-@fig-screeplot-2 introduces two changes to what we saw in @fig-screeplot. First,
+\@ref(fig:fig-screeplot-2) introduces two changes to what we saw in \@ref(fig:fig-screeplot). First,
 the red bars are estimated confidence intervals for the variance explained. They
 are estimated by bootstrapping. That is, by repeating the analysis over and over
 again while excluding different portions of the data. Second, the blue bars
@@ -1392,7 +1392,7 @@ pca_contrib_plot(qb_pca, pc_no = 1, cutoff = NULL) /
   pca_contrib_plot(qb_pca, pc_no = 1, cutoff = 50)
 ```
 
-@fig-contrib-nocut shows the loadings for PC1 with and without a cutoff value at
+\@ref(fig:fig-contrib-nocut) shows the loadings for PC1 with and without a cutoff value at
 50%. If we accept a 50% cutoff, then we only interpret the variables on the
 right hand side of the red line. This number should be chosen in advance. Some
 researchers instead use the 'elbow rule' again here. In which case, they would
@@ -1414,7 +1414,7 @@ weaker PCs, which can often represent noise in the data.
 plot_loadings(qb_pca_test, pc_no = 1)
 ```
 
-When we look at @fig-pc1-loadings, we see black indications of the loading and
+When we look at \@ref(fig:fig-pc1-loadings), we see black indications of the loading and
 its direction. In this case, when PC1 increases, [fleece]{.smallcaps} F2
 increases (because its loading has a 'plus' sign) and [fleece]{.smallcaps} F1
 decreases (because its loading has a 'negative' sign).
@@ -1432,15 +1432,15 @@ corresponding variable only happens to be correlated with the others in this
 dataset. When using PCA in an exploratory spirit or to generate hypotheses, any
 variable with a red bar starting near zero should be excluded from any claimed
 patterns of covariation. This is an area where we need to do more work to
-explore the consequences of alternative rules for including variables.^[In @fig-pc1-loadings, we might be tempted to exclude all variables whose red
+explore the consequences of alternative rules for including variables.^[In \@ref(fig:fig-pc1-loadings), we might be tempted to exclude all variables whose red
 bars overlap with the blue. In many cases, we have found this rule to be too
 conservative.]
 
-To repeat, because this can be unclear: we take plots like @fig-pc1-loadings
+To repeat, because this can be unclear: we take plots like \@ref(fig:fig-pc1-loadings)
 to give clear advice about which variables should definitely be **excluded**,
 but no definite advice about which variables should be included.
 
-So what does @fig-pc1-loadings *mean*? We can read the relationships off the
+So what does \@ref(fig:fig-pc1-loadings) *mean*? We can read the relationships off the
 loadings. This, as mentioned above, takes a few mental steps, especially when
 moving from loading plots to the vowel space. We have started using the
 `plot_pc_vs()` function to quickly plot loadings in the vowel space. This
@@ -1455,7 +1455,7 @@ pc1_vs <- plot_pc_vs(
 pc1_vs
 ```
 
-The overall impression in @fig-pc1-vs is that higher values of PC1 lead to more
+The overall impression in \@ref(fig:fig-pc1-vs) is that higher values of PC1 lead to more
 canonically 'conservative' realisations of NZE vowels. This includes
 [fleece]{.smallcaps}, [goose]{.smallcaps}, [nurse]{.smallcaps} and other vowels
 not typically included in the short front vowel shift.
@@ -1475,9 +1475,9 @@ qb_pca_test <- pc_flip(qb_pca_test, pc_no = 1)
 qb_pca <- pc_flip(qb_pca, pc_no = 1)
 ```
 
-Now we repeat @fig-pc1-vs, and see that the loadings have reversed.
+Now we repeat \@ref(fig:fig-pc1-vs), and see that the loadings have reversed.
 
-```{r fig-pc1-vs-flipped, fig.cap = "PC1 loadings represented in vowel space. As PC1 scores increase, a speakers vowels tend to move in the direction of the arrows. Flipped from @fig-pc1-vs.", fig.height = 8}
+```{r fig-pc1-vs-flipped, fig.cap = "PC1 loadings represented in vowel space. As PC1 scores increase, a speakers vowels tend to move in the direction of the arrows. Flipped from previous figure.", fig.height = 8}
 pc1_vs <- plot_pc_vs(
   # We need the original vocalic data to find the mean values of each vowel.
   # The function assumes the data's first four columns are speaker id, vowel id,
@@ -1514,7 +1514,7 @@ pc2_vs <- plot_pc_vs(
 )
 pc2_vs
 ```
-As in [@brandSystematicCovariationMonophthongs2021], @fig-pc2-vs shows a pattern
+As in [@brandSystematicCovariationMonophthongs2021], \@ref(fig:fig-pc2-vs) shows a pattern
 where the back vowels can be more or less linear, with [thought]{.smallcaps}
 fronting while [lot]{.smallcaps} and [strut]{.smallcaps} back, or vice versa.
 

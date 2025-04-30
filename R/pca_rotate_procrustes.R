@@ -11,7 +11,7 @@
 #'
 #' @examples
 pca_rotate_procrustes <- function(
-    to_rotate, target, max_pcs, rotate="loadings", rotation_variable = "all"
+    to_rotate, target, max_pcs, rotate="loadings", rotation_variables = "all"
 ) {
   # Rotate the 'to rotate' PCA object (either `prcomp` or `princomp`)
   # to maximally match the 'target' matrix.
@@ -34,7 +34,11 @@ pca_rotate_procrustes <- function(
   }
 
   # check landmarks are the same.
-  if (rownames(target[[loadings_var]] != rownames(to_rotate[[loadings_var]]))) {
+  if (
+    any(
+      rownames(target[[loadings_var]]) != rownames(to_rotate[[loadings_var]])
+    )
+  ) {
     warning(
       paste(
         "Variable names or variable order differs between target",
@@ -42,8 +46,6 @@ pca_rotate_procrustes <- function(
       )
     )
   }
-
-
 
   # Work out how many PCs to include, if max PCs is greater than the number
   # of cols in the matrix to be rotated or the target matrices, pick the smallest
@@ -54,21 +56,24 @@ pca_rotate_procrustes <- function(
     max_pcs
   )
 
+  if (all(rotation_variables == "all")) {
+    rotvar_target <- rownames(target[[loadings_var]])
+    rotvar_rotate <- rownames(to_rotate[[loadings_var]])
+  } else {
+    rotvar_target <- rotation_variables
+    rotvar_rotate <- rotation_variables
+  }
+
   if (rotate == "loadings") {
     proc <- procrustes(
-      target[[loadings_var]][, 1:max_pc], to_rotate[[loadings_var]][, 1:max_pc],
+      target[[loadings_var]][rotvar_target, 1:max_pc],
+      to_rotate[[loadings_var]][rotvar_rotate, 1:max_pc],
       scale = FALSE, scores = "sites"
     )
-    # reverse shift in origin (vegan::proc calculates centroid, but we want
-    # origin at 0 - this is more likely to affect loading rotations than
-    # scores rotations)
-    loading_transform <- matrix(
-      rep(proc$xmean, times = nrow(proc$Yrot)),
-      nrow = nrow(proc$Yrot), byrow=TRUE
-    )
-    rot_loadings <- proc$Yrot + loading_transform
-    rot_scores <- (to_rotate[[scores_var]][, 1:max_pc] %*%
-      proc$rotation)
+    rot_loadings <- to_rotate[[loadings_var]][, 1:max_pc] %*%
+      proc$rotation
+    rot_scores <- to_rotate[[scores_var]][, 1:max_pc] %*%
+      proc$rotation
   } else if (rotate == "scores") {
     proc <- procrustes(
       target[[scores_var]][, 1:max_pc], to_rotate[[scores_var]][, 1:max_pc],
