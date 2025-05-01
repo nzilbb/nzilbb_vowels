@@ -34,9 +34,9 @@
 #'     dplyr::select(-speaker) |>
 #'     dplyr::slice_sample(n=10)
 #'
-#'   # apply correlation test with 10 permutations.
+#'   # apply correlation test with 5 permutations.
 #'   # actual use requires at least 100.
-#'   cor_test <- correlation_test(pca_data, n = 10, cor.method = 'pearson')
+#'   cor_test <- correlation_test(pca_data, n = 5, cor.method = 'pearson')
 #'   # Return summary of significant correlations
 #'   summary(cor_test)
 #'
