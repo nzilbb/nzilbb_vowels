@@ -11,9 +11,11 @@ reference:
       - lobanov_2
       - pc_flip
       - pca_rotate_2d
+      - pca_rotate_procrustes
       - correlation_test
       - mds_test
       - pca_test
+      - procrustes_loadings
       - permutation_test
       - summary.correlation_test
   - title: Plotting functions
@@ -23,6 +25,7 @@ reference:
       - plot_correlation_counts
       - plot_correlation_magnitudes
       - plot_loadings
+      - plot_procrustes_loadings
       - plot_mds_test
       - plot_pc_input
       - plot_pc_vs

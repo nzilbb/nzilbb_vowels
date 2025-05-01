@@ -1,5 +1,11 @@
 ---
 title: "PCA and Rotation"
+output:
+    bookdown::html_document2:
+      base_format: rmarkdown::html_vignette
+pkgdown:
+  as_is: true
+author: "Joshua Wilson Black"
 bibliography:
   - references.bib
   - grateful-refs.bib
@@ -8,7 +14,8 @@ bibliography:
 
 ```{r, setup, include = FALSE}
 knitr::opts_chunk$set(
-  comment = "#>"
+  comment = "#>", out.width="100%", fig.width = 8, 
+  fig.height = 6
 )
 # Temp fix for quarto articles from https://github.com/r-lib/pkgdown/issues/2877
 # Although I've now gone to Rmd to avoid problems with the github action...
@@ -24,23 +31,6 @@ me <- normalizePath(
   })
 ```
 
-```{r setup, message = FALSE, warning="FALSE"}
-library(nzilbb.vowels)
-library(tidyverse)
-
-# plotting
-library(ggrepel)
-library(gganimate)
-
-# GAMMS
-library(mgcv)
-library(itsadug)
-
-# bootstrapping
-library(rsample)
-
-theme_set(theme_bw())
-```
 
 # Why rotate?
 
@@ -54,7 +44,29 @@ We then discuss the use of rotation for PCA applied to a single dataset.
 
 **NB:** This page should be taken as work-in-progress!
 
-# Comparing PCA across data sets.
+# Packages
+
+Let's load some packages.
+
+```{r, message = FALSE, warning="FALSE"}
+library(nzilbb.vowels)
+library(tidyverse)
+
+# plotting
+library(ggrepel)
+library(gganimate)
+
+# GAMMS
+library(mgcv)
+library(itsadug)
+
+# for bootstrapping
+library(rsample)
+
+theme_set(theme_bw())
+```
+
+# Comparing PCA across two data sets
 
 ## Are the same patterns of covariation present in two data sets?
 
@@ -216,7 +228,7 @@ qb_preds |>
   )
 ```
 
-The trajectories in \@ref(fig:fig-qb-preds) are in line with those found in
+The trajectories in Figure \@ref(fig:fig-qb-preds) are in line with those found in
 @hurringHowStableAreUnderreview. As we're interested in PCA rotation here, 
 we'll skip model criticism and go straight to extracting random intercepts. 
 
@@ -296,7 +308,7 @@ plot_variance_explained(onze_pca_test)
 Let's look at the first two PCs of each to see if there's any similarity in
 the patterns which emerge.
 
-```{r pc1-pc2-loadings, fig.cap="Loadings for PC1 and PC2 across ONZE and QB."}
+```{r fig-pc1-pc2-loadings, fig.cap="Loadings for PC1 and PC2 across ONZE and QB."}
 loadings_to_plot <- bind_rows(
   "QB" = qb_pca_test$loadings,
   "ONZE" = onze_pca_test$loadings,
@@ -323,14 +335,14 @@ loadings_to_plot |>
   facet_grid(cols = vars(Corpus))
 ```
 
-Spend some time peering at \@ref(fig:fig-pc1-pc2-loadings). You will start to see patterns
+Spend some time peering at Figure \@ref(fig:fig-pc1-pc2-loadings). You will start to see patterns
 which are common to both, but which are not captured by just looking at PC1
 or PC2.
 
 @hurringHowStableAreUnderreview focuses on *similarity* between the two corpora
 and finds this by means of looking at loadings by themselves. They find a nice
 correspondence between PC2 in ONZE and PC1 in QB.^[This is less clear in 
-\@ref(fig:fig-pc1-pc2-loadings), which uses only a subset of the QB data.]
+Figure \@ref(fig:fig-pc1-pc2-loadings), which uses only a subset of the QB data.]
 It was nice for their argument that nothing special was done to the PCs which 
 might suggest rigging things in favour of finding similarities. 
 
@@ -342,7 +354,7 @@ At this point it is worth emphasising the variance of PCA in the sense of large
 changes in PC loadings with small changes in the input data. Variance in loadings
 is particularly high in cases where there are multiple PCs which explain similar
 amounts of variance to one another. This is the point of the confidence intervals
-around the plots of variance explained above. If, as in \@ref(fig:fig-onze-var),
+around the plots of variance explained above. If, as in Figure \@ref(fig:fig-onze-var),
 PC1 and PC2 have overlapping confidence intervals, then we expect that there 
 will be a lot of variance in which variables get loaded on which PC (or on 
 some combination of both PCs).
@@ -462,7 +474,7 @@ anim <- onze_loadings |>
 animate(anim, nframes = 500)
 ```
 
-The moral of \@ref(fig:fig-bootstrap-plot) is that the same *patterns* are pretty 
+The moral of Figure \@ref(fig:fig-bootstrap-plot) is that the same *patterns* are pretty 
 consistent even if they switch between PC1 and PC2 or their polarity switches
 from negative to positive. The red collection of arrows and the blue collections
 of arrows show the 'leader/lagger' and the 'back vowel configuration' patterns
@@ -474,7 +486,7 @@ When it comes to comparing ONZE with QB, we are not interested if a pattern is
 captured by PC1 in one corpus and PC2 in the other. This *might* indicate
 something about the relative strength of the patterns in the community, but
 *only* if the confidence intervals for variance explained by PC1 and PC2 did
-not overlap for *both* corpora (i.e., both \@ref(fig:fig-onze-var) and \@ref(fig:fig-qb-var) show
+not overlap for *both* corpora (i.e., both Figure \@ref(fig:fig-onze-var) and Figure \@ref(fig:fig-qb-var) show
 PCs which do not have overlapping confidence intervals).
 
 ### Manual rotation
@@ -484,7 +496,7 @@ we want to rotate a space and manually do it. `nzilbb.vowels` includes the
 `pca_rotate_2d()` to rotate PCs in two dimensions. It works for the output
 of `prcomp()` and `princomp()`, but not for the output of `pca_test()`.
 
-Let's repeat \@ref(fig:fig-pc1-pc2-loadings) with `prcomp()`.
+Let's repeat Figure \@ref(fig:fig-pc1-pc2-loadings) with `prcomp()`.
 
 ```{r fig-loadings, fig.cap="ONZE and QB loadings for PC1 and PC2 before rotation."}
 qb_pca <- prcomp(
@@ -548,7 +560,7 @@ loadings_to_plot |>
   )
 ```
 
-\@ref(fig:fig-rot-loadings) roughly aligns the first component in ONZE with the first
+Figure \@ref(fig:fig-rot-loadings) roughly aligns the first component in ONZE with the first
 PC in QB.^[**NB**: I no longer refer to the components from ONZE as "PCs".]
 It looks like the second component would be more similar if we also flip the 
 ONZE second component. Let's do this using the `pc_flip()` function.
@@ -609,7 +621,7 @@ We will now maximally align the QB and ONZE PCA analyses using Procrustes
 rotation. We have to choose how many PCs to include when we do this. For the
 purposes of this illustration, we will choose the first five PCs, because the
 ONZE data has five statistically significant PCs according to `pca_test()`.^[See
-\@ref(fig:fig-onze-var).] We will again rotate ONZE to match QB (but we could
+Figure \@ref(fig:fig-onze-var).] We will again rotate ONZE to match QB (but we could
 easily go the other way).
 
 **NB**: We have to ensure that the order in which the variables appear in the
@@ -645,7 +657,7 @@ loadings_to_plot |>
 
 ```
 
-How does this compare to the manual rotation we tried above (\@ref(fig:fig-rot-flip-loadings)?
+How does this compare to the manual rotation we tried above (Figure \@ref(fig:fig-rot-flip-loadings)?
 ```{r}
 loadings_to_plot <- bind_rows(
   "ONZE manual" = as_tibble(onze_rot$rotation, rownames="variable"),
@@ -882,7 +894,7 @@ scores_to_plot |>
 
 This approach would work *even if the two datasets had no variables in common*.
 
-# Rotation for single data set.
+# Rotation for single data set
 
 ## Manual rotation for interpretability
 
@@ -896,14 +908,76 @@ In the example we have just looked at, we can describe X% of variation in the
 original data by describing it in terms of a cognitive and a motor dimension.
 This is still impressive even when the two dimensions aren't precisely _the PCs_.
 
+## Procrustes rotation for improved confidence bars
 
-## Procrustes rotation for improved bootsrapping
+We can use Procrustes rotation as an alternative source of confidence bars for
+loadings. This is currently being explored as an alternative to filtering the
+bootstraps so that we get cases where the PCs are more-or-less aligned.
 
-We can use Procrustes rotation in `pca_test()` for an alternative source of
-confidence bars.
-
-This is an approach sometimes used in Multidimensional Scaling (MDS).
+This use of Procrustes rotation as part of bootstrapping is common in
+Multidimensional Scaling (MDS).
 
 The fundamental idea is the same as for the case of comparing across two datasets,
-for each bootstrap sample is a distinct dataset.
+for each bootstrap sample is a distinct dataset (explored above).
+
+We implement the test in `procrustes_loadings()` and plot these with
+`plot_procrustes_loadings()`. If we decide that this is the better way to go for
+generating confidence bands, it will be eventually merged into the `pca_test()`
+function.^[The plan is to carry out a small simulation study on different
+strategies for PCA inference with vocalic data.]
+
+The `procrustes_loadings()` function takes the data you would usually put in 
+to `prcomp()` or `princomp()`. You have to choose a number of PCs to rotate
+(the `max_pcs` argument). One way to make this choice is to use the output of
+`pca_test()` (specifically, the number of 'statistically significant' PCs,
+as determined by looking at the plot of variance explained). We choose 5
+PCs, in line with Figure \@ref(fig:fig-onze-var).
+
+Let's generate a distribution of *signed index loadings* for the first 5
+PCs, using the `procrustes_loadings()` function on the ONZE data.
+
+```{r}
+onze_loadings <- procrustes_loadings(
+  onze_intercepts_full |> select(-speaker),
+  max_pcs = 5,
+  index = TRUE,
+  n = 500,
+  scale = TRUE
+)
+```
+
+The `procrustes_loadings()` function gives you signed index loadings for each PC
+for the bootstrapped analyses (with value `Sampling` in the `source` column).
+
+The `plot_procrustes_loadings()` function can then be used to visualise the 
+distribution.
+
+```{r}
+plot_procrustes_loadings(onze_loadings, pc_no=1, loadings_confint = 0.95)
+```
+
+By default, the function uses index loadings (as does `pca_test()`). But 
+index loadings are always positive. For the rotation to make sense, we need to
+add the sign back to the index loadings (i.e., whether the original loading
+is positive or negative). You can generate confidence intervals for the 
+original loadings by setting `index=FALSE`. 
+
+However, _if_ you set `index=FALSE`, you will not get an estimate of the null
+distribution, and so you won't get any kind of indication of whether the 
+loading is itself significant. For instance:
+
+```{r}
+onze_loadings <- procrustes_loadings(
+  onze_intercepts_full |> select(-speaker),
+  max_pcs = 5,
+  index = FALSE,
+  n = 500,
+  scale = TRUE
+)
+
+plot_procrustes_loadings(onze_loadings, pc_no=1, loadings_confint = 0.95)
+```
+
+
+
 
