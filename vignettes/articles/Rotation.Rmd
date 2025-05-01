@@ -556,7 +556,7 @@ PC in QB.^[**NB**: I no longer refer to the components from ONZE as "PCs".]
 It looks like the second component would be more similar if we also flip the 
 ONZE second component. Let's do this using the `pc_flip()` function.
 
-```{r fig-rot-flip-loadings, fig.cap="ONZE and QB loadings for components 1 and 2, ONZE rotated and then flipped on Component 2."}
+```{r fig-rot-flip-loadings, fig.cap="ONZE and QB loadings for components 1 and 2, ONZE manually rotated and then flipped on Component 2."}
 onze_rot <- pc_flip(onze_rot, pc_no=2)
 
 loadings_to_plot <- bind_rows(
@@ -619,13 +619,13 @@ easily go the other way).
 data which goes into `prcomp()` is the same across the two PCAs. This is how
 the Procrustes function knows
 
-```{r}
+```{r fig-qb-onze-proc, fig.cap="First two components of QB PCA and Procrustes rotated ONZE PCA."}
 onze_proc <- onze_pca |> 
   pca_rotate_procrustes(target = qb_pca, max_pcs = 5)
 
 loadings_to_plot <- bind_rows(
   "QB" = as_tibble(qb_pca$rotation, rownames="variable"),
-  "ONZE" = as_tibble(onze_proc$rotation, rownames="variable"),
+  "ONZE (Rotated)" = as_tibble(onze_proc$rotation, rownames="variable"),
   .id = "Corpus"
 )
 
@@ -649,7 +649,7 @@ loadings_to_plot |>
 ```
 
 How does this compare to the manual rotation we tried above (Figure \@ref(fig:fig-rot-flip-loadings)?
-```{r}
+```{r fig-manual-proc, fig.cap = "ONZE PCA rotated manually and via Procrustes rotation."}
 loadings_to_plot <- bind_rows(
   "ONZE manual" = as_tibble(onze_rot$rotation, rownames="variable"),
   "ONZE Procrustes" = as_tibble(onze_proc$rotation, rownames="variable"),
@@ -701,7 +701,7 @@ argument to `pca_rotate_procrustes()`. We list the names of each variable
 we will use in a vector. This implies that the names of the variables are the
 same in each dataset. We'll rotate using just `DRESS`, `TRAP`, and `KIT`.
 
-```{r}
+```{r fig-rot-sub, fig.cap="QB1 PCA and Procrustes rotated ONZE PCA, rotated with respect to DRESS, TRAP, and KIT only."}
 rot_vars <- c(
   "DRESS_F1", "DRESS_F2", "TRAP_F1", "TRAP_F2", "KIT_F1", "KIT_F2"
 )
@@ -715,7 +715,7 @@ onze_proc <- onze_pca |>
 
 loadings_to_plot <- bind_rows(
   "QB" = as_tibble(qb_pca$rotation, rownames="variable"),
-  "ONZE" = as_tibble(onze_proc$rotation, rownames="variable"),
+  "ONZE (Rotated)" = as_tibble(onze_proc$rotation, rownames="variable"),
   .id = "Corpus"
 )
 
@@ -809,7 +809,7 @@ QB2_proc <- QB2_pca |>
 
 What does this do to the variance explained by QB2 PCA?
 
-```{r}
+```{r fig-proc-var, fig.cap="Variance explained by components after Procrustes rotation."}
 plot(QB2_proc)
 ```
 
@@ -817,7 +817,7 @@ plot(QB2_proc)
 
 Let's look at the loadings.
 
-```{r}
+```{r fig-qb1-qb2-rot, fig.cap="Loadings for first two compnents for QB1 PCA and rotated QB2 PCA."}
 loadings_to_plot <- bind_rows(
   "QB1" = as_tibble(QB1_pca$rotation, rownames="variable"),
   "QB2 (Rotated)" = as_tibble(QB2_proc$rotation, rownames="variable"),
@@ -851,7 +851,7 @@ speakers rather than the loadings for variables. We have *then* looked at the
 loadings.
 
 But how much variation is there in the scores after rotation?
-```{r}
+```{r fig-score-change, fig.cap="Change in PC scores from QB1 to QB2, after Procrustes rotation."}
 scores_to_plot <- bind_rows(
   "QB1" = as_tibble(QB1_pca$x, rownames="speaker"),
   "QB2 (Rotated)" = as_tibble(QB2_proc$x, rownames="speaker"),
@@ -936,7 +936,7 @@ for the bootstrapped analyses (with value `Sampling` in the `source` column).
 The `plot_procrustes_loadings()` function can then be used to visualise the 
 distribution.
 
-```{r}
+```{r fig-proc-loadings, fig.cap="Index loadings, confidence band, and null distribution for PC1."}
 plot_procrustes_loadings(onze_loadings, pc_no=1, loadings_confint = 0.95)
 ```
 

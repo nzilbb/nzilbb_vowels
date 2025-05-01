@@ -63,4 +63,5 @@ Config/Needs/website:
   itsadug, 
   broom,
   gganimate,
-  grateful
+  grateful,
+  gifski
