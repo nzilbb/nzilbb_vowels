@@ -89,7 +89,6 @@ library(ggcorrplot)
 library(mgcv) # mgcv is required to fit GAMMs.
 library(itsadug) # itsadug is used to extract predictions and random effects
 # from GAMMs
-library(gratia) # gratia is another useful package for GAMM visualisations.
 library(broom) # we use `broom` from the `tidymodels` collection to generate
 # dataframes with summary information from our models.
 
