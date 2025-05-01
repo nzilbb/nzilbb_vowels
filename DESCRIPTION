@@ -49,7 +49,8 @@ Imports:
     smacof,
     Rdpack,
     lifecycle,
-    vegan
+    vegan,
+    bookdown
 RdMacros: Rdpack
 URL: https://nzilbb.github.io/nzilbb_vowels/, https://github.com/nzilbb/nzilbb_vowels
 BugReports: https://github.com/nzilbb/nzilbb_vowels/issues/
