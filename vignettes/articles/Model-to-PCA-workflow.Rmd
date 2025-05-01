@@ -3,6 +3,10 @@ title: "The Model-to-PCA workflow"
 output:
     bookdown::html_document2:
       base_format: rmarkdown::html_vignette
+resource_files:
+  - data/QB1_anon.rds
+  - data/QB1_preds.rds
+  - data/qb1_intercepts.rds
 pkgdown:
   as_is: true
 author: "Joshua Wilson Black"
@@ -17,19 +21,6 @@ knitr::opts_chunk$set(
   comment = "#>", out.width="100%", fig.width = 8, 
   fig.height = 6
 )
-# Temp fix for quarto articles from https://github.com/r-lib/pkgdown/issues/2877
-# Although I've now gone to Rmd to avoid problems with the github action...
-me <- normalizePath(
-  if (Sys.getenv("QUARTO_DOCUMENT_PATH") != "") {
-    Sys.getenv("QUARTO_DOCUMENT_PATH")
-  } else if (file.exists("data/QB1_anon.rds")) {
-    getwd()
-  } else if (file.exists("articles/data/QB1_anon.rds")) {
-    "articles"
-  } else {
-    "vignettes/articles"
-  })
-
 ```
 
 # Overview
@@ -558,12 +549,8 @@ difficulty running the following block.^[ I don't want to see any use of
 `setwd()`! It is poison for reproducibility. We use RStudio projects and the
 `here` package to avoid this. - JWB ]
 
-```{r, eval = FALSE}
+```{r, eval = TRUE}
 QB1 <- read_rds('data/QB1_anon.rds')
-```
-
-```{r, include = FALSE}
-QB1 <- read_rds(file.path(me, 'data/QB1_anon.rds'))
 ```
 
 
@@ -1001,7 +988,7 @@ write_rds(QB1_preds, 'data/QB1_preds.rds')
 ```
 
 ```{r, include = FALSE}
-QB1_preds <- read_rds(file.path(me, 'data/QB1_preds.rds'))
+QB1_preds <- read_rds('data/QB1_preds.rds')
 ```
 
 
@@ -1132,9 +1119,7 @@ rm(QB1_models)
 ```
 
 ```{r, include = FALSE}
-QB1_intercepts <- read_rds(
-  file.path(me, 'data/qb1_intercepts.rds')
-)
+QB1_intercepts <- read_rds('data/qb1_intercepts.rds')
 ```
 
 

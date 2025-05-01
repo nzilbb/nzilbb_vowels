@@ -3,6 +3,9 @@ title: "PCA and Rotation"
 output:
     bookdown::html_document2:
       base_format: rmarkdown::html_vignette
+resource_files:
+  - data/QB1_scores_anon.rds
+  - data/QB2_scores_anon.rds
 pkgdown:
   as_is: true
 author: "Joshua Wilson Black"
@@ -17,18 +20,6 @@ knitr::opts_chunk$set(
   comment = "#>", out.width="100%", fig.width = 8, 
   fig.height = 6
 )
-# Temp fix for quarto articles from https://github.com/r-lib/pkgdown/issues/2877
-# Although I've now gone to Rmd to avoid problems with the github action...
-me <- normalizePath(
-  if (Sys.getenv("QUARTO_DOCUMENT_PATH") != "") {
-    Sys.getenv("QUARTO_DOCUMENT_PATH")
-  } else if (file.exists("data/QB1_anon.rds")) {
-    getwd()
-  } else if (file.exists("articles/data/QB1_anon.rds")) {
-    "articles"
-  } else {
-    "vignettes/articles"
-  })
 ```
 
 
@@ -767,17 +758,10 @@ what happens to the variables. The individuals must be in the same order
 in both datasets. This is not the case for the QuakeBox and ONZE corpora, but
 it is the case for a subset of the QuakeBox corpora. 
 
-```{r, eval = FALSE}
+```{r}
 QB1_ints <- read_rds('data/QB1_scores_anon.rds') |> 
   select(-contains("PC"))
 QB2_ints <- read_rds('data/QB2_scores_anon.rds')|> 
-  select(-contains("PC"))
-```
-
-```{r, include = FALSE}
-QB1_ints <- read_rds(file.path(me, 'data/QB1_scores_anon.rds')) |> 
-  select(-contains("PC"))
-QB2_ints <- read_rds(file.path(me, 'data/QB2_scores_anon.rds'))|> 
   select(-contains("PC"))
 ```
 
