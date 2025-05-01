@@ -26,7 +26,7 @@ of index loadings, by bootstrapping, permutation, and Procrustes rotation.
 * New `plot_procrustes_loadings()` provided to plot the output of 
 `procrustes_loadings()`.
 
-* New articles on package website <https://nzilbb.github.io/nzilbb_vowels> 
+* New articles on package website <https://nzilbb.github.io/nzilbb_vowels/> 
 covering the 'model-to-PCA' workflow used at NZILBB and the use of rotation with 
 PCA.
 
