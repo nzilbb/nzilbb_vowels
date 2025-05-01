@@ -1119,7 +1119,7 @@ rm(QB1_models)
 ```
 
 ```{r, include = FALSE}
-QB1_intercepts <- read_rds('data/qb1_intercepts.rds')
+QB1_intercepts <- read_rds('data/QB1_intercepts.rds')
 ```
 
 
