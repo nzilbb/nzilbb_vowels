@@ -62,4 +62,5 @@ Config/Needs/website:
   mgcv, 
   itsadug, 
   broom,
-  gganimate
+  gganimate,
+  grateful
