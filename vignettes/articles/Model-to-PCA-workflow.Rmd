@@ -6,7 +6,7 @@ output:
 resource_files:
   - data/QB1_anon.rds
   - data/QB1_preds.rds
-  - data/qb1_intercepts.rds
+  - data/QB1_intercepts.rds
 pkgdown:
   as_is: true
 author: "Joshua Wilson Black"
