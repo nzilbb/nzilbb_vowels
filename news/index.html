@@ -24,7 +24,7 @@
       <ul class="navbar-nav me-auto"><li class="nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">The Model-to-PCA workflow</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">Model-to-PCA workflow</a></li>
     <li><a class="dropdown-item" href="../articles/Rotation.html">PCA and Rotation</a></li>
   </ul></li>
 <li class="active nav-item dropdown">
@@ -49,14 +49,25 @@
     </div>
 
     <div class="section level2">
-<h2 class="pkg-version" data-toc-text="development version" id="nzilbbvowels-development-version">nzilbb.vowels (development version)<a class="anchor" aria-label="anchor" href="#nzilbbvowels-development-version"></a></h2>
+<h2 class="pkg-version" data-toc-text="0.4.0" id="nzilbbvowels-040">nzilbb.vowels 0.4.0<a class="anchor" aria-label="anchor" href="#nzilbbvowels-040"></a></h2>
+<div class="section level3">
+<h3 id="breaking-changes-0-4-0">Breaking changes<a class="anchor" aria-label="anchor" href="#breaking-changes-0-4-0"></a></h3>
+<ul><li>In <code><a href="../reference/mds_test.html">mds_test()</a></code>, first argument changed from <code>similarity_matrix</code> to <code>dissimilarity_matrix</code> to match the behaviour expected by users of <code><a href="https://rdrr.io/pkg/smacof/man/smacofSym.html" class="external-link">smacof::smacofSym()</a></code>
+</li>
+</ul></div>
+<div class="section level3">
+<h3 id="new-features-0-4-0">New features<a class="anchor" aria-label="anchor" href="#new-features-0-4-0"></a></h3>
+<ul><li><p>New <code><a href="../reference/pca_rotate_2d.html">pca_rotate_2d()</a></code> takes the output of <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">stats::prcomp()</a></code> or <code><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">stats::princomp()</a></code> and rotates two specified PCs clockwise by <code>angle</code> degrees. Both scores and loadings are rotated and the variance explained by each component is updates.</p></li>
+<li><p>New <code><a href="../reference/pca_rotate_procrustes.html">pca_rotate_procrustes()</a></code> allows Procrustes rotation of the output of <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp()</a></code> or <code><a href="https://rdrr.io/r/stats/princomp.html" class="external-link">princomp()</a></code> to match a target configuration of either scores or loadings. Partial overlap of variables is enabled by <code>rotation_variables</code>. Both scores and loadings are rotated and the variance explained by each component is updates.</p></li>
+<li><p>New <code><a href="../reference/procrustes_loadings.html">procrustes_loadings()</a></code> generates data to enable calculation of confidence intervals of loadings, or confidence intervals and null distributions of index loadings, by bootstrapping, permutation, and Procrustes rotation.</p></li>
+<li><p>New <code><a href="../reference/plot_procrustes_loadings.html">plot_procrustes_loadings()</a></code> provided to plot the output of <code><a href="../reference/procrustes_loadings.html">procrustes_loadings()</a></code>.</p></li>
+<li><p>New articles on package website <a href="https://nzilbb.github.io/nzilbb_vowels/" class="uri">https://nzilbb.github.io/nzilbb_vowels/</a> covering the ‘model-to-PCA’ workflow used at NZILBB and the use of rotation with PCA.</p></li>
+</ul></div>
 </div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3.1" id="nzilbbvowels-031">nzilbb.vowels 0.3.1<a class="anchor" aria-label="anchor" href="#nzilbbvowels-031"></a></h2><p class="text-muted">CRAN release: 2024-11-29</p>
-</div>
-    <div class="section level2">
-<h2 class="pkg-version" data-toc-text="0.3.0" id="nzilbbvowels-030">nzilbb.vowels 0.3.0<a class="anchor" aria-label="anchor" href="#nzilbbvowels-030"></a></h2>
-</div>
+<ul><li>Documentation fixes to initial CRAN submission (<code>nzilbb.vowels 0.3</code>).</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.3" id="nzilbbvowels-03">nzilbb.vowels 0.3<a class="anchor" aria-label="anchor" href="#nzilbbvowels-03"></a></h2>
 <ul><li>Initial submission to CRAN</li>

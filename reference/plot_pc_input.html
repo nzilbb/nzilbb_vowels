@@ -38,7 +38,7 @@ intercepts and PC scores."><meta property="og:image" content="https://nzilbb.git
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">The Model-to-PCA workflow</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">Model-to-PCA workflow</a></li>
     <li><a class="dropdown-item" href="../articles/Rotation.html">PCA and Rotation</a></li>
   </ul></li>
 <li class="nav-item dropdown">
@@ -104,7 +104,7 @@ intercepts and PC scores.</p>
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span><span class="va">pca_data</span> <span class="op">&lt;-</span> <span class="va">onze_intercepts</span> <span class="op">|&gt;</span> <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span></span></span>
 <span class="r-in"><span><span class="va">onze_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span><span class="va">pca_data</span>, scale <span class="op">=</span> <span class="cn">TRUE</span><span class="op">)</span></span></span>
-<span class="r-in"><span><span class="va">onze_pca_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="pca_test.html">pca_test</a></span><span class="op">(</span><span class="va">pca_data</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
+<span class="r-in"><span><span class="va">onze_pca_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="pca_test.html">pca_test</a></span><span class="op">(</span><span class="va">pca_data</span>, n <span class="op">=</span> <span class="fl">5</span><span class="op">)</span> <span class="co"># Increase n to at least 100 in practice.</span></span></span>
 <span class="r-in"><span><span class="fu">plot_pc_input</span><span class="op">(</span><span class="va">onze_pca</span>, <span class="va">pca_data</span>, <span class="va">onze_pca_test</span><span class="op">)</span></span></span>
 <span class="r-msg co"><span class="r-pr">#&gt;</span> `geom_smooth()` using formula = 'y ~ x'</span>
 <span class="r-plt img"><img src="plot_pc_input-1.png" alt="" width="700" height="433"></span>

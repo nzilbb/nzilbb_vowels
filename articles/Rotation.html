@@ -44,7 +44,7 @@
 <li class="active nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
   <ul class="dropdown-menu" aria-labelledby="dropdown-articles">
-<li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">The Model-to-PCA workflow</a></li>
+<li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">Model-to-PCA workflow</a></li>
     <li><a class="dropdown-item" href="../articles/Rotation.html">PCA and Rotation</a></li>
   </ul>
 </li>
@@ -596,7 +596,7 @@ achieve this. Let’s do it.</p>
 <span></span>
 <span><span class="va">loadings_to_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
 <span>  <span class="st">"QB"</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">qb_pca</span><span class="op">$</span><span class="va">rotation</span>, rownames<span class="op">=</span><span class="st">"variable"</span><span class="op">)</span>,</span>
-<span>  <span class="st">"ONZE"</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">onze_rot</span><span class="op">$</span><span class="va">rotation</span>, rownames<span class="op">=</span><span class="st">"variable"</span><span class="op">)</span>,</span>
+<span>  <span class="st">"ONZE (Rotated)"</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">onze_rot</span><span class="op">$</span><span class="va">rotation</span>, rownames<span class="op">=</span><span class="st">"variable"</span><span class="op">)</span>,</span>
 <span>  .id <span class="op">=</span> <span class="st">"Corpus"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -631,7 +631,7 @@ ONZE second component. Let’s do this using the <code><a href="../reference/pc_
 <span></span>
 <span><span class="va">loadings_to_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
 <span>  <span class="st">"QB"</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">qb_pca</span><span class="op">$</span><span class="va">rotation</span>, rownames<span class="op">=</span><span class="st">"variable"</span><span class="op">)</span>,</span>
-<span>  <span class="st">"ONZE"</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">onze_rot</span><span class="op">$</span><span class="va">rotation</span>, rownames<span class="op">=</span><span class="st">"variable"</span><span class="op">)</span>,</span>
+<span>  <span class="st">"ONZE (Rotated and flipped)"</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">onze_rot</span><span class="op">$</span><span class="va">rotation</span>, rownames<span class="op">=</span><span class="st">"variable"</span><span class="op">)</span>,</span>
 <span>  .id <span class="op">=</span> <span class="st">"Corpus"</span></span>
 <span><span class="op">)</span></span>
 <span></span>
@@ -723,7 +723,7 @@ the Procrustes function knows</p>
 Figure 3.9: First two components of QB PCA and Procrustes rotated ONZE PCA.
 </p>
 </div>
-<p>How does this compare to the manual rotation we tried above (Figure <a href="#fig:fig-rot-flip-loadings">3.8</a>?</p>
+<p>How does this compare to the manual rotation we tried above (Figure <a href="#fig:fig-rot-flip-loadings">3.8</a>)?</p>
 <div class="sourceCode" id="cb14"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">loadings_to_plot</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/bind_rows.html" class="external-link">bind_rows</a></span><span class="op">(</span></span>
 <span>  <span class="st">"ONZE manual"</span> <span class="op">=</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span><span class="va">onze_rot</span><span class="op">$</span><span class="va">rotation</span>, rownames<span class="op">=</span><span class="st">"variable"</span><span class="op">)</span>,</span>

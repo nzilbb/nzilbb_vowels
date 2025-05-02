@@ -30,7 +30,7 @@ this function."><meta property="og:image" content="https://nzilbb.github.io/nzil
       <ul class="navbar-nav me-auto"><li class="active nav-item"><a class="nav-link" href="../reference/index.html">Reference</a></li>
 <li class="nav-item dropdown">
   <button class="nav-link dropdown-toggle" type="button" id="dropdown-articles" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true">Articles</button>
-  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">The Model-to-PCA workflow</a></li>
+  <ul class="dropdown-menu" aria-labelledby="dropdown-articles"><li><a class="dropdown-item" href="../articles/Model-to-PCA-workflow.html">Model-to-PCA workflow</a></li>
     <li><a class="dropdown-item" href="../articles/Rotation.html">PCA and Rotation</a></li>
   </ul></li>
 <li class="nav-item dropdown">
@@ -104,14 +104,14 @@ in the original data and their significance (as p-values).</p></li>
 <span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/slice.html" class="external-link">slice_sample</a></span><span class="op">(</span>n<span class="op">=</span><span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span></span></span>
-<span class="r-in"><span>  <span class="co"># apply correlation test with 10 permutations.</span></span></span>
+<span class="r-in"><span>  <span class="co"># apply correlation test with 5 permutations.</span></span></span>
 <span class="r-in"><span>  <span class="co"># actual use requires at least 100.</span></span></span>
-<span class="r-in"><span>  <span class="va">cor_test</span> <span class="op">&lt;-</span> <span class="fu">correlation_test</span><span class="op">(</span><span class="va">pca_data</span>, n <span class="op">=</span> <span class="fl">10</span>, cor.method <span class="op">=</span> <span class="st">'pearson'</span><span class="op">)</span></span></span>
+<span class="r-in"><span>  <span class="va">cor_test</span> <span class="op">&lt;-</span> <span class="fu">correlation_test</span><span class="op">(</span><span class="va">pca_data</span>, n <span class="op">=</span> <span class="fl">5</span>, cor.method <span class="op">=</span> <span class="st">'pearson'</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="co"># Return summary of significant correlations</span></span></span>
 <span class="r-in"><span>  <span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">cor_test</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Correlation test results.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Count of significant pairwise correlations in original data at alpha = 0.05: 14</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span> Mean significant pairwise correlations in permuted data (n = 10) at alpha = 0.05: 9.5</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span> Mean significant pairwise correlations in permuted data (n = 5) at alpha = 0.05: 9.6</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Min = 7, Max = 13.</span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> </span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> Top 5 pairwise correlations in original data:</span>
