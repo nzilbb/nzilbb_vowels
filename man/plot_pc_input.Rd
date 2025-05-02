@@ -29,7 +29,7 @@ intercepts and PC scores.
 \examples{
 pca_data <- onze_intercepts |> dplyr::select(-speaker)
 onze_pca <- prcomp(pca_data, scale = TRUE)
-onze_pca_test <- pca_test(pca_data, n = 10)
+onze_pca_test <- pca_test(pca_data, n = 5) # Increase n to at least 100 in practice.
 plot_pc_input(onze_pca, pca_data, onze_pca_test)
 
 }
