@@ -15,7 +15,7 @@ Useful links:
 \itemize{
   \item \url{https://nzilbb.github.io/nzilbb_vowels/}
   \item \url{https://github.com/nzilbb/nzilbb_vowels}
-  \item Report bugs at \url{https://github.com/nzilbb/nzilbb_vowels/issues/}
+  \item Report bugs at \url{https://github.com/nzilbb/nzilbb_vowels/issues}
 }
 
 }
