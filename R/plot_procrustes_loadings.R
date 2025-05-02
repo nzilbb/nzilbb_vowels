@@ -34,6 +34,15 @@
 #'
 plot_procrustes_loadings <-
   function(proc_loadings, pc_no=1, loadings_confint=0.9) {
+
+    # Check if loadings are index loadings or not and set
+    # label for y-axis of plot appropriately.
+    if ("Null" %in% proc_loadings[['source']]) {
+      loading_label = "Index loadings"
+    } else {
+      loading_label = "Loadings"
+    }
+
     out_plot <- proc_loadings |>
       mutate(
         variable = fct_reorder(
@@ -92,7 +101,7 @@ plot_procrustes_loadings <-
         values = c("Sampling" = "#F8766D", "Null" = "#00BFC4")
       ) +
       labs(
-        y = "Index loading",
+        y = loading_label,
         x = "Variable",
         colour = "Distribution"
       )
