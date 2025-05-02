@@ -1,15 +1,15 @@
 ---
-title: "The Model-to-PCA workflow"
+title: "Model-to-PCA workflow"
 output:
     bookdown::html_document2:
       base_format: rmarkdown::html_vignette
+author: "Joshua Wilson Black, Lynn Clark"
 resource_files:
   - data/QB1_anon.rds
   - data/QB1_preds.rds
   - data/QB1_intercepts.rds
 pkgdown:
   as_is: true
-author: "Joshua Wilson Black"
 bibliography:
   - references.bib
   - grateful-refs.bib
@@ -34,6 +34,9 @@ the [Voices of Regional Australia](https://researchportalplus.anu.edu.au/en/proj
 
 We'll look at a quick introduction to PCA, before applying the workflow to
 some data from the [UC QuakeBox project](https://quakestudies.canterbury.ac.nz/store/collection/235).
+
+**This material slightly expands on @wilsonblackUsingPrincipalComponent2023.**
+**For almost all purposes, it would be better to cite that article than this** **page.**
 
 ## Why care about co-variation?
 
@@ -1543,7 +1546,7 @@ grateful::nocite_references(
 ```
 
 
-
+# References
 
 ::: refs
 

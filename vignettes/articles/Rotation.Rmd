@@ -529,7 +529,7 @@ onze_rot <- pca_rotate_2d(onze_pca, 90, pcs=c(1,2))
 
 loadings_to_plot <- bind_rows(
   "QB" = as_tibble(qb_pca$rotation, rownames="variable"),
-  "ONZE" = as_tibble(onze_rot$rotation, rownames="variable"),
+  "ONZE (Rotated)" = as_tibble(onze_rot$rotation, rownames="variable"),
   .id = "Corpus"
 )
 
@@ -561,7 +561,7 @@ onze_rot <- pc_flip(onze_rot, pc_no=2)
 
 loadings_to_plot <- bind_rows(
   "QB" = as_tibble(qb_pca$rotation, rownames="variable"),
-  "ONZE" = as_tibble(onze_rot$rotation, rownames="variable"),
+  "ONZE (Rotated and flipped)" = as_tibble(onze_rot$rotation, rownames="variable"),
   .id = "Corpus"
 )
 
@@ -648,7 +648,7 @@ loadings_to_plot |>
 
 ```
 
-How does this compare to the manual rotation we tried above (Figure \@ref(fig:fig-rot-flip-loadings)?
+How does this compare to the manual rotation we tried above (Figure \@ref(fig:fig-rot-flip-loadings))?
 ```{r fig-manual-proc, fig.cap = "ONZE PCA rotated manually and via Procrustes rotation."}
 loadings_to_plot <- bind_rows(
   "ONZE manual" = as_tibble(onze_rot$rotation, rownames="variable"),
