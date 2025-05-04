@@ -1,6 +1,8 @@
 # nzilbb.vowels 0.4.1
 
 - Remove `VignetteBuilder` from `DRESCRIPTION`.
+- Now `plot_procrustes_loadings()` correctly sets the y-axis label to 'Loading' 
+or 'Index loading'.
 
 # nzilbb.vowels 0.4.0
 
