@@ -1,5 +1,7 @@
 # nzilbb.vowels 0.4.1
 
+- Remove `VignetteBuilder` from `DRESCRIPTION`.
+
 # nzilbb.vowels 0.4.0
 
 ## Breaking changes 
