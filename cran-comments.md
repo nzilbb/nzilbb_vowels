@@ -1,5 +1,8 @@
 ## nzilbb.vowels 0.4.1
 
+### Resubmission
+
+If this version I have: 
 * Removed `VignetteBuilder` from `DESCRIPTION` (no vignettes in package).
 
 ## R CMD check results
