@@ -78,10 +78,10 @@ plot_pc_vs <- function(vowel_data, pca_obj, pc_no = 1, is_sig = FALSE) {
     mutate(
       !!vowel_col_name := str_extract(
         .data$variable,
-        # Assumption behind regex: vowel names are either FX_WELLS SET or
-        # WELLS SET_FX. We get strings of A-Za-z which either preceed or follow
-        # a '_'.
-        "(?:^|_)([A-Za-z\\:]+)(?:$|_)",
+        # Assumption behind regex: vowel names are either FX_WELLS SET or WELLS
+        # SET_FX. We get strings of unicode letters (potentially modified) which
+        # either precede or follow a '_'.
+        "(?:^|_)([\\p{Mark}\\p{Letter}\\:]+)(?:$|_)",
         group=1
       ),
       formant = str_extract(.data$variable, "(?:^|_)(F[0-9])(?:$|_)", group=1)

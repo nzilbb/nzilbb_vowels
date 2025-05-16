@@ -1,5 +1,8 @@
 # nzilbb.vowels (development version)
 
+- In `plot_pc_vs()`, allow unicode letter class and mark combinations in 
+variable names
+
 # nzilbb.vowels 0.4.1
 
 - Remove `VignetteBuilder` from `DRESCRIPTION`.
