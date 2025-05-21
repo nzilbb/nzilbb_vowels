@@ -89,13 +89,13 @@
 <span class="header-section-number">1</span> Overview<a class="anchor" aria-label="anchor" href="#overview"></a>
 </h2>
 <p>The primary purpose of this package is to aid the ‘model-to-PCA’ pipeline used
-in a series of projects at <a href="https://www.canterbury.ac.nz/research/about-uc-research/research-groups-and-centres/new-zealand-institute-of-language-brain-and-behaviour" class="external-link">NZILBB</a> <span class="citation">(Brand et al. 2021; Hurring et al. Forthcoming; Wilson Black, Brand, et al. 2023; Wilson Black, Hay, et al. 2023)</span>.</p>
+in a series of projects at <a href="https://www.canterbury.ac.nz/research/about-uc-research/research-groups-and-centres/new-zealand-institute-of-language-brain-and-behaviour" class="external-link">NZILBB</a> <span class="citation">(Brand et al. 2021; Hurring et al. Under review; <strong>wilsonblackUsingPrincipalComponent2023?</strong>; Wilson Black et al. 2023)</span>.</p>
 <p>This article briefly sets out the pipeline and shows how to use the functions
 in the package. It was part of a workshop delivered as part of a workshop for
 the <a href="https://researchportalplus.anu.edu.au/en/projects/voices-of-regional-australia-the-linguistic-patterning-of-local-a" class="external-link">Voices of Regional Australia</a> project.</p>
 <p>We’ll look at a quick introduction to PCA, before applying the workflow to
 some data from the <a href="https://quakestudies.canterbury.ac.nz/store/collection/235" class="external-link">UC QuakeBox project</a>.</p>
-<p><strong>This material slightly expands on <span class="citation">Wilson Black, Brand, et al. (2023)</span>.</strong>
+<p><strong>This material slightly expands on <span class="citation">(<strong>wilsonblackUsingPrincipalComponent2023?</strong>)</span>.</strong>
 <strong>For almost all purposes, it would be better to cite that article than this</strong> <strong>page.</strong></p>
 <div class="section level3" number="1.1">
 <h3 id="why-care-about-co-variation">
@@ -105,11 +105,11 @@ some data from the <a href="https://quakestudies.canterbury.ac.nz/store/collecti
 <ul>
 <li><p>Traditionally, sociolinguistic studies focused on analyzing individual sounds
 separately, even when considering multiple sounds, except in specific cases like
-vowel shifts <span class="citation">(e.g, Gordon 2013; Hay et al. 2015)</span> where there is an expected
+vowel shifts <span class="citation">(e.g, <strong>gordonInvestigatingChainShifts2013?</strong>; <strong>hayTrackingWordFrequency2015a?</strong>)</span> where there is an expected
 relationship between the variables for structural reasons.</p></li>
 <li><p>But, work in third-wave sociolinguistics suggests that sounds may function as
 interconnected systems e.g. stylistic variation involves combining collections
-of variants to convey social meaning <span class="citation">(Becker 2014; Podesva 2007)</span>.</p></li>
+of variants to convey social meaning <span class="citation">(<strong>beckerLinguisticRepertoireEthnic2014?</strong>; <strong>podesvaPhonationTypeStylistic2007?</strong>)</span>.</p></li>
 <li><p>This has been tricky to investigate empirically and most work in this
 paradigm has explored correlations between two variables.</p></li>
 <li><p>More recently, we’ve seen a shift towards thinking about clusters of
@@ -159,7 +159,7 @@ function <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-lin
 <h2 id="what-is-pca">
 <span class="header-section-number">2</span> What is PCA?<a class="anchor" aria-label="anchor" href="#what-is-pca"></a>
 </h2>
-<p>This section is a shortened version of <span class="citation">Wilson Black, Brand, et al. (2023)</span>.
+<p>This section is a shortened version of <span class="citation">(<strong>wilsonblackUsingPrincipalComponent2023?</strong>)</span>.
 For further details, see that paper. We especially encourage you to look at the
 supplementary material available
 <a href="https://nzilbb.github.io/PCA_method_supplementary/PCA_method_supplementary.html" class="external-link">here</a>.</p>
@@ -602,7 +602,7 @@ reflection.</p>
 <span class="header-section-number">3</span> Quakebox monophthongs<a class="anchor" aria-label="anchor" href="#quakebox-monophthongs"></a>
 </h2>
 <p>We now move to an example of real research use of PCA from the QuakeBox corpus.
-This section follows in the footsteps of <span class="citation">Hurring et al. (Forthcoming)</span>.</p>
+This section follows in the footsteps of <span class="citation">Hurring et al. (Under review)</span>.</p>
 <p>The anonymised data, with stopwords removed,<a class="footnote-ref" tabindex="0" data-bs-toggle="popover" data-bs-content="&lt;p&gt;The removed stopwords were: ‘a’,
 ‘ah’, ‘ahh’, ‘am’, ‘an’, ‘and’, ‘are’, “aren’t”, ‘as’, ‘at’, ‘aw’, ‘because’,
 ‘but’, ‘could’, ‘do’, “don’t”, ‘eh’, ‘for’, ‘from’, ‘gonna’, ‘had’, ‘has’,
@@ -870,7 +870,7 @@ vowels and consonants, so look out for that.</p>
 <span class="header-section-number">3.2.2</span> Fit<a class="anchor" aria-label="anchor" href="#fit"></a>
 </h4>
 <p>This is not the place to provide an explanation of GAMM modelling. Readers are
-directed to <span class="citation">Sóskuthy (2017)</span>.</p>
+directed to <span class="citation">(<strong>soskuthyGeneralisedAdditiveMixed2017?</strong>)</span>.</p>
 <p>We fit a distinct GAMM model to each vowel and formant pair i.e., separate models for <span class="smallcaps">dress</span> F1,
 <span class="smallcaps">dress</span> F2 etc.</p>
 <p>These models predict Lobanov 2.0 normalised formant values with a parametric
@@ -878,7 +878,7 @@ term for gender and a four-knot smooth for age category at both levels of gender
 (‘M’ and ‘F’). We also fit articulation rate as a control variable and random
 effect intercepts for speaker and word.</p>
 <p>The pattern in the code block below, of nesting data, fitting models,
-and extracting intercepts, is set out in more detail by <span class="citation">Wilson Black (2022)</span>.</p>
+and extracting intercepts, is set out in more detail by <span class="citation">(<strong>wilsonblackVisualisingVowelSpace2022?</strong>)</span>.</p>
 <p>Before we begin, we’ll need a numeric representation of the age categories and
 to convert speaker, gender, and word to factor variables.</p>
 <div class="sourceCode" id="cb24"><pre class="downlit sourceCode r">
@@ -1292,7 +1292,7 @@ toy example above is here. See that <span class="smallcaps">dress</span> and <sp
 F1 are loaded positively, while <span class="smallcaps">kit</span> F1 has a negative loading.
 This gives some initial indication that the short front vowel shift is being
 captured by this PC and perhaps connected with other patterns of covariation.
-This is explored in detail by <span class="citation">Hurring et al. (Forthcoming)</span>.</p>
+This is explored in detail by <span class="citation">Hurring et al. (Under review)</span>.</p>
 </div>
 <div class="section level4" number="3.3.2">
 <h4 id="how-many-pcs">
@@ -1575,15 +1575,15 @@ have presented above. For instance,
 number of exploratory methods which can be used to draw conclusions ’for the
 corpus only (438). Exploratory use of PCA does not provide a strong test of
 the patterns which we pick out. But we <em>can</em> make predictions about what PCA
-will show in another data set (as in <span class="citation">Hurring et al. (Forthcoming)</span>). We can
+will show in another data set (as in <span class="citation">Hurring et al. (Under review)</span>). We can
 also use bootstrapping methods (as in <code><a href="../reference/pca_test.html">pca_test()</a></code>) to help mitigate against any
 idiosyncratic features of our corpus.</p>
 <p>In future work, we’ll look at the use of bootstrapped confidence intervals and
 index loadings when compared with a rotation-based method. Some work towards
-this was presented at Methods in Dialectology last year <span class="citation">(Sheard and Wilson Black 2024)</span>.</p>
+this was presented at Methods in Dialectology last year <span class="citation">(<strong>sheardRotatingPrincipalComponents2024?</strong>)</span>.</p>
 <p>It is also important to note the existence of Functional Principal Component
 Analysis. Another stream of research at NZILBB has been working with this method
-recently. One possible way in is <span class="citation">Gubian, Torreira, and Boves (2015)</span>.</p>
+recently. One possible way in is <span class="citation">(<strong>gubianUsingFunctionalData2015?</strong>)</span>.</p>
 </div>
 <div class="section level2" number="5">
 <h2 id="references">
@@ -1595,9 +1595,6 @@ recently. One possible way in is <span class="citation">Gubian, Torreira, and Bo
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
 <div id="ref-rmarkdown2024" class="csl-entry">
 Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. <em><span class="nocase">rmarkdown</span>: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown" class="external-link">https://github.com/rstudio/rmarkdown</a>.
-</div>
-<div id="ref-beckerLinguisticRepertoireEthnic2014" class="csl-entry">
-Becker, Kara. 2014. <span>“Linguistic Repertoire and Ethnic Identity in <span>New York City</span>.”</span> <em>Language &amp; Communication</em>, New perspectives on linguistic variation and ethnic identity in <span>North America</span>, 35 (March): 43–54. <a href="https://doi.org/10.1016/j.langcom.2013.12.007" class="external-link">https://doi.org/10.1016/j.langcom.2013.12.007</a>.
 </div>
 <div id="ref-brandSystematicCovariationMonophthongs2021" class="csl-entry">
 Brand, James, Jen Hay, Lynn Clark, Kevin Watson, and Márton Sóskuthy. 2021. <span>“Systematic Co-Variation of Monophthongs Across Speakers of <span>New Zealand English</span>.”</span> <em>Journal of Phonetics</em> 88: 101096. <a href="https://doi.org/10.1016/j.wocn.2021.101096" class="external-link">https://doi.org/10.1016/j.wocn.2021.101096</a>.
@@ -1611,17 +1608,8 @@ Desagulier, Guillaume. 2020. <span>“Multivariate <span>Exploratory Approaches<
 <div id="ref-rsample" class="csl-entry">
 Frick, Hannah, Fanny Chow, Max Kuhn, Michael Mahoney, Julia Silge, and Hadley Wickham. 2025. <em><span class="nocase">rsample</span>: General Resampling Infrastructure</em>. <a href="https://CRAN.R-project.org/package=rsample" class="external-link">https://CRAN.R-project.org/package=rsample</a>.
 </div>
-<div id="ref-gordonInvestigatingChainShifts2013" class="csl-entry">
-Gordon, Matthew J. 2013. <span>“Investigating <span>Chain Shifts</span> and <span>Mergers</span>.”</span> In <em>The <span>Handbook</span> of <span>Language Variation</span> and <span>Change</span></em>, 203–19. John Wiley &amp; Sons, Ltd. <a href="https://doi.org/10.1002/9781118335598.ch9" class="external-link">https://doi.org/10.1002/9781118335598.ch9</a>.
-</div>
-<div id="ref-gubianUsingFunctionalData2015" class="csl-entry">
-Gubian, Michele, Francisco Torreira, and Lou Boves. 2015. <span>“Using <span>Functional Data Analysis</span> for Investigating Multidimensional Dynamic Phonetic Contrasts.”</span> <em>Journal of Phonetics</em> 49 (March): 16–40. <a href="https://doi.org/10.1016/j.wocn.2014.10.001" class="external-link">https://doi.org/10.1016/j.wocn.2014.10.001</a>.
-</div>
-<div id="ref-hayTrackingWordFrequency2015a" class="csl-entry">
-Hay, Jennifer B., Janet B. Pierrehumbert, Abby J. Walker, and Patrick LaShell. 2015. <span>“Tracking Word Frequency Effects Through 130   Years of Sound Change.”</span> <em>Cognition</em> 139 (June): 83–91. <a href="https://doi.org/10.1016/j.cognition.2015.02.012" class="external-link">https://doi.org/10.1016/j.cognition.2015.02.012</a>.
-</div>
 <div id="ref-hurringHowStableAreUnderreview" class="csl-entry">
-Hurring, Gia, Joshua Wilson Black, Jen Hay, and Lynn Clark. Forthcoming. <span>“How Stable Are Patterns of Covariation Across Time?”</span> <em>Language Variation and Change</em>, Forthcoming.
+Hurring, Gia, Joshua Wilson Black, Jen Hay, and Lynn Clark. Under review. <span>“How Stable Are Patterns of Covariation Across Time?”</span> Under review.
 </div>
 <div id="ref-ggcorrplot" class="csl-entry">
 Kassambara, Alboukadel. 2023. <em><span class="nocase">ggcorrplot</span>: Visualization of a Correlation Matrix Using <span>“<span class="nocase">ggplot2</span>”</span></em>. <a href="https://CRAN.R-project.org/package=ggcorrplot" class="external-link">https://CRAN.R-project.org/package=ggcorrplot</a>.
@@ -1629,20 +1617,11 @@ Kassambara, Alboukadel. 2023. <em><span class="nocase">ggcorrplot</span>: Visual
 <div id="ref-gganimate" class="csl-entry">
 Pedersen, Thomas Lin, and David Robinson. 2024. <em><span class="nocase">gganimate</span>: A Grammar of Animated Graphics</em>. <a href="https://CRAN.R-project.org/package=gganimate" class="external-link">https://CRAN.R-project.org/package=gganimate</a>.
 </div>
-<div id="ref-podesvaPhonationTypeStylistic2007" class="csl-entry">
-Podesva, Robert J. 2007. <span>“Phonation Type as a Stylistic Variable: <span>The</span> Use of Falsetto in Constructing a Persona.”</span> <em>Journal of Sociolinguistics</em> 11 (4): 478–504. <a href="https://doi.org/10.1111/j.1467-9841.2007.00334.x" class="external-link">https://doi.org/10.1111/j.1467-9841.2007.00334.x</a>.
-</div>
 <div id="ref-base" class="csl-entry">
 R Core Team. 2024. <em><span>R</span>: A Language and Environment for Statistical Computing</em>. Vienna, Austria: R Foundation for Statistical Computing. <a href="https://www.R-project.org/" class="external-link">https://www.R-project.org/</a>.
 </div>
-<div id="ref-sheardRotatingPrincipalComponents2024" class="csl-entry">
-Sheard, Elena, and Joshua Wilson Black. 2024. <span>“Rotating <span>Principal Components</span> to Explore Change over the Lifespan in <span>New Zealand English</span> Monophthongs.”</span> Presented at the <span class="nocase">Eighteenth International Conference on Methods in Dialectology</span>, La Trobe University, July 4. <a href="https://joshua.wilsonblack.nz/slides/methods/" class="external-link">https://joshua.wilsonblack.nz/slides/methods/</a>.
-</div>
 <div id="ref-ggrepel" class="csl-entry">
 Slowikowski, Kamil. 2024. <em><span class="nocase">ggrepel</span>: Automatically Position Non-Overlapping Text Labels with <span>“<span class="nocase">ggplot2</span>”</span></em>. <a href="https://CRAN.R-project.org/package=ggrepel" class="external-link">https://CRAN.R-project.org/package=ggrepel</a>.
-</div>
-<div id="ref-soskuthyGeneralisedAdditiveMixed2017" class="csl-entry">
-Sóskuthy, Márton. 2017. <span>“Generalised Additive Mixed Models for Dynamic Analysis in Linguistics: A Practical Introduction.”</span> arXiv.org. March 15, 2017. <a href="https://arxiv.org/abs/1703.05339v1" class="external-link">https://arxiv.org/abs/1703.05339v1</a>.
 </div>
 <div id="ref-itsadug" class="csl-entry">
 van Rij, Jacolien, Martijn Wieling, R. Harald Baayen, and Hedderik van Rijn. 2022. <span>“<span class="nocase">itsadug</span>: Interpreting Time Series and Autocorrelated Data Using GAMMs.”</span>
@@ -1652,12 +1631,6 @@ Vieira, Vasco. 2012. <span>“Permutation Tests to Estimate Significances on <sp
 </div>
 <div id="ref-tidyverse" class="csl-entry">
 Wickham, Hadley, Mara Averick, Jennifer Bryan, Winston Chang, Lucy D’Agostino McGowan, Romain François, Garrett Grolemund, et al. 2019. <span>“Welcome to the <span class="nocase">tidyverse</span>.”</span> <em>Journal of Open Source Software</em> 4 (43): 1686. <a href="https://doi.org/10.21105/joss.01686" class="external-link">https://doi.org/10.21105/joss.01686</a>.
-</div>
-<div id="ref-wilsonblackVisualisingVowelSpace2022" class="csl-entry">
-Wilson Black, Joshua. 2022. <span>“Visualising <span>Vowel Space Change</span> with <span>GAMMs</span>.”</span> <em>Linguistics Methods Hub</em>, Linguistics <span>Methods Hub</span>, October. <a href="https://doi.org/10.5281/zenodo.7261966" class="external-link">https://doi.org/10.5281/zenodo.7261966</a>.
-</div>
-<div id="ref-wilsonblackUsingPrincipalComponent2023" class="csl-entry">
-Wilson Black, Joshua, James Brand, Jen Hay, and Lynn Clark. 2023. <span>“Using Principal Component Analysis to Explore Co‐variation of Vowels.”</span> <em>Language and Linguistics Compass</em> 17 (1): e12479. <a href="https://doi.org/10.1111/lnc3.12479" class="external-link">https://doi.org/10.1111/lnc3.12479</a>.
 </div>
 <div id="ref-wilsonblackOverlookedEffectAmplitude2023" class="csl-entry">
 Wilson Black, Joshua, Jennifer Hay, Lynn Clark, and James Brand. 2023. <span>“The Overlooked Effect of Amplitude on Within-Speaker Vowel Variation.”</span> <em>Linguistics Vanguard</em> 9 (1): 173–89. <a href="https://doi.org/10.1515/lingvan-2022-0086" class="external-link">https://doi.org/10.1515/lingvan-2022-0086</a>.
