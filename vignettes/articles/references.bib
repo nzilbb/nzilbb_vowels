@@ -12,7 +12,6 @@
   urldate = {2024-11-07},
   abstract = {Principal components analysis (PCA) is a common method to summarize a larger set of correlated variables into a smaller and more easily interpretable axes of variation. However, the different components need to be distinct from each other to be interpretable otherwise they only represent random directions. This is a fundamental assumption of PCA and, thus, needs to be tested every time. Sample correlation matrices will always result in a pattern of decreasing eigenvalues even if there is no structure. Tests are, therefore, needed to discern real patterns from illusionary ones. Furthermore, the loadings of the vectors need to be larger than expected by random data to be useful in the calculation of PC-scores. PC-scores calculated from nondistinct PC's have very large standard errors and cannot be used for biological interpretations. I give a number of examples to illustrate the potential problems with PCA. Robustness of the PC's increases with increasing sample size but not with the number of traits. I review a few simple test statistics appropriate for testing PC's and use a real-world example to illustrate how this can be done using randomization tests. PCA can be very useful but great care is needed to avoid spurious results.},
   langid = {english},
-  keywords = {Correlations,principal components analysis,randomization,standard error},
   file = {/Users/jbl91/Zotero/storage/722VX6KQ/Björklund - 2019 - Be careful with your principal components.pdf;/Users/jbl91/Zotero/storage/N53477YB/evo.html}
 }
 
@@ -46,7 +45,6 @@
   abstract = {Principal Component Analysis (PCA) is one of the most broadly used statistical methods for the ordination and dimensionality-reduction of multivariate datasets across many scientific disciplines. Trivial PCs can be estimated from data sets without any correlational structure among the original variables, and traditional criteria for selecting non-trivial PC axes are difficult to implement, partially subjective or based on ad hoc thresholds. PCAtest is an R package that implements permutation-based statistical tests to evaluate the overall significance of a PCA, the significance of each PC axis, and of contributions of each observed variable to the significant axes. Based on simulation and empirical results, I encourage R users to routinely apply PCAtest to test the significance of their PCA before proceeding with the direct interpretation of PC axes and/or the utilization of PC scores in subsequent evolutionary and ecological analyses.},
   langid = {english},
   pmcid = {PMC8858582},
-  keywords = {Computer Simulation,PCAtest,Permutation,Principal component analysis,Principal Component Analysis,R function,Statistical significance},
   file = {/Users/jbl91/Zotero/storage/83C8QB4K/Camargo - 2022 - PCAtest testing the statistical significance of P.pdf}
 }
 
@@ -68,10 +66,51 @@
   file = {/Users/jbl91/Zotero/storage/LHQH79KQ/Desagulier - 2020 - Multivariate Exploratory Approaches.pdf}
 }
 
+@online{dunningtonBestPracticesProgramming,
+  title = {Best Practices for Programming with Ggplot2},
+  author = {Dunnington, Dewey},
+  url = {https://www.posit.co/},
+  urldate = {2024-12-02},
+  abstract = {The ggplot2 package is widely acknowledged as a powerful, dynamic, and easy-to-learn graphics framework when used in an interactive environment.},
+  langid = {english},
+  organization = {Posit},
+  file = {/Users/jbl91/Zotero/storage/ARMBUJ5K/best-practices-for-programming-with-ggplot2.html}
+}
+
 @article{hurringHowStableAreUnderreview,
   title = {How Stable Are Patterns of Covariation across Time?},
   author = {Hurring, Gia and Wilson Black, Joshua and Hay, Jen and Clark, Lynn},
   year = {Under review}
+}
+
+@book{jolliffePrincipalComponentAnalysis2002,
+  title = {Principal {{Component Analysis}}},
+  author = {Jolliffe, Ian T.},
+  date = {2002},
+  publisher = {Springer},
+  isbn = {978-0-387-22440-4},
+  file = {/Users/jbl91/Zotero/storage/BVX9JXGX/reader.html}
+}
+
+@book{legendreNumericalEcology2012,
+  title = {Numerical {{Ecology}}},
+  author = {Legendre, P. and Legendre, Louis},
+  date = {2012},
+  publisher = {Elsevier},
+  location = {Chantilly, NETHERLANDS, THE},
+  url = {http://ebookcentral.proquest.com/lib/canterbury/detail.action?docID=982554},
+  urldate = {2024-11-28},
+  isbn = {978-0-444-53869-7},
+  file = {/Users/jbl91/Zotero/storage/BN8Y6VUD/reader.html}
+}
+
+@unpublished{sheardCovaryingNewZealand2024,
+  title = {Covarying {{New Zealand}} Vowels Interact with Speech Rate to Create Social Meaning for {{NZ}} Listeners},
+  author = {Sheard, Elena and Hay, Jen and Fromont, Robert and Wilson Black, Joshua and Clark, Lynn},
+  date = {2024-06-29},
+  eventtitle = {{{19th Conference on Laboratory Phonology}}},
+  venue = {Hanyang University},
+  keywords = {presentation}
 }
 
 @article{vieiraPermutationTestsEstimate2012,
@@ -82,6 +121,34 @@
   shortjournal = {Computational Ecology and Software},
   volume = {2},
   pages = {103--123}
+}
+
+@book{wickhamPackagesOrganizeTest2023,
+  title = {R {{Packages}}: {{Organize}}, {{Test}}, {{Document}}, and {{Share Your Code}}},
+  shorttitle = {R {{Packages}}},
+  author = {Wickham, Hadley and Bryan, Jennifer},
+  date = {2023-07-25},
+  edition = {2nd edition},
+  publisher = {O'Reilly Media},
+  location = {Sebastopol},
+  url = {https://r-pkgs.org/},
+  abstract = {Turn your R code into packages that others can easily install and use. With this fully updated edition, developers and data scientists will learn how to bundle reusable R functions, sample data, and documentation together by applying the package development philosophy used by the team that maintains the "tidyverse" suite of packages. In the process, you'll learn how to automate common development tasks using a set of R packages, including devtools, usethis, testthat, and roxygen2.  Authors Hadley Wickham and Jennifer Bryan from Posit (formerly known as RStudio) help you create packages quickly, then teach you how to get better over time. You'll be able to focus on what you want your package to do as you progressively develop greater mastery of the structure of a package.  With this book, you will: Learn the key components of an R package, including code, documentation, and tests Streamline your development process with devtools and the RStudio IDE Get tips on effective habits such as organizing functions into files Get caught up on important new features in the devtools ecosystem Learn about the art and science of unit testing, using features in the third edition of testthat Turn your existing documentation into a beautiful and user friendly website with pkgdown Gain an appreciation of the benefits of modern code hosting platforms, such as GitHub},
+  isbn = {978-1-09-813494-5},
+  langid = {english},
+  pagetotal = {381}
+}
+
+@article{Wilson_Black_2022,
+  title = {Using Principal Component Analysis to Explore Co‐variation of Vowels},
+  author = {Wilson Black, Joshua and Brand, James and Hay, Jen and Clark, Lynn},
+  date = {2022-12},
+  journaltitle = {Language and Linguistics Compass},
+  volume = {17},
+  number = {1},
+  publisher = {Wiley},
+  issn = {1749-818X},
+  doi = {10.1111/lnc3.12479},
+  url = {http://dx.doi.org/10.1111/lnc3.12479}
 }
 
 @article{wilsonblackOverlookedEffectAmplitude2023,
@@ -99,259 +166,5 @@
   urldate = {2024-05-02},
   abstract = {We analyse variation in vowel production within monologues produced by speakers in a quiet, well-controlled environment. Using principal component analysis (PCA) and generalized additive mixed models (GAMMs), applied to a large corpus of naturalistic recordings of New Zealand English speakers, we show that the first formant of monophthongs varies significantly with variation in a speaker’s relative amplitude. We also find that amplitude variation is used, potentially agentively, to mark the beginning and ending of topical sections within single-speaker monologues. These results have significant methodological consequences for the study of vocalic variation in the context of research on speaker style and language variation and change. While laboratory research has shown a connection between variation in F1 and amplitude in loud environments or with distant interlocutors, this has not been seen in quiet environments with unscripted speech of the sort often used in sociolinguistcs. We argue that taking account of this variation is an important challenge for both within-speaker investigation of stylistic covariation and across-speaker investigation. In the latter case we recommend, as a minimal step, the inclusion of a measure of relative amplitude within regression models.},
   langid = {english},
-  keywords = {amplitude,covariation,language variation and change,Lombard effect,monophthongs},
   file = {/Users/jbl91/Zotero/storage/AZJHI9E2/Black et al. - 2023 - The overlooked effect of amplitude on within-speak.pdf}
 }
-
-@article{barredaRegressionApproachVowel2018,
-  title = {A Regression Approach to Vowel Normalization for Missing and Unbalanced Data},
-  author = {Barreda, Santiago and Nearey, Terrance M.},
-  date = {2018-07},
-  journaltitle = {The Journal of the Acoustical Society of America},
-  shortjournal = {J Acoust Soc Am},
-  volume = {144},
-  number = {1},
-  eprint = {30075677},
-  eprinttype = {pmid},
-  pages = {500},
-  issn = {1520-8524},
-  doi = {10.1121/1.5047742},
-  abstract = {Researchers investigating the vowel systems of languages or dialects frequently employ normalization methods to minimize between-speaker variability in formant patterns while preserving between-phoneme separation and (socio-)dialectal variation. Here two methods are considered: log-mean and Lobanov normalization. Although both of these methods express formants in a speaker-dependent space, the methods differ in their complexity and in their implied models of human vowel-perception. Typical implementations of these methods rely on balanced data across speakers so that researchers may have to reduce the data available in the analyses in missing-data situations. Here, an alternative method is proposed for the normalization of vowels using the log-mean method in a linear-regression framework. The performance of the traditional approaches to log-mean and Lobanov normalization against the regression approach to the log-mean method using naturalistic, simulated vowel-data was investigated. The results indicate that the Lobanov method likely removes legitimate linguistic variation from vowel data and often provides very noisy estimates of the actual vowel quality associated with individual tokens. The authors further argue that the Lobanov method is too complex to represent a plausible model of human vowel perception, and so is unlikely to provide results that reflect the true perceptual organization of linguistic data.},
-  langid = {english}
-}
-
-@article{beckerLinguisticRepertoireEthnic2014,
-  title = {Linguistic Repertoire and Ethnic Identity in {{New York City}}},
-  author = {Becker, Kara},
-  date = {2014-03-01},
-  journaltitle = {Language \& Communication},
-  shortjournal = {Language \& Communication},
-  series = {New Perspectives on Linguistic Variation and Ethnic Identity in {{North America}}},
-  volume = {35},
-  pages = {43--54},
-  issn = {0271-5309},
-  doi = {10.1016/j.langcom.2013.12.007},
-  url = {https://www.sciencedirect.com/science/article/pii/S0271530913001122},
-  urldate = {2024-11-17},
-  abstract = {This paper expands on the ethnolinguistic repertoire approach to consider the use of a broad linguistic repertoire by a single speaker in the construction of a multivalent identity. African American speakers in North America are often analyzed from an ethnolectal perspective, and placed in contrast to (white) speakers of regional varieties of American English. A close analysis of three features – one that is traditionally ethnolectal (copula absence as a feature of African American English), one that is traditionally dialectal (bought-raising as a feature of New York City English), and one that is potentially either (non-rhoticity in the syllable coda) – reveals intersectional identification practices that go beyond ethnicity and regional identity. The results of a variationist analysis of a community sample of speakers from the Lower East Side of Manhattan is contrasted with a micro-analysis of the repertoire of a single speaker, with the repertoire analysis demonstrating the fluid nature of speaker identity and of the boundaries between ethnolect and dialect in New York City.},
-  file = {/Users/jbl91/Zotero/storage/TFJ6HFUU/S0271530913001122.html}
-}
-
-@article{bjorklundBeCarefulYour2019,
-  title = {Be Careful with Your Principal Components},
-  author = {Björklund, Mats},
-  date = {2019},
-  journaltitle = {Evolution},
-  volume = {73},
-  number = {10},
-  pages = {2151--2158},
-  issn = {1558-5646},
-  doi = {10.1111/evo.13835},
-  url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/evo.13835},
-  urldate = {2024-11-07},
-  abstract = {Principal components analysis (PCA) is a common method to summarize a larger set of correlated variables into a smaller and more easily interpretable axes of variation. However, the different components need to be distinct from each other to be interpretable otherwise they only represent random directions. This is a fundamental assumption of PCA and, thus, needs to be tested every time. Sample correlation matrices will always result in a pattern of decreasing eigenvalues even if there is no structure. Tests are, therefore, needed to discern real patterns from illusionary ones. Furthermore, the loadings of the vectors need to be larger than expected by random data to be useful in the calculation of PC-scores. PC-scores calculated from nondistinct PC's have very large standard errors and cannot be used for biological interpretations. I give a number of examples to illustrate the potential problems with PCA. Robustness of the PC's increases with increasing sample size but not with the number of traits. I review a few simple test statistics appropriate for testing PC's and use a real-world example to illustrate how this can be done using randomization tests. PCA can be very useful but great care is needed to avoid spurious results.},
-  langid = {english},
-  file = {/Users/jbl91/Zotero/storage/722VX6KQ/Björklund - 2019 - Be careful with your principal components.pdf;/Users/jbl91/Zotero/storage/N53477YB/evo.html}
-}
-
-@article{brandSystematicCovariationMonophthongs2021,
-  title = {Systematic Co-Variation of Monophthongs across Speakers of {{New Zealand English}}},
-  author = {Brand, James and Hay, Jen and Clark, Lynn and Watson, Kevin and Sóskuthy, Márton},
-  date = {2021},
-  journaltitle = {Journal of Phonetics},
-  volume = {88},
-  pages = {101096},
-  publisher = {Elsevier},
-  doi = {10.1016/j.wocn.2021.101096},
-  url = {https://www.sciencedirect.com/science/article/pii/S0095447021000711},
-  urldate = {2024-04-15},
-  file = {/Users/jbl91/Zotero/storage/VQGHYKPU/Brand et al. - 2021 - Systematic co-variation of monophthongs across spe.pdf}
-}
-
-@article{camargoPCAtestTestingStatistical2022,
-  title = {{{PCAtest}}: Testing the Statistical Significance of {{Principal Component Analysis}} in {{R}}},
-  shorttitle = {{{PCAtest}}},
-  author = {Camargo, Arley},
-  date = {2022},
-  journaltitle = {PeerJ},
-  shortjournal = {PeerJ},
-  volume = {10},
-  eprint = {35194531},
-  eprinttype = {pmid},
-  pages = {e12967},
-  issn = {2167-8359},
-  doi = {10.7717/peerj.12967},
-  abstract = {Principal Component Analysis (PCA) is one of the most broadly used statistical methods for the ordination and dimensionality-reduction of multivariate datasets across many scientific disciplines. Trivial PCs can be estimated from data sets without any correlational structure among the original variables, and traditional criteria for selecting non-trivial PC axes are difficult to implement, partially subjective or based on ad hoc thresholds. PCAtest is an R package that implements permutation-based statistical tests to evaluate the overall significance of a PCA, the significance of each PC axis, and of contributions of each observed variable to the significant axes. Based on simulation and empirical results, I encourage R users to routinely apply PCAtest to test the significance of their PCA before proceeding with the direct interpretation of PC axes and/or the utilization of PC scores in subsequent evolutionary and ecological analyses.},
-  langid = {english},
-  pmcid = {PMC8858582},
-  file = {/Users/jbl91/Zotero/storage/83C8QB4K/Camargo - 2022 - PCAtest testing the statistical significance of P.pdf}
-}
-
-@incollection{desagulierMultivariateExploratoryApproaches2020,
-  title = {Multivariate {{Exploratory Approaches}}},
-  booktitle = {A {{Practical Handbook}} of {{Corpus Linguistics}}},
-  author = {Desagulier, Guillaume},
-  editor = {Paquot, Magali and Gries, Stefan Th.},
-  date = {2020},
-  pages = {435--469},
-  publisher = {Springer International Publishing},
-  location = {Cham},
-  doi = {10.1007/978-3-030-46216-1_19},
-  url = {https://doi.org/10.1007/978-3-030-46216-1_19},
-  urldate = {2024-09-03},
-  abstract = {This chapter provides both a theoretical discussion of what multivariate exploratory approaches entail and step-by-step instructions to implement each of them with R. Four methods are presented: correspondence analysis, multiple correspondence analysis, principal component analysis, and exploratory factor analysis. These methods are designed to explore and summarize large and complex data tables by means of summary statistics. They help generate hypotheses by providing informative clusters using the variable values that characterize each observation.},
-  isbn = {978-3-030-46216-1},
-  langid = {english},
-  file = {/Users/jbl91/Zotero/storage/LHQH79KQ/Desagulier - 2020 - Multivariate Exploratory Approaches.pdf}
-}
-
-@incollection{gordonInvestigatingChainShifts2013,
-  title = {Investigating {{Chain Shifts}} and {{Mergers}}},
-  booktitle = {The {{Handbook}} of {{Language Variation}} and {{Change}}},
-  author = {Gordon, Matthew J.},
-  date = {2013},
-  pages = {203--219},
-  publisher = {John Wiley \& Sons, Ltd},
-  doi = {10.1002/9781118335598.ch9},
-  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/9781118335598.ch9},
-  urldate = {2024-11-17},
-  abstract = {Martinet's functionalist approach to language change provides essential groundwork for mergers and chain shifts, and offers insight into why these two types of sound change are discussed together. This chapter focuses on empirical matters, framing the discussion around the seemingly basic question: How can an ongoing chain shift be identified and studied? While similar methodological questions have been central to the study of merger, surprisingly this issue has not been much discussed in the literature on chain shifts. Discussions revolve around two main criteria of chain shifting. First is the requirement that distinctions between sounds be preserved, and second is the fact that the sound changes involved in the chain be interrelated. Chain shifts and mergers illustrate the advantages as well as the difficulties of studying language change in progress.},
-  isbn = {978-1-118-33559-8},
-  langid = {english},
-  file = {/Users/jbl91/Zotero/storage/54TCVBYJ/9781118335598.html}
-}
-
-@article{gubianUsingFunctionalData2015,
-  title = {Using {{Functional Data Analysis}} for Investigating Multidimensional Dynamic Phonetic Contrasts},
-  author = {Gubian, Michele and Torreira, Francisco and Boves, Lou},
-  date = {2015-03-01},
-  journaltitle = {Journal of Phonetics},
-  shortjournal = {Journal of Phonetics},
-  volume = {49},
-  pages = {16--40},
-  issn = {0095-4470},
-  doi = {10.1016/j.wocn.2014.10.001},
-  url = {https://www.sciencedirect.com/science/article/pii/S009544701400076X},
-  urldate = {2024-11-17},
-  abstract = {The study of phonetic contrasts and related phenomena, e.g. inter- and intra-speaker variability, often requires to analyse data in the form of measured time series, like f0 contours and formant trajectories. As a consequence, the investigator has to find suitable ways to reduce the raw and abundant numerical information contained in a bundle of time series into a small but sufficient set of numerical descriptors of their shape. This approach requires one to decide in advance which dynamic traits to include in the analysis and which not. For example, a rising pitch gesture may be represented by its duration and slope, hence reducing it to a straight segment, or by a richer coding specifying also whether (and how much) the rising contour is concave or convex, the latter being irrelevant in some context but crucial in others. Decisions become even more complex when a phenomenon is described by a multidimensional time series, e.g. by the first two formants. In this paper we introduce a methodology based on Functional Data Analysis (FDA) that allows the investigator to delegate most of the decisions involved in the quantitative description of multidimensional time series to the data themselves. FDA produces a data-driven parametrisation of the main shape traits present in the data that is visually interpretable, in the same way as slopes or peak heights are. These output parameters are numbers that are amenable to ordinary statistical analysis, e.g. linear (mixed effects) models. FDA is also able to capture correlations among different dimensions of a time series, e.g. between formants F1 and F2. We present FDA by means of an extended case study on diphthong – hiatus distinction in Spanish, a contrast that involves duration, formant trajectories and pitch contours.},
-  file = {/Users/jbl91/Zotero/storage/HW6RX7ME/Gubian et al. - 2015 - Using Functional Data Analysis for investigating m.pdf;/Users/jbl91/Zotero/storage/PQB6VQMM/S009544701400076X.html}
-}
-
-@article{hayTrackingWordFrequency2015a,
-  title = {Tracking Word Frequency Effects through 130 ~ Years of Sound Change},
-  author = {Hay, Jennifer B. and Pierrehumbert, Janet B. and Walker, Abby J. and LaShell, Patrick},
-  date = {2015-06-01},
-  journaltitle = {Cognition},
-  shortjournal = {Cognition},
-  volume = {139},
-  pages = {83--91},
-  issn = {0010-0277},
-  doi = {10.1016/j.cognition.2015.02.012},
-  url = {https://www.sciencedirect.com/science/article/pii/S001002771500044X},
-  urldate = {2024-11-17},
-  abstract = {Contemporary New Zealand English has distinctive pronunciations of three characteristic vowels. Did the evolution of these distinctive pronunciations occur in all words at the same time or were different words affected differently? We analyze the changing pronunciation of New Zealand English in a large set of recordings of speakers born over a 130year period. We show that low frequency words were at the forefront of these changes and higher frequency words lagged behind. A long-standing debate exists between authors claiming that high frequency words lead regular sound change and others claiming that there are no frequency effects. The leading role of low frequency words is surprising in this context. It can be elucidated in models of lexical processing that include detailed word-specific memories.},
-  file = {/Users/jbl91/Zotero/storage/NKAFUB2F/Hay et al. - 2015 - Tracking word frequency effects through 130   year.pdf;/Users/jbl91/Zotero/storage/L8J5DRVA/S001002771500044X.html}
-}
-
-@article{hurringHowStableAreUnderreview,
-  title = {How Stable Are Patterns of Covariation across Time?},
-  author = {Hurring, Gia and Wilson Black, Joshua and Hay, Jen and Clark, Lynn},
-  journaltitle = {Language Variation and Change},
-  year = {Forthcoming}
-}
-
-@article{podesvaPhonationTypeStylistic2007,
-  title = {Phonation Type as a Stylistic Variable: {{The}} Use of Falsetto in Constructing a Persona},
-  shorttitle = {Phonation Type as a Stylistic Variable},
-  author = {Podesva, Robert J.},
-  date = {2007},
-  journaltitle = {Journal of Sociolinguistics},
-  volume = {11},
-  number = {4},
-  pages = {478--504},
-  issn = {1467-9841},
-  doi = {10.1111/j.1467-9841.2007.00334.x},
-  url = {https://onlinelibrary.wiley.com/doi/abs/10.1111/j.1467-9841.2007.00334.x},
-  urldate = {2024-11-17},
-  abstract = {Although the field of sociolinguistics has witnessed a growing interest in the sociophonetic aspects of segmental and intonational variation, few studies have examined variation in voice quality. This paper addresses the gap by investigating the stylistic use of falsetto phonation. Focusing on the speech of Heath, a speaker exhibiting considerable cross-situational variation, I show that when attending a barbecue with friends, Heath's falsetto is more frequent, longer, and characterized by higher fundamental frequency (f0) levels and wider f0 ranges. Advancing recent approaches to variation which treat linguistic features as stylistic resources for constructing social meaning, I draw on an analysis of the discourse contexts in which falsetto appears to illustrate that the feature carries expressive connotations. This meaning is employed to construct a ‘diva’ persona and may also participate in building a gay identity.},
-  langid = {english},
-  file = {/Users/jbl91/Zotero/storage/M39Y7VU3/Podesva - 2007 - Phonation type as a stylistic variable The use of.pdf;/Users/jbl91/Zotero/storage/Q77UC2A3/j.1467-9841.2007.00334.html}
-}
-
-@unpublished{sheardRotatingPrincipalComponents2024,
-  title = {Rotating {{Principal Components}} to Explore Change over the Lifespan in {{New Zealand English}} Monophthongs},
-  author = {Sheard, Elena and Wilson Black, Joshua},
-  date = {2024-07-04},
-  url = {https://joshua.wilsonblack.nz/slides/methods/},
-  eventtitle = {{{Eighteenth International Conference on Methods in Dialectology}}},
-  venue = {La Trobe University},
-  keywords = {presentation}
-}
-
-@online{soskuthyGeneralisedAdditiveMixed2017,
-  title = {Generalised Additive Mixed Models for Dynamic Analysis in Linguistics: A Practical Introduction},
-  shorttitle = {Generalised Additive Mixed Models for Dynamic Analysis in Linguistics},
-  author = {Sóskuthy, Márton},
-  date = {2017-03-15},
-  url = {https://arxiv.org/abs/1703.05339v1},
-  urldate = {2024-05-13},
-  abstract = {This is a hands-on introduction to Generalised Additive Mixed Models (GAMMs) in the context of linguistics with a particular focus on dynamic speech analysis (e.g. formant contours, pitch tracks, diachronic change, etc.). The main goal is to explain some of the main ideas underlying GAMMs, and to provide a practical guide to frequentist significance testing using these models. The introduction covers a range of topics including basis functions, the smoothing penalty, random smooths, difference smooths, smooth interactions, model comparison and autocorrelation. It is divided into two parts. The first part looks at what GAMMs are, how they work and why/when we should use them. Although the reader can replicate some of the example analyses in this section, this is not essential. The second part is a tutorial introduction that illustrates the process of fitting and evaluating GAMMs in the R statistical software environment, and the reader is strongly encouraged to work through the examples on their own machine.},
-  langid = {english},
-  organization = {arXiv.org},
-  file = {/Users/jbl91/Zotero/storage/7R73926Q/Sóskuthy - 2017 - Generalised additive mixed models for dynamic anal.pdf}
-}
-
-@article{vieiraPermutationTestsEstimate2012,
-  title = {Permutation Tests to Estimate Significances on {{Principal Components Analysis}}},
-  author = {Vieira, Vasco},
-  date = {2012-06-01},
-  journaltitle = {Computational Ecology and Software},
-  shortjournal = {Computational Ecology and Software},
-  volume = {2},
-  pages = {103--123}
-}
-
-@article{Wilson_Black_2023,
-  title = {The Overlooked Effect of Amplitude on Within-Speaker Vowel Variation},
-  author = {Wilson Black, Joshua and Hay, Jennifer and Clark, Lynn and Brand, James},
-  date = {2023-11},
-  journaltitle = {Linguistics Vanguard},
-  volume = {9},
-  number = {1},
-  pages = {173--189},
-  publisher = {Walter de Gruyter GmbH},
-  issn = {2199-174X},
-  doi = {10.1515/lingvan-2022-0086},
-  url = {http://dx.doi.org/10.1515/lingvan-2022-0086}
-}
-
-@article{wilsonblackUsingPrincipalComponent2023,
-  title = {Using Principal Component Analysis to Explore Co‐variation of Vowels},
-  author = {Wilson Black, Joshua and Brand, James and Hay, Jen and Clark, Lynn},
-  date = {2023-01},
-  journaltitle = {Language and Linguistics Compass},
-  shortjournal = {Language and Linguist. Compass},
-  volume = {17},
-  number = {1},
-  pages = {e12479},
-  issn = {1749-818X, 1749-818X},
-  doi = {10.1111/lnc3.12479},
-  url = {https://compass.onlinelibrary.wiley.com/doi/10.1111/lnc3.12479},
-  urldate = {2024-04-15},
-  abstract = {Abstract             This paper presents a methodology for exploring systematic co‐variation of vowels using Principal Component Analysis (PCA). As a case study, we examine and build on Brand et~al.'s (2021) study of systematic co‐variation amongst the monophthongs of New Zealand English (NZE) across speakers born over a 118‐year time period. We present PCA as a methodology, with information aimed at readers who may themselves want to use it in a related context. We consider tests for the appropriateness of PCA, how to select Principal Components, and how to interpret them once they have been found. At each stage, we provide code in the R programing language to enable readers to both follow our analysis and apply the same methods to their own data.},
-  langid = {english}
-}
-
-@article{wilsonblackVisualisingVowelSpace2022,
-  title = {Visualising {{Vowel Space Change}} with {{GAMMs}}},
-  author = {Wilson Black, Joshua},
-  date = {2022-10-28},
-  journaltitle = {Linguistics Methods Hub},
-  series = {Linguistics {{Methods Hub}}},
-  doi = {10.5281/zenodo.7261966},
-  url = {https://lingmethodshub.github.io/content/R/animated_vowel_plots_tutorial},
-  urldate = {2024-11-17},
-  langid = {english},
-  file = {/Users/jbl91/Zotero/storage/23LT7USS/animated_vowel_plots_tutorial.html}
-}
-
