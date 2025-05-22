@@ -22,7 +22,7 @@ LazyData: true
 Depends: 
     R (>= 4.1),
     patchwork
-RoxygenNote: 7.3.2.9000
+RoxygenNote: 7.3.2
 Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
@@ -48,8 +48,7 @@ Imports:
     gghalves,
     smacof,
     Rdpack,
-    lifecycle,
-    vegan
+    lifecycle
 RdMacros: Rdpack
 URL: https://nzilbb.github.io/nzilbb_vowels/, https://github.com/nzilbb/nzilbb_vowels
 BugReports: https://github.com/nzilbb/nzilbb_vowels/issues

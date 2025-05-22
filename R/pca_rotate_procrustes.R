@@ -27,7 +27,6 @@
 #'   rotation. Applied to rotation of loadings when two datasets have only
 #'   partial overlap of variables. (default: "all", which uses all variables).
 #'
-#' @importFrom vegan procrustes
 #' @importFrom purrr map_dbl
 #'
 #' @returns an object matching the class of `to_rotate`.
@@ -105,28 +104,26 @@ pca_rotate_procrustes <- function(
   }
 
   if (rotate == "loadings") {
-    proc <- procrustes(
+    # Some code borrowed from vegan::procrustes, with centring removed.
+    XY <- crossprod(
       target[[loadings_var]][rotvar_target, 1:max_pc],
-      to_rotate[[loadings_var]][rotvar_rotate, 1:max_pc],
-      scale = FALSE, scores = "sites"
+      to_rotate[[loadings_var]][rotvar_rotate, 1:max_pc]
     )
-    rot_loadings <- to_rotate[[loadings_var]][, 1:max_pc] %*%
-      proc$rotation
-    rot_scores <- to_rotate[[scores_var]][, 1:max_pc] %*%
-      proc$rotation
   } else if (rotate == "scores") {
-    proc <- procrustes(
-      target[[scores_var]][, 1:max_pc], to_rotate[[scores_var]][, 1:max_pc],
-      scale = FALSE, scores = "sites"
+    XY <- crossprod(
+      target[[scores_var]][, 1:max_pc],
+      to_rotate[[scores_var]][, 1:max_pc]
     )
-    scores_transform <- matrix(
-      rep(proc$xmean, times = nrow(to_rotate[[scores_var]])),
-      nrow = nrow(to_rotate[[scores_var]]), byrow=TRUE
-    )
-    rot_scores <- proc$Yrot + scores_transform
-    rot_loadings <- to_rotate[[loadings_var]][, 1:max_pc] %*%
-      proc$rotation
+  } else {
+    stop("rotate argument must be either 'loadings' or 'scores'.")
   }
+
+  svd_sol <- svd(XY)
+  rot_matrix <- svd_sol$v %*% t(svd_sol$u)
+  rot_loadings <- to_rotate[[loadings_var]][, 1:max_pc] %*%
+    rot_matrix
+  rot_scores <- to_rotate[[scores_var]][, 1:max_pc] %*%
+    rot_matrix
 
   # update scores
   to_rotate[[loadings_var]][, 1:max_pc] <- rot_loadings
@@ -139,7 +136,8 @@ pca_rotate_procrustes <- function(
   )
 
   if (inherits(to_rotate, "princomp")) {
-    names(to_rotate[['sdev']]) = paste0("Comp.", 1:ncol(to_rotate[[scores_var]]))
+    names(to_rotate[['sdev']]) =
+      paste0("Comp.", 1:ncol(to_rotate[[scores_var]]))
   }
 
   # Add note
