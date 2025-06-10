@@ -52,6 +52,6 @@
 <text x='695.93' y='279.32' style='font-size: 8.80px; font-family: sans;' textLength='18.59px' lengthAdjust='spacingAndGlyphs'>Data</text>
 <text x='695.93' y='296.60' style='font-size: 8.80px; font-family: sans;' textLength='15.16px' lengthAdjust='spacingAndGlyphs'>Null</text>
 <text x='32.79' y='14.56' style='font-size: 13.20px; font-family: sans;' textLength='406.52px' lengthAdjust='spacingAndGlyphs'>Count of Signficant Correlations in Original Data and 10 Permutations</text>
-<text x='662.21' y='568.69' text-anchor='end' style='font-size: 8.80px; font-family: sans;' textLength='196.18px' lengthAdjust='spacingAndGlyphs'>Violin plot displays median, 5% and 95% quaniles.</text>
+<text x='662.21' y='568.69' text-anchor='end' style='font-size: 8.80px; font-family: sans;' textLength='198.62px' lengthAdjust='spacingAndGlyphs'>Violin plot displays median, 5% and 95% quantiles.</text>
 </g>
 </svg>

@@ -184,7 +184,7 @@ plot_correlation_counts <- function(
       ),
       y = "Count of significant correlations",
       x = "",
-      caption = "Violin plot displays median, 5% and 95% quaniles.",
+      caption = "Violin plot displays median, 5% and 95% quantiles.",
       colour = "Source"
     )
 }
