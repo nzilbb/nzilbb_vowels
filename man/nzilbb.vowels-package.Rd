@@ -20,7 +20,7 @@ Useful links:
 
 }
 \author{
-\strong{Maintainer}: Joshua Wilson Black \email{joshua@wilsonblack.nz} (\href{https://orcid.org/0000-0002-8272-5763}{ORCID}) [copyright holder]
+\strong{Maintainer}: Joshua Wilson Black \email{joshua@canterbury.ac.nz} (\href{https://orcid.org/0000-0002-8272-5763}{ORCID}) [copyright holder]
 
 Authors:
 \itemize{

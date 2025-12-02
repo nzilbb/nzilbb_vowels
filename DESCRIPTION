@@ -5,7 +5,8 @@ Version: 0.4.1.9000
 Authors@R: c(
   person(
     "Joshua", "Wilson Black", 
-    email = "joshua@wilsonblack.nz", role = c("aut", "cre", "cph"),
+    email = "joshua@canterbury.ac.nz", 
+    role = c("aut", "cre", "cph"),
     comment = c(ORCID = "https://orcid.org/0000-0002-8272-5763")
   ),
   person("James", "Brand",
