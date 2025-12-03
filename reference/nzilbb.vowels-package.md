@@ -20,7 +20,7 @@ Useful links:
 
 ## Author
 
-**Maintainer**: Joshua Wilson Black <joshua@canterbury.ac.nz>
+**Maintainer**: Joshua Wilson Black <joshua.black@canterbury.ac.nz>
 ([ORCID](https://orcid.org/0000-0002-8272-5763)) \[copyright holder\]
 
 Authors:

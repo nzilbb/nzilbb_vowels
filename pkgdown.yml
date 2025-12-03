@@ -4,7 +4,7 @@ pkgdown_sha: ~
 articles:
   articles/Model-to-PCA-workflow: Model-to-PCA-workflow.html
   articles/Rotation: Rotation.html
-last_built: 2025-12-03T00:06Z
+last_built: 2025-12-03T00:31Z
 urls:
   reference: https://nzilbb.github.io/nzilbb_vowels/reference
   article: https://nzilbb.github.io/nzilbb_vowels/articles
