@@ -152,7 +152,7 @@ function <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-lin
 <span></span>
 <span><span class="co"># The following line sets the theme for all plots made using the `ggplot2`</span></span>
 <span><span class="co"># package (part of the tidyverse).</span></span>
-<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/theme_get.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
+<span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/get_theme.html" class="external-link">theme_set</a></span><span class="op">(</span><span class="fu"><a href="https://ggplot2.tidyverse.org/reference/ggtheme.html" class="external-link">theme_bw</a></span><span class="op">(</span><span class="op">)</span><span class="op">)</span></span></code></pre></div>
 </div>
 </div>
 <div class="section level2" number="2">
@@ -1223,6 +1223,14 @@ visually with a correlation plot.</p>
 <span>    axis.text.x <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span>,</span>
 <span>    axis.text.y <span class="op">=</span> <span class="fu"><a href="https://ggplot2.tidyverse.org/reference/element.html" class="external-link">element_text</a></span><span class="op">(</span>size <span class="op">=</span> <span class="fl">8</span><span class="op">)</span></span>
 <span>  <span class="op">)</span></span></code></pre></div>
+<pre><code><span><span class="co">#&gt; Warning: `aes_string()` was deprecated in ggplot2 3.0.0.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Please use tidy evaluation idioms with `aes()`.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> See also `vignette("ggplot2-in-packages")` for more information.</span></span>
+<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> The deprecated feature was likely used in the <span style="color: #0000BB;">ggcorrplot</span> package.</span></span>
+<span><span class="co">#&gt;   Please report the issue at <span style="color: #0000BB; font-style: italic;">&lt;https://github.com/kassambara/ggcorrplot/issues&gt;</span>.</span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">This warning is displayed once every 8 hours.</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">Call `lifecycle::last_lifecycle_warnings()` to see where this warning was</span></span></span>
+<span><span class="co">#&gt; <span style="color: #555555;">generated.</span></span></span></code></pre>
 <div class="figure">
 <span style="display:block;" id="fig:qb1-pairwise"></span>
 <img src="Model-to-PCA-workflow_files/figure-html/qb1-pairwise-1.png" alt="Pairwise correlations between extracted random intercepts." width="100%"><p class="caption">
@@ -1235,7 +1243,7 @@ this point of the process.</p>
 different from what we would see with random data. For instance, by producing
 the following plots using the <code><a href="../reference/plot_correlation_magnitudes.html">plot_correlation_magnitudes()</a></code> and
 <code><a href="../reference/plot_correlation_counts.html">plot_correlation_counts()</a></code> functions in <code>nzilbb.vowels</code>.</p>
-<div class="sourceCode" id="cb38"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">cor_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/correlation_test.html">correlation_test</a></span><span class="op">(</span></span>
 <span>  <span class="va">QB1_intercepts</span> <span class="op">|&gt;</span></span>
 <span>    <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Speaker</span><span class="op">)</span>,</span>
@@ -1264,7 +1272,7 @@ consistency with an earlier programming language (‘S’). Different vowels,
 even when normalised, have different variances. If you don’t scale, the
 variables with the most variance will dominate even if they don’t appear in any
 interesting patterns of covariation.</p>
-<div class="sourceCode" id="cb39"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">qb_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp</a></span><span class="op">(</span></span>
 <span>  <span class="co"># We use the intercepts without the speaker column.</span></span>
 <span>  <span class="va">QB1_intercepts</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Speaker</span><span class="op">)</span>,</span>
@@ -1277,7 +1285,7 @@ which captures how much variation each PC captures and is used to determine
 how many PCs we want to use.</p>
 <p>Let’s look at the <code>qb_pca$rotation</code> briefly, looking at the loadings for PC1
 only.</p>
-<div class="sourceCode" id="cb40"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb41"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">qb_pca</span><span class="op">$</span><span class="va">rotation</span><span class="op">[</span>, <span class="st">"PC1"</span><span class="op">]</span></span></code></pre></div>
 <pre><code><span><span class="co">#&gt;    DRESS_F1    DRESS_F2   FLEECE_F1   FLEECE_F2    GOOSE_F1    GOOSE_F2 </span></span>
 <span><span class="co">#&gt;  0.30189388 -0.20305569 -0.32250732  0.32900513 -0.27718563  0.09453797 </span></span>
@@ -1310,7 +1318,7 @@ variance explained and plot it as follows:<a class="footnote-ref" tabindex="0" d
 In the interest of simplicity, we’re avoiding adding a lot of packages here.
 We have found the plotting functions in the &lt;code&gt;factoextra&lt;/code&gt; package useful. In
 the case of the , &lt;code&gt;fviz_screeplot()&lt;/code&gt; would do the job of the block below.&lt;/p&gt;"><sup>6</sup></a></p>
-<div class="sourceCode" id="cb42"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">variance_explained</span> <span class="op">&lt;-</span> <span class="fu"><a href="https://tibble.tidyverse.org/reference/as_tibble.html" class="external-link">as_tibble</a></span><span class="op">(</span></span>
 <span>  <span class="va">qb_pca</span><span class="op">$</span><span class="va">sdev</span><span class="op">^</span><span class="fl">2</span> <span class="op">/</span> <span class="fu"><a href="https://rdrr.io/r/base/sum.html" class="external-link">sum</a></span><span class="op">(</span><span class="va">qb_pca</span><span class="op">$</span><span class="va">sdev</span><span class="op">^</span><span class="fl">2</span><span class="op">)</span> <span class="op">*</span> <span class="fl">100</span>,</span>
 <span>  rownames <span class="op">=</span> <span class="st">"PC"</span></span>
@@ -1362,7 +1370,7 @@ gives us a way to decide how much variance we would expect to be explained by
 a given PC given the absence of patterns in the data.</p>
 <p>Our approach uses the <code><a href="../reference/pca_test.html">pca_test()</a></code> function in the <code>nzilbb.vowels</code> package. We
 apply this as follows:</p>
-<div class="sourceCode" id="cb43"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">qb_pca_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pca_test.html">pca_test</a></span><span class="op">(</span></span>
 <span>  <span class="va">QB1_intercepts</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">Speaker</span><span class="op">)</span>,</span>
 <span>  n <span class="op">=</span> <span class="fl">100</span> <span class="co"># The number of permutations to try. I'd go up to 500 for anything</span></span>
@@ -1370,7 +1378,7 @@ apply this as follows:</p>
 <span><span class="op">)</span></span></code></pre></div>
 <p>We can then plot our variant of the screeplot with the
 <code><a href="../reference/plot_variance_explained.html">plot_variance_explained()</a></code> function.</p>
-<div class="sourceCode" id="cb44"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_variance_explained.html">plot_variance_explained</a></span><span class="op">(</span><span class="va">qb_pca_test</span>, pc_max <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:fig-screeplot-2"></span>
@@ -1420,7 +1428,7 @@ This function plots the loadings, extracted from &lt;code&gt;qb_pca$rotation&lt;
 to ‘contributions’, i.e., percentage of the PC’s variance explained by the
 original variable. The conversion is just to square the loading and multiply by
 &lt;span class="math inline"&gt;\(100\)&lt;/span&gt;.&lt;/p&gt;'><sup>7</sup></a></p>
-<div class="sourceCode" id="cb45"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/pca_contrib_plot.html">pca_contrib_plot</a></span><span class="op">(</span><span class="va">qb_pca</span>, pc_no <span class="op">=</span> <span class="fl">1</span>, cutoff <span class="op">=</span> <span class="cn">NULL</span><span class="op">)</span> <span class="op">/</span></span>
 <span>  <span class="fu"><a href="../reference/pca_contrib_plot.html">pca_contrib_plot</a></span><span class="op">(</span><span class="va">qb_pca</span>, pc_no <span class="op">=</span> <span class="fl">1</span>, cutoff <span class="op">=</span> <span class="fl">50</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
@@ -1444,7 +1452,7 @@ adds confidence bars to ‘index loadings’. Index loadings are the loadings
 multiplied by the amount of variance explained by each PC. This is the approach
 encouraged by <span class="citation">Vieira (2012)</span>. It penalises loadings in
 weaker PCs, which can often represent noise in the data.</p>
-<div class="sourceCode" id="cb46"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_loadings.html">plot_loadings</a></span><span class="op">(</span><span class="va">qb_pca_test</span>, pc_no <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:fig-pc1-loadings"></span>
@@ -1479,7 +1487,7 @@ loadings. This, as mentioned above, takes a few mental steps, especially when
 moving from loading plots to the vowel space. We have started using the
 <code><a href="../reference/plot_pc_vs.html">plot_pc_vs()</a></code> function to quickly plot loadings in the vowel space. This
 takes some of the mental load off.</p>
-<div class="sourceCode" id="cb47"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pc1_vs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_pc_vs.html">plot_pc_vs</a></span><span class="op">(</span></span>
 <span>  <span class="va">QB1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html" class="external-link">relocate</a></span><span class="op">(</span><span class="va">Speaker</span>, <span class="va">Vowel</span>, <span class="va">F1_lob2</span>, <span class="va">F2_lob2</span><span class="op">)</span>,</span>
 <span>  <span class="va">qb_pca_test</span>,</span>
@@ -1504,11 +1512,11 @@ changed. In this case, we might want to have positive PC values indicate an
 innovative rather than conservative speaker. The <code>nzilbb.vowels</code> package has
 the function <code><a href="../reference/pc_flip.html">pc_flip()</a></code> for this purpose. It works on the output of <code><a href="https://rdrr.io/r/stats/prcomp.html" class="external-link">prcomp()</a></code>
 and of <code><a href="../reference/pca_test.html">pca_test()</a></code>. Let’s flip PC1 for the two PCA objects we currently have.</p>
-<div class="sourceCode" id="cb48"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">qb_pca_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pc_flip.html">pc_flip</a></span><span class="op">(</span><span class="va">qb_pca_test</span>, pc_no <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span>
 <span><span class="va">qb_pca</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/pc_flip.html">pc_flip</a></span><span class="op">(</span><span class="va">qb_pca</span>, pc_no <span class="op">=</span> <span class="fl">1</span><span class="op">)</span></span></code></pre></div>
 <p>Now we repeat Figure <a href="#fig:fig-pc1-vs">3.8</a>, and see that the loadings have reversed.</p>
-<div class="sourceCode" id="cb49"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pc1_vs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_pc_vs.html">plot_pc_vs</a></span><span class="op">(</span></span>
 <span>  <span class="co"># We need the original vocalic data to find the mean values of each vowel.</span></span>
 <span>  <span class="co"># The function assumes the data's first four columns are speaker id, vowel id,</span></span>
@@ -1528,7 +1536,7 @@ Figure 3.9: PC1 loadings represented in vowel space. As PC1 scores increase, a s
 </p>
 </div>
 <p>What about PC2?</p>
-<div class="sourceCode" id="cb50"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="../reference/plot_loadings.html">plot_loadings</a></span><span class="op">(</span><span class="va">qb_pca_test</span>, pc_no <span class="op">=</span> <span class="fl">2</span><span class="op">)</span></span></code></pre></div>
 <div class="figure">
 <span style="display:block;" id="fig:fig-pc2-loadings"></span>
@@ -1542,7 +1550,7 @@ We were very happy to see this pattern, which also appears in the ONZE corpus
 <span class="citation">(Brand et al. 2021)</span>. It is open to us to include or
 exclude <span class="smallcaps">lot</span> F2.</p>
 <p>What does this look like in the vowel space?</p>
-<div class="sourceCode" id="cb51"><pre class="downlit sourceCode r">
+<div class="sourceCode" id="cb52"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">pc2_vs</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/plot_pc_vs.html">plot_pc_vs</a></span><span class="op">(</span></span>
 <span>  <span class="va">QB1</span> <span class="op">|&gt;</span> <span class="fu"><a href="https://dplyr.tidyverse.org/reference/relocate.html" class="external-link">relocate</a></span><span class="op">(</span><span class="va">Speaker</span>, <span class="va">Vowel</span>, <span class="va">F1_lob2</span>, <span class="va">F2_lob2</span><span class="op">)</span>,</span>
 <span>  <span class="va">qb_pca_test</span>,</span>
@@ -1593,9 +1601,6 @@ recently. One possible way in is <span class="citation">(<strong>gubianUsingFunc
 
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" entry-spacing="0">
-<div id="ref-rmarkdown2024" class="csl-entry">
-Allaire, JJ, Yihui Xie, Christophe Dervieux, Jonathan McPherson, Javier Luraschi, Kevin Ushey, Aron Atkins, et al. 2024. <em><span class="nocase">rmarkdown</span>: Dynamic Documents for r</em>. <a href="https://github.com/rstudio/rmarkdown" class="external-link">https://github.com/rstudio/rmarkdown</a>.
-</div>
 <div id="ref-brandSystematicCovariationMonophthongs2021" class="csl-entry">
 Brand, James, Jen Hay, Lynn Clark, Kevin Watson, and Márton Sóskuthy. 2021. <span>“Systematic Co-Variation of Monophthongs Across Speakers of <span>New Zealand English</span>.”</span> <em>Journal of Phonetics</em> 88: 101096. <a href="https://doi.org/10.1016/j.wocn.2021.101096" class="external-link">https://doi.org/10.1016/j.wocn.2021.101096</a>.
 </div>
@@ -1685,7 +1690,7 @@ Xie, Yihui, Christophe Dervieux, and Emily Riederer. 2020. <em>R Markdown Cookbo
 </div>
 
 <div class="pkgdown-footer-right">
-  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.1.3.</p>
+  <p>Site built with <a href="https://pkgdown.r-lib.org/" class="external-link">pkgdown</a> 2.2.0.</p>
 </div>
 
     </footer>
