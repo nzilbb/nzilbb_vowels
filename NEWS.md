@@ -1,7 +1,12 @@
-# nzilbb.vowels (development version)
+# nzilbb.vowels 0.4.2
 
 - In `plot_pc_vs()`, allow unicode letter class and mark combinations in 
 variable names
+- More detail provided for article on use of rotations.
+- Remove dependency on `vegan::procrustes()`
+- Fix typo in `plot_correlation_counts()`
+- Switch to institutional email due to unreliability of previous email and
+consequent archiving of 0.4.1.
 
 # nzilbb.vowels 0.4.1
 
