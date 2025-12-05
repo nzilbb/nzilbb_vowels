@@ -1,5 +1,9 @@
 # nzilbb.vowels (development version)
 
+- Remove dependency on `gghalves`. In `plot_correlation_counts()`, remove
+`half_violin` argument, and replace with `points` argument, which adds jittered
+points on top of the violin.
+
 # nzilbb.vowels 0.4.2
 
 - In `plot_pc_vs()`, allow unicode letter class and mark combinations in 

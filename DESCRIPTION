@@ -23,7 +23,7 @@ LazyData: true
 Depends: 
     R (>= 4.1),
     patchwork
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
@@ -46,7 +46,6 @@ Imports:
     rsample,
     stringr,
     ggrepel,
-    gghalves,
     smacof,
     Rdpack,
     lifecycle
