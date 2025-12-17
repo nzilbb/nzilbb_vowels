@@ -1,7 +1,7 @@
 Package: nzilbb.vowels
 Type: Package
 Title: Vowel Covariation Tools
-Version: 0.4.3
+Version: 0.4.3.9000
 Authors@R: c(
   person(
     "Joshua", "Wilson Black", 
