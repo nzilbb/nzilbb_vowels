@@ -21,7 +21,7 @@ which PCA might be able to uncover."><meta property="og:image" content="https://
 
     <a class="navbar-brand me-2" href="../index.html">nzilbb.vowels</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.1.9000</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.4.3.9000</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -68,7 +68,7 @@ which PCA might be able to uncover.</p>
 
     <div class="section level2">
     <h2 id="ref-usage">Usage<a class="anchor" aria-label="anchor" href="#ref-usage"></a></h2>
-    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_correlation_counts</span><span class="op">(</span><span class="va">cor_test</span>, alpha <span class="op">=</span> <span class="fl">0.05</span>, half_violin <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
+    <div class="sourceCode"><pre class="sourceCode r"><code><span><span class="fu">plot_correlation_counts</span><span class="op">(</span><span class="va">cor_test</span>, alpha <span class="op">=</span> <span class="fl">0.05</span>, points <span class="op">=</span> <span class="cn">FALSE</span><span class="op">)</span></span></code></pre></div>
     </div>
 
     <div class="section level2">
@@ -84,9 +84,8 @@ which PCA might be able to uncover.</p>
 <dd><p>significance level for counting correlation as significant.</p></dd>
 
 
-<dt id="arg-half-violin">half_violin<a class="anchor" aria-label="anchor" href="#arg-half-violin"></a></dt>
-<dd><p>Plot correlation counts using a half violin plot and half
-point plot. Quantiles are not currently supported.</p></dd>
+<dt id="arg-points">points<a class="anchor" aria-label="anchor" href="#arg-points"></a></dt>
+<dd><p>add points to the plot on top of the violin (default: FALSE)</p></dd>
 
 </dl></div>
     <div class="section level2">
@@ -111,6 +110,7 @@ function (as in the examples below).</p>
     <div class="section level2">
     <h2 id="ref-examples">Examples<a class="anchor" aria-label="anchor" href="#ref-examples"></a></h2>
     <div class="sourceCode"><pre class="sourceCode r"><code><span class="r-in"><span>  <span class="co"># Test correlations (use at least n = 100)</span></span></span>
+<span class="r-in"><span></span></span>
 <span class="r-in"><span>  <span class="va">cor_test</span> <span class="op">&lt;-</span> <span class="fu"><a href="correlation_test.html">correlation_test</a></span><span class="op">(</span><span class="va">onze_intercepts</span> <span class="op">|&gt;</span></span></span>
 <span class="r-in"><span>    <span class="fu">dplyr</span><span class="fu">::</span><span class="fu"><a href="https://dplyr.tidyverse.org/reference/select.html" class="external-link">select</a></span><span class="op">(</span><span class="op">-</span><span class="va">speaker</span><span class="op">)</span>, n <span class="op">=</span> <span class="fl">10</span><span class="op">)</span></span></span>
 <span class="r-in"><span>  <span class="va">cor_plot</span> <span class="op">&lt;-</span> <span class="fu">plot_correlation_counts</span><span class="op">(</span><span class="va">cor_test</span><span class="op">)</span></span></span>

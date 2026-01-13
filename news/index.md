@@ -1,6 +1,19 @@
 # Changelog
 
+## nzilbb.vowels (development version)
+
+## nzilbb.vowels 0.4.3
+
+CRAN release: 2025-12-17
+
+- Remove dependency on `gghalves`. In
+  [`plot_correlation_counts()`](https://nzilbb.github.io/nzilbb_vowels/reference/plot_correlation_counts.md),
+  remove `half_violin` argument, and replace with `points` argument,
+  which adds jittered points on top of the violin.
+
 ## nzilbb.vowels 0.4.2
+
+CRAN release: 2025-12-04
 
 - In
   [`plot_pc_vs()`](https://nzilbb.github.io/nzilbb_vowels/reference/plot_pc_vs.md),

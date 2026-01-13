@@ -9,7 +9,7 @@ structure in your data which PCA might be able to uncover.
 ## Usage
 
 ``` r
-plot_correlation_counts(cor_test, alpha = 0.05, half_violin = FALSE)
+plot_correlation_counts(cor_test, alpha = 0.05, points = FALSE)
 ```
 
 ## Arguments
@@ -22,10 +22,9 @@ plot_correlation_counts(cor_test, alpha = 0.05, half_violin = FALSE)
 
   significance level for counting correlation as significant.
 
-- half_violin:
+- points:
 
-  Plot correlation counts using a half violin plot and half point plot.
-  Quantiles are not currently supported.
+  add points to the plot on top of the violin (default: FALSE)
 
 ## Value
 
@@ -53,6 +52,7 @@ function (as in the examples below).
 
 ``` r
   # Test correlations (use at least n = 100)
+
   cor_test <- correlation_test(onze_intercepts |>
     dplyr::select(-speaker), n = 10)
   cor_plot <- plot_correlation_counts(cor_test)
