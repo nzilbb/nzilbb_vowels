@@ -24,6 +24,7 @@ Useful links:
 
 Authors:
 \itemize{
+  \item Joshua Wilson Black \email{joshua.black@canterbury.ac.nz} (\href{https://orcid.org/0000-0002-8272-5763}{ORCID}) [copyright holder]
   \item James Brand \email{james.brand.ac@gmail.com} (\href{https://orcid.org/0000-0002-2853-9169}{ORCID})
 }
 

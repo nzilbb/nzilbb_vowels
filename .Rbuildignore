@@ -13,3 +13,6 @@ scripts
 ^vignettes/articles$
 ^CRAN-SUBMISSION$
 ^revdep$
+^\.positai$
+^\.claude$
+^\.lintr$

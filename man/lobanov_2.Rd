@@ -4,11 +4,14 @@
 \alias{lobanov_2}
 \title{Apply Lobanov 2.0 normalisation}
 \usage{
-lobanov_2(vowel_data)
+lobanov_2(vowel_data, exclude = NULL)
 }
 \arguments{
 \item{vowel_data}{a dataframe whose first four columns are speaker ids,
 vowel ids, F1 values, and F2 values.}
+
+\item{exclude}{list of vowel types to exclude from the normalisation set.
+default: NULL.}
 }
 \value{
 a dataframe matching the input dataframe with additional columns

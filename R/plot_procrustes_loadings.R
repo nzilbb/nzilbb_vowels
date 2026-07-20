@@ -45,6 +45,8 @@ plot_procrustes_loadings <-
 
     out_plot <- proc_loadings |>
       mutate(
+        # TODO: replace with fct_reorder2, just target original
+        # loadings.
         variable = fct_reorder(
           .data$variable,
           abs(.data[[paste0("PC", pc_no)]])

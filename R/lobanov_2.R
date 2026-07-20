@@ -24,6 +24,8 @@
 #'
 #' @param vowel_data a dataframe whose first four columns are speaker ids,
 #' vowel ids, F1 values, and F2 values.
+#' @param exclude list of vowel types to exclude from the normalisation set.
+#'   default: NULL.
 #' @returns a dataframe matching the input dataframe with additional columns
 #'   `F1_lob2` and `F2_lob2`, containing the lobanov normalised F1 and F2 values
 #'   respectively.
@@ -41,7 +43,7 @@
 #'   English. Journal of Phonetics. Elsevier. 88. 101096.
 #'   doi:10.1016/j.wocn.2021.101096
 #' @export
-lobanov_2 <- function(vowel_data) {
+lobanov_2 <- function(vowel_data, exclude = NULL) {
 
   base::stopifnot(
     "Column one must be a factor or character vector of speaker ids." =
@@ -62,6 +64,9 @@ lobanov_2 <- function(vowel_data) {
   F2_col_name <- names(vowel_data)[[4]]
 
   vowel_means <- vowel_data |>
+    filter(
+      !.data[[vowel_col_name]] %in% exclude
+    ) |>
     group_by(.data[[speaker_col_name]], .data[[vowel_col_name]]) |>
     summarise(
       vowel_mean_F1 = base::mean(.data[[F1_col_name]]),
@@ -70,7 +75,7 @@ lobanov_2 <- function(vowel_data) {
       vowel_sd_F2 = stats::sd(.data[[F2_col_name]]),
     ) |>
     group_by(.data[[speaker_col_name]]) |>
-    mutate(
+    summarise(
       mean_of_means_F1 = base::mean(.data$vowel_mean_F1),
       mean_of_means_F2 = base::mean(.data$vowel_mean_F2),
       sd_of_means_F1 = stats::sd(.data$vowel_mean_F1),
@@ -80,7 +85,7 @@ lobanov_2 <- function(vowel_data) {
   vowel_data |>
     left_join(
       vowel_means,
-      by = c(speaker_col_name, vowel_col_name)
+      by = c(speaker_col_name)
     ) |>
     ungroup() |>
     mutate(
@@ -91,8 +96,7 @@ lobanov_2 <- function(vowel_data) {
     ) |>
     # Remove working variables.
     select(
-      -("vowel_mean_F1":"sd_of_means_F2")
+      -("mean_of_means_F1":"sd_of_means_F2")
     )
 
 }
-

@@ -24,6 +24,16 @@ test_that("Error if formant columns not numeric", {
   expect_error(qb_vowels %>% lobanov_2(), "numeric")
 })
 
+test_that("Vowel exclusion results in different norm values", {
+  qb_vowels_1 <- qb_vowels |>
+    lobanov_2()
+
+  qb_vowels_2 <- qb_vowels |>
+    lobanov_2(exclude = "THOUGHT")
+
+  expect_false(all(qb_vowels_1$F1_lob2 == qb_vowels_2$F1_lob2))
+})
+
 test_that("Normalised values haven't changed in qb_vowels.", {
   expect_snapshot(
     lobanov_2(qb_vowels),

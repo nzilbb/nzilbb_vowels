@@ -23,7 +23,6 @@ LazyData: true
 Depends: 
     R (>= 4.1),
     patchwork
-RoxygenNote: 7.3.3
 Roxygen: list(markdown = TRUE)
 Suggests: 
     knitr,
@@ -42,13 +41,15 @@ Imports:
     forcats,
     glue,
     purrr,
+    furrr,
     tidyselect,
     rsample,
     stringr,
     ggrepel,
     smacof,
     Rdpack,
-    lifecycle
+    lifecycle,
+    MASS
 RdMacros: Rdpack
 URL: https://nzilbb.github.io/nzilbb_vowels/, https://github.com/nzilbb/nzilbb_vowels
 BugReports: https://github.com/nzilbb/nzilbb_vowels/issues
@@ -63,3 +64,4 @@ Config/Needs/website:
   gganimate,
   grateful,
   gifski
+Config/roxygen2/version: 8.0.0
