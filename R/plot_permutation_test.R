@@ -14,7 +14,7 @@
 #' @return `ggplot` object.
 #' @importFrom dplyr mutate
 #' @importFrom ggplot2 ggplot geom_point geom_violin geom_line
-#'   scale_alpha_manual aes labs
+#' @importFrom ggplot2 scale_alpha_manual aes labs
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr pivot_longer
 #' @importFrom tidyselect contains

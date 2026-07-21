@@ -147,3 +147,4 @@ indexify <- function(pca_obj, signed=TRUE) {
   }
   pca_obj
 }
+

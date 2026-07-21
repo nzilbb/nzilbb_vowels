@@ -46,8 +46,7 @@
 #' @importFrom stringr str_c str_sub
 #' @importFrom dplyr mutate select ungroup group_by summarise arrange across
 #' @importFrom dplyr any_of
-#' @importFrom dplyr unnest
-#' @importFrom tidyr pivot_longer
+#' @importFrom tidyr pivot_longer unnest
 #' @importFrom purrr map map2 map_lgl safely keep
 #' @importFrom furrr future_map furrr_options
 #' @importFrom stats prcomp quantile
@@ -65,7 +64,7 @@
 #'   \item{n_errors}{Number of simulations where \code{ri_function} or PCA
 #'     failed and was skipped.}
 #'
-#'#' @examples
+#' @examples
 #' # TODO
 #' @export
 simulate_null <- function(

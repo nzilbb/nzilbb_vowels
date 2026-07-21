@@ -15,8 +15,8 @@
 #'   `correlation_test`.
 #' @return `ggplot` object.
 #' @importFrom dplyr bind_rows
-#' @importFrom ggplot2 ggplot scale_alpha_manual scale_linewidth_manual aes labs
-#'   stat_density guides after_stat
+#' @importFrom ggplot2 ggplot scale_alpha_manual scale_linewidth_manual
+#' @importFrom ggplot2 aes labs stat_density guides after_stat
 #' @importFrom magrittr %>%
 #' @importFrom glue glue
 #' @importFrom Rdpack reprompt

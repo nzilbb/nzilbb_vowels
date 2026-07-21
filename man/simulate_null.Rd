@@ -91,3 +91,6 @@ simulation replicate, and summarizing the resulting eigenvalues and loadings
 to provide empirical confidence intervals. Almost all arguments are passed
 directly to \code{simulate_speakers}.
 }
+\examples{
+# TODO
+}

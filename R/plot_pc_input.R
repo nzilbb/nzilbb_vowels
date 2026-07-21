@@ -14,7 +14,7 @@
 #' @importFrom magrittr %>%
 #' @importFrom dplyr bind_cols mutate left_join if_else select filter if_else
 #' @importFrom ggplot2 ggplot aes geom_point geom_smooth geom_rect facet_grid
-#'   theme element_text
+#' @importFrom ggplot2 theme element_text
 #' @importFrom tibble as_tibble
 #' @importFrom tidyr pivot_longer separate
 #' @importFrom stringr str_detect

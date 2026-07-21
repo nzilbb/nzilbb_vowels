@@ -19,7 +19,7 @@
 #' @importFrom tidyr pivot_longer
 #' @importFrom forcats fct_reorder
 #' @importFrom ggplot2 ggplot geom_errorbar geom_point scale_x_discrete aes
-#'   guide_axis labs
+#' @importFrom ggplot2 guide_axis labs
 #' @importFrom tidyselect all_of
 #' @examples
 #'   onze_pca <- pca_test(onze_intercepts |> dplyr::select(-speaker), n = 10)
@@ -173,7 +173,7 @@ plot_variance_explained <- function(pca_test, pc_max = NA, percent = TRUE) {
 #' @importFrom tidyr pivot_longer
 #' @importFrom forcats fct_reorder
 #' @importFrom ggplot2 ggplot geom_errorbar geom_point scale_x_discrete aes
-#'   guide_axis labs
+#' @importFrom ggplot2 guide_axis labs
 #' @importFrom tidyselect all_of
 #' @examples
 #'   onze_pca <- pca_test(onze_intercepts |> dplyr::select(-speaker), n = 10)

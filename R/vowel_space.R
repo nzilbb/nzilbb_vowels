@@ -24,8 +24,8 @@
 #' @return `ggplot` object.
 #' @importFrom dplyr mutate filter summarise group_by vars
 #' @importFrom ggplot2 ggplot geom_label facet_wrap scale_colour_manual aes labs
-#'   geom_point scale_x_reverse scale_y_reverse expansion geom_point
-#'   stat_ellipse
+#' @importFrom ggplot2 geom_point scale_x_reverse scale_y_reverse expansion
+#' @importFrom ggplot2 stat_ellipse
 #' @importFrom ggrepel geom_label_repel
 #' @importFrom rlang .data
 #' @importFrom magrittr %>%

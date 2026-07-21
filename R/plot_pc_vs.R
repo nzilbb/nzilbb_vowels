@@ -19,12 +19,12 @@
 #'   `pca_test_results`).
 #'
 #' @importFrom dplyr group_by summarise across rename left_join select mutate
-#'  ungroup
+#' @importFrom dplyr ungroup
 #' @importFrom tidyselect matches any_of
 #' @importFrom tidyr pivot_wider
 #' @importFrom tibble as_tibble
 #' @importFrom ggplot2 geom_segment geom_label scale_x_reverse scale_y_reverse
-#'  coord_fixed theme arrow expansion labs
+#' @importFrom ggplot2 coord_fixed theme arrow expansion labs
 #' @importFrom grid unit
 #' @importFrom rlang .data `:=`
 #'

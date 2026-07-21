@@ -22,7 +22,7 @@
 #' @importFrom dplyr if_else lead rename mutate arrange filter
 #' @importFrom forcats fct_reorder
 #' @importFrom ggplot2 ggplot geom_text geom_vline scale_alpha_manual
-#'     scale_color_manual aes labs theme element_text
+#' @importFrom ggplot2 scale_color_manual aes labs theme element_text
 #' @importFrom rlang .data
 #' @importFrom tibble as_tibble
 #' @importFrom Rdpack reprompt
